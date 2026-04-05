@@ -1,204 +1,941 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Study Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Master Study Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Epilogue:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#f5f2ec; --surface:#fff; --border:#e2ddd6; --text:#1c1917; --muted:#78716c;
+  --school:#1d4ed8; --school-bg:rgba(29,78,216,0.08);
+  --math:#dc2626;   --math-bg:rgba(220,38,38,0.08);
+  --bio:#16a34a;    --bio-bg:rgba(22,163,74,0.08);
+  --chem:#7c3aed;   --chem-bg:rgba(124,58,237,0.08);
+  --econ:#d97706;   --econ-bg:rgba(217,119,6,0.08);
+  --sat:#0891b2;    --sat-bg:rgba(8,145,178,0.08);
+  --korean:#be185d; --korean-bg:rgba(190,24,93,0.08);
+  --cas:#059669;    --cas-bg:rgba(5,150,105,0.08);
+  --tok:#92400e;    --tok-bg:rgba(146,64,14,0.08);
+  --lesson:#b45309; --lesson-bg:rgba(180,83,9,0.12);
+  --movie:#6d28d9;  --movie-bg:rgba(109,40,217,0.08);
+  --plan:#065f46;   --plan-bg:rgba(6,95,70,0.08);
+  --alert:#dc2626;  --alert-bg:rgba(220,38,38,0.06);
+  --sem:#7c3aed;    --sem-bg:rgba(124,58,237,0.06);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Epilogue',sans-serif;min-height:100vh;padding:36px 14px 60px;}
 
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #0f172a;
-      color: #e2e8f0;
-      margin: 0;
-      padding: 20px;
-    }
+/* Tab navigation */
+.main-tabs{display:flex;gap:0;margin-bottom:32px;justify-content:center;}
+.main-tab{
+  font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;
+  letter-spacing:2px;text-transform:uppercase;
+  padding:12px 32px;cursor:pointer;
+  border:1px solid var(--border);background:white;color:var(--muted);
+  transition:all 0.15s;
+}
+.main-tab:first-child{border-radius:8px 0 0 8px;}
+.main-tab:last-child{border-radius:0 8px 8px 0;border-left:none;}
+.main-tab.active{background:var(--text);color:white;border-color:var(--text);}
+.main-tab:hover:not(.active){background:var(--bg);}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
 
-    h1 {
-      text-align: center;
-    }
+/* Header */
+header{text-align:center;margin-bottom:36px;}
+header h1{font-family:'Syne',sans-serif;font-size:clamp(32px,5vw,64px);font-weight:800;letter-spacing:-1px;line-height:1;margin-bottom:8px;}
+header h1 span{color:var(--math);}
+.subtitle{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;}
 
-    section {
-      background: #1e293b;
-      padding: 20px;
-      margin: 20px auto;
-      border-radius: 16px;
-      max-width: 700px;
-    }
+/* Timeline strip */
+.timeline-strip{
+  max-width:1100px;margin:0 auto 28px;
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:8px;
+}
+.tl-block{
+  border-radius:10px;padding:14px 14px 12px;
+  border:1px solid var(--border);background:white;
+}
+.tl-block.alert{background:var(--alert-bg);border-color:rgba(220,38,38,0.25);}
+.tl-block.sem{background:var(--sem-bg);border-color:rgba(124,58,237,0.25);}
+.tl-block.io{background:var(--korean-bg);border-color:rgba(190,24,93,0.25);}
+.tl-month{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;margin-bottom:6px;}
+.tl-block.alert .tl-month{color:var(--alert);}
+.tl-block.sem   .tl-month{color:var(--sem);}
+.tl-block.io    .tl-month{color:var(--korean);}
+.tl-items{display:flex;flex-direction:column;gap:4px;}
+.tl-item{font-size:11px;color:var(--muted);padding-left:12px;position:relative;line-height:1.4;}
+.tl-item::before{content:'•';position:absolute;left:0;font-size:10px;}
+.tl-item.hot{color:var(--alert);font-weight:600;}
+.tl-item.hot::before{content:'⚠';}
+.tl-item.done{color:var(--bio);font-weight:600;}
+.tl-item.done::before{content:'🎯';}
 
-    input {
-      padding: 10px;
-      margin: 5px 0;
-      border-radius: 8px;
-      border: none;
-      width: 100%;
-      background: #0f172a;
-      color: white;
-    }
+/* Legend */
+.legend{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:28px;}
+.leg{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:500;color:var(--muted);background:white;border:1px solid var(--border);border-radius:100px;padding:4px 11px;font-family:'JetBrains Mono',monospace;}
+.leg-dot{width:6px;height:6px;border-radius:50%;}
 
-    button {
-      padding: 10px;
-      border-radius: 8px;
-      border: none;
-      background: #38bdf8;
-      cursor: pointer;
-      margin-top: 5px;
-    }
+/* Table */
+.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--border);background:white;box-shadow:0 2px 16px rgba(0,0,0,0.05);margin-bottom:24px;}
+table{width:100%;border-collapse:collapse;min-width:1000px;}
+thead th{padding:13px 8px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--muted);border-bottom:2px solid var(--border);text-align:center;background:white;position:sticky;top:0;z-index:2;letter-spacing:1px;}
+thead th:first-child{text-align:left;padding-left:14px;color:var(--math);width:96px;font-size:11px;}
+thead th.wknd{color:var(--movie);}
+tbody tr{border-bottom:1px solid rgba(226,221,214,0.5);}
+tbody tr:hover{background:rgba(0,0,0,0.01);}
+tbody tr:last-child{border-bottom:none;}
+.sec-row td{background:var(--bg);padding:4px 14px;border-bottom:1px solid var(--border);border-top:1px solid var(--border);}
+.sec-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;}
+td{padding:6px 6px;text-align:center;vertical-align:middle;}
+td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--muted);text-align:left;padding-left:12px;white-space:nowrap;}
 
-    li {
-      list-style: none;
-      background: #0f172a;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 8px;
-    }
-  </style>
+/* Blocks */
+.b{display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:7px;padding:6px 7px;min-height:48px;width:100%;font-size:10.5px;font-weight:600;line-height:1.3;border:1px solid transparent;transition:transform 0.12s,box-shadow 0.12s;cursor:default;}
+.b:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(0,0,0,0.1);}
+.b .s{font-size:9px;font-weight:400;opacity:0.7;margin-top:2px;font-family:'JetBrains Mono',monospace;}
+.b .m{font-size:9px;opacity:0.58;margin-top:1px;font-style:italic;}
+
+.school {background:var(--school-bg);border-color:rgba(29,78,216,0.18);color:var(--school);}
+.math   {background:var(--math-bg);  border-color:rgba(220,38,38,0.18);  color:var(--math);}
+.bio    {background:var(--bio-bg);   border-color:rgba(22,163,74,0.18);  color:var(--bio);}
+.chem   {background:var(--chem-bg);  border-color:rgba(124,58,237,0.18); color:var(--chem);}
+.econ   {background:var(--econ-bg);  border-color:rgba(217,119,6,0.18);  color:var(--econ);}
+.sat    {background:var(--sat-bg);   border-color:rgba(8,145,178,0.18);  color:var(--sat);}
+.korean {background:var(--korean-bg);border-color:rgba(190,24,93,0.18);  color:var(--korean);}
+.cas    {background:var(--cas-bg);   border-color:rgba(5,150,105,0.18);  color:var(--cas);}
+.tok    {background:var(--tok-bg);   border-color:rgba(146,64,14,0.18);  color:var(--tok);}
+.lesson {background:var(--lesson-bg);border-color:rgba(180,83,9,0.25);   color:var(--lesson);}
+.movie  {background:var(--movie-bg); border-color:rgba(109,40,217,0.18); color:var(--movie);}
+.plan   {background:var(--plan-bg);  border-color:rgba(6,95,70,0.18);    color:var(--plan);}
+.brk    {background:#faf9f7;color:var(--muted);font-weight:400;font-style:italic;border:none;min-height:34px;font-size:10.5px;}
+.off    {background:transparent;color:#d1cdc7;font-weight:400;border:none;min-height:34px;font-size:10.5px;}
+
+/* Alert row highlight */
+.alert-row td { background: rgba(220,38,38,0.03); }
+
+/* Phase banners */
+.phase-banner{
+  max-width:1100px;margin:0 auto 10px;
+  padding:10px 18px;border-radius:8px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;
+  display:flex;align-items:center;gap:10px;
+}
+.phase-banner.p-alert{background:var(--alert-bg);border:1px solid rgba(220,38,38,0.2);color:var(--alert);}
+.phase-banner.p-sem{background:var(--sem-bg);border:1px solid rgba(124,58,237,0.2);color:var(--sem);}
+.phase-banner.p-cas{background:var(--cas-bg);border:1px solid rgba(5,150,105,0.2);color:var(--cas);}
+.phase-banner span{opacity:0.6;font-size:10px;}
+
+/* Notes */
+.notes{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;max-width:1100px;margin-left:auto;margin-right:auto;}
+.note{background:white;border:1px solid var(--border);border-radius:10px;padding:16px;}
+.note h3{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;color:var(--text);}
+.note ul{list-style:none;display:flex;flex-direction:column;gap:5px;}
+.note li{font-size:11px;color:var(--muted);padding-left:13px;position:relative;line-height:1.5;}
+.note li::before{content:'→';position:absolute;left:0;color:var(--border);font-size:9px;top:2px;}
+.note li strong{color:var(--text);font-weight:600;}
+
+@media(max-width:640px){body{padding:14px 6px 40px;}.legend{gap:5px;}}
+</style>
 </head>
-
 <body>
 
-<h1>📊 Study Dashboard</h1>
+<header>
+  <h1>Master <span>Study Plan</span></h1>
+  <div class="subtitle">April → June · IB + SAT + Korean IO + CAS + TOK</div>
+</header>
 
-<section>
-  <h2>📌 Planner</h2>
-  <input id="taskInput" placeholder="Task">
-  <button onclick="addTask()">Add Task</button>
-  <ul id="taskList"></ul>
-</section>
+<!-- Main tab navigation -->
+<div class="main-tabs">
+  <div class="main-tab active" onclick="switchTab('planner', this)">📅 Weekly Planner</div>
+  <div class="main-tab" onclick="switchTab('papers', this)">📄 Past Paper Tracker</div>
+</div>
 
-<section>
-  <h2>📝 Past Papers</h2>
-  <input id="ppSubject" placeholder="Subject">
-  <input id="ppTime" placeholder="Minutes">
-  <button onclick="addPaper()">Add</button>
-  <ul id="paperList"></ul>
-</section>
+<!-- TAB 1: PLANNER -->
+<div class="tab-panel active" id="tab-planner">
 
-<section>
-  <h2>🧠 Flashcards</h2>
-  <input id="fcQ" placeholder="Question">
-  <input id="fcA" placeholder="Answer">
-  <button onclick="addFlashcard()">Add</button>
-  <ul id="flashList"></ul>
-</section>
+<!-- Timeline overview -->
+<div class="timeline-strip">
+  <div class="tl-block io">
+    <div class="tl-month">April 1–26</div>
+    <div class="tl-items">
+      <div class="tl-item hot">Korean IO prep 🎤</div>
+      <div class="tl-item hot">Bio test Apr 30</div>
+      <div class="tl-item">⚠ Likely April tests</div>
+      <div class="tl-item">IB content + past papers</div>
+      <div class="tl-item">SAT vocab + articles daily</div>
+    </div>
+  </div>
+  <div class="tl-block io">
+    <div class="tl-month">April 27</div>
+    <div class="tl-items">
+      <div class="tl-item done">🎤 Korean IO Day!</div>
+      <div class="tl-item">Drop Korean from plan</div>
+      <div class="tl-item">Start extra Bio prep</div>
+      <div class="tl-item">CAS + TOK work begins</div>
+    </div>
+  </div>
+  <div class="tl-block alert">
+    <div class="tl-month">Late Apr – May</div>
+    <div class="tl-items">
+      <div class="tl-item hot">⚠ Bio test Apr 30</div>
+      <div class="tl-item hot">⚠ Likely early May tests</div>
+      <div class="tl-item">Past papers accelerate</div>
+      <div class="tl-item">CAS evidence + reflections</div>
+      <div class="tl-item">TOK exhibition prep</div>
+    </div>
+  </div>
+  <div class="tl-block sem">
+    <div class="tl-month">End of May</div>
+    <div class="tl-items">
+      <div class="tl-item hot">🔥 SEMESTER TEST</div>
+      <div class="tl-item hot">Most important test!</div>
+      <div class="tl-item">Math · Bio · Chem · Econ</div>
+      <div class="tl-item">Phase 3 crunch mode</div>
+    </div>
+  </div>
+  <div class="tl-block sem">
+    <div class="tl-month">June</div>
+    <div class="tl-items">
+      <div class="tl-item hot">🔥 Semester test continues</div>
+      <div class="tl-item done">✅ CAS due</div>
+      <div class="tl-item done">✅ TOK exhibition due</div>
+      <div class="tl-item">Recovery + reflection</div>
+    </div>
+  </div>
+</div>
 
-<section>
-  <h2>🔥 Hard Questions</h2>
-  <input id="hqText" placeholder="Question">
-  <button onclick="addHQ()">Add</button>
-  <ul id="hqList"></ul>
-</section>
+<!-- Phase banners -->
+<div class="phase-banner p-alert">
+  ⚠ HIGH ALERT — April & Early May <span>· Bio test Apr 30 · Likely class tests · Korean IO Apr 27 · Keep content fresh, don't skip past papers</span>
+</div>
+<div class="phase-banner p-sem">
+  🔥 SEMESTER TEST — End of May / Early June <span>· Most important test · Math AA HL · Bio HL · Chem HL · Econ SL · Phase 3 crunch from Week 7</span>
+</div>
+<div class="phase-banner p-cas">
+  📁 CAS + TOK — Complete before June <span>· CAS: evidence + reflections · TOK: exhibition + commentary · Work on these during weekend afternoons</span>
+</div>
+
+<!-- Legend -->
+<div class="legend">
+  <div class="leg"><div class="leg-dot" style="background:var(--school)"></div>School</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--math)"></div>Math AA HL</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--bio)"></div>Biology HL</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--chem)"></div>Chemistry HL</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--econ)"></div>Economics SL</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--sat)"></div>SAT</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--korean)"></div>Korean IO (→Apr 27)</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--cas)"></div>CAS</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--tok)"></div>TOK</div>
+  <div class="leg"><div class="leg-dot" style="background:var(--lesson)"></div>Math Lesson</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ TABLE -->
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>TIME</th>
+      <th>MON</th>
+      <th>TUE</th>
+      <th>WED</th>
+      <th>THU</th>
+      <th>FRI</th>
+      <th class="wknd">SAT</th>
+      <th class="wknd">SUN</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <!-- MORNING -->
+  <tr class="sec-row"><td colspan="8"><span class="sec-label">— Morning Commute —</span></td></tr>
+  <tr>
+    <td>6:00–6:30</td>
+    <td><div class="b brk">Wake up · get ready</div></td>
+    <td><div class="b brk">Wake up · get ready</div></td>
+    <td><div class="b brk">Wake up · get ready</div></td>
+    <td><div class="b brk">Wake up · get ready</div></td>
+    <td><div class="b brk">Wake up · get ready</div></td>
+    <td><div class="b brk">Sleep in 😴</div></td>
+    <td><div class="b brk">Sleep in 😴</div></td>
+  </tr>
+  <tr>
+    <td>6:30–7:00</td>
+    <td><div class="b sat">SAT Vocab<div class="s">Commute · 10 words</div></div></td>
+    <td><div class="b math">Math Review<div class="s">Skim notes · commute</div></div></td>
+    <td><div class="b sat">SAT Vocab<div class="s">Commute · 10 words</div></div></td>
+    <td><div class="b bio">Bio Flashcards<div class="s">Anki · commute</div></div></td>
+    <td><div class="b sat">SAT Vocab<div class="s">Commute · 10 words</div></div></td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b off">—</div></td>
+  </tr>
+
+  <!-- SCHOOL -->
+  <tr class="sec-row"><td colspan="8"><span class="sec-label">— School —</span></td></tr>
+  <tr>
+    <td>7:00–3:30</td>
+    <td><div class="b school">School<div class="s">Mon: Chem · Math · Eng B · TOK · Korean</div></div></td>
+    <td><div class="b school">School<div class="s">Tue: Econ · Eng B · Chem · CAS · Bio</div></div></td>
+    <td><div class="b school">School<div class="s">Wed: TOK · Math · Econ · Bio</div></div></td>
+    <td><div class="b school">School<div class="s">Thu: Korean · Econ · Bio · Eng B</div></div></td>
+    <td><div class="b school">School<div class="s">Fri: Korean · Math · Chem</div></div></td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b off">—</div></td>
+  </tr>
+
+  <!-- WEEKEND MORNING FREE -->
+  <tr class="sec-row"><td colspan="8"><span class="sec-label">— Weekend Morning (Free) —</span></td></tr>
+  <tr>
+    <td>8:00–10:00</td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b brk">Free morning 🌅<div class="s">Relax · breakfast</div></div></td>
+    <td><div class="b brk">Free morning 🌅<div class="s">Relax · breakfast</div></div></td>
+  </tr>
+  <tr>
+    <td>10:00–11:30</td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b lesson">Math Lesson 🏫<div class="s">10:00–11:30 · attend + notes</div></div></td>
+    <td><div class="b brk">Free time<div class="s">No pressure</div></div></td>
+  </tr>
+  <tr>
+    <td>11:30–1:00</td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b brk">Lunch · decompress<div class="s">After lesson break</div></div></td>
+    <td><div class="b brk">Lunch · free time</div></td>
+  </tr>
+
+  <!-- AFTERNOON -->
+  <tr class="sec-row"><td colspan="8"><span class="sec-label">— Afternoon —</span></td></tr>
+  <tr>
+    <td>3:30–4:00</td>
+    <td><div class="b brk">Travel home</div></td>
+    <td><div class="b brk">Travel home</div></td>
+    <td><div class="b brk">Travel home</div></td>
+    <td><div class="b brk">Travel home</div></td>
+    <td><div class="b brk">Travel home</div></td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b off">—</div></td>
+  </tr>
+  <tr>
+    <td>4:00–4:30</td>
+    <td><div class="b brk">Decompress · snack · walk</div></td>
+    <td><div class="b brk">Decompress · snack · walk</div></td>
+    <td><div class="b brk">Decompress · snack · walk</div></td>
+    <td><div class="b brk">Decompress · snack · walk</div></td>
+    <td><div class="b brk">Decompress · snack · walk</div></td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b off">—</div></td>
+  </tr>
+
+  <!-- SAT + ARTICLE (WEEKDAYS) | STUDY START (WEEKENDS) -->
+  <tr class="sec-row"><td colspan="8"><span class="sec-label">— SAT Daily + Weekend Study Start (1pm) —</span></td></tr>
+  <tr>
+    <td>1:00–2:00</td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b math">Math AAHL<div class="s">Post-lesson consolidation</div><div class="m">Past papers · Revision Village</div></div></td>
+    <td><div class="b math">Math AAHL<div class="s">Daily practice</div><div class="m">Past papers · weak topics</div></div></td>
+  </tr>
+  <tr>
+    <td>2:00–3:30</td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b off">—</div></td>
+    <td><div class="b sat">SAT Full Mock<div class="s">Bluebook · full timed test</div><div class="m">Every Saturday</div></div></td>
+    <td><div class="b bio">Biology HL<div class="s">Study guide + past papers</div><div class="m">→ Monday prep</div></div></td>
+  </tr>
+  <tr>
+    <td>4:30–5:10</td>
+    <td><div class="b sat">SAT Article + Vocab<div class="s">Read 1 article · annotate</div><div class="m">10 vocab words</div></div></td>
+    <td><div class="b sat">SAT Article + Vocab<div class="s">Read 1 article · annotate</div><div class="m">10 vocab words</div></div></td>
+    <td><div class="b sat">SAT Article + Vocab<div class="s">Read 1 article · annotate</div><div class="m">10 vocab words</div></div></td>
+    <td><div class="b sat">SAT Article + Vocab<div class="s">Read 1 article · annotate</div><div class="m">10 vocab words</div></div></td>
+    <td><div class="b sat">SAT Poem / Old Eng<div class="s">Read + annotate 1 poem</div><div class="m">Old English practice</div></div></td>
+    <td><div class="b sat">SAT Mock Review<div class="s">Mark scheme · error log</div><div class="m">3:30–4:30</div></div></td>
+    <td><div class="b sat">SAT Poem / Old Eng<div class="s">Read + annotate · practice</div><div class="m">4:00–4:30</div></div></td>
+  </tr>
+
+  <!-- MATH DAILY -->
+  <tr class="sec-row"><td colspan="8"><span class="sec-label">— Math AA HL (Daily — Most Important) —</span></td></tr>
+  <tr>
+    <td>5:10–6:00</td>
+    <td><div class="b math">Math AAHL<div class="s">Past papers · daily</div><div class="m">Functions / Trig focus</div></div></td>
+    <td><div class="b math">Math AAHL<div class="s">Past papers · daily</div><div class="m">Calculus / Diff focus</div></div></td>
+    <td><div class="b math">Math AAHL<div class="s">Past papers · daily</div><div class="m">Integration focus</div></div></td>
+    <td><div class="b math">Math AAHL<div class="s">Past papers · pre-lesson</div><div class="m">Weak topic review</div></div></td>
+    <td><div class="b math">Math AAHL<div class="s">Past papers · daily</div><div class="m">Mixed practice</div></div></td>
+    <td><div class="b chem">Chemistry HL<div class="s">Study guide + past papers</div><div class="m">4:30–5:30</div></div></td>
+    <td><div class="b econ">Economics SL<div class="s">Study guide + past papers</div><div class="m">4:30–5:30</div></div></td>
+  </tr>
+
+  <!-- DINNER -->
+  <tr class="sec-row"><td colspan="8"><span class="sec-label">— Dinner —</span></td></tr>
+  <tr>
+    <td>6:00–6:30</td>
+    <td colspan="7"><div class="b brk" style="width:100%;display:flex;justify-content:center;">Dinner Break — away from screens 🍽</div></td>
+  </tr>
+
+  <!-- EVENING: NIGHT-BEFORE PREP -->
+  <tr class="sec-row"><td colspan="8"><span class="sec-label">— Evening: Prep for Next Day (Night-Before Logic) —</span></td></tr>
+  <tr>
+    <td>6:30–7:30</td>
+    <!-- Mon → prep for Tue (Econ, Bio) -->
+    <td><div class="b econ">Economics SL<div class="s">→ Tue · study guide</div><div class="m">DEED essays · diagrams</div></div></td>
+    <!-- Tue → prep for Wed (Math, Bio) -->
+    <td><div class="b bio">Biology HL<div class="s">→ Wed · study guide</div><div class="m">Anki · diagrams</div></div></td>
+    <!-- Wed → prep for Thu (Korean, Econ, Bio) -->
+    <td><div class="b bio">Biology HL<div class="s">→ Thu · study guide</div><div class="m">Syllabus checklist</div></div></td>
+    <!-- Thu → prep for Fri (Korean, Math, Chem) + Math lesson warm-up -->
+    <td><div class="b math">Math AAHL<div class="s">→ Sat lesson warm-up 🔥</div><div class="m">Pre-lesson review</div></div></td>
+    <!-- Fri → prep for weekend -->
+    <td><div class="b chem">Chemistry HL<div class="s">→ Weekend · review</div><div class="m">Structure 1-3 notes</div></div></td>
+    <!-- Sat → IB subject block -->
+    <td><div class="b bio">Biology HL<div class="s">5:30–6:30 · past papers</div><div class="m">⚠ Bio test Apr 30 prep</div></div></td>
+    <!-- Sun → prep for Mon -->
+    <td><div class="b chem">Chemistry HL<div class="s">→ Mon · study guide</div><div class="m">Past papers · review</div></div></td>
+  </tr>
+  <tr>
+    <td>7:30–8:00</td>
+    <td><div class="b bio">Biology HL<div class="s">→ Tue · past papers</div><div class="m">Summary sheets</div></div></td>
+    <td><div class="b math">Math AAHL<div class="s">→ Wed · problem sets</div><div class="m">Revision Village</div></div></td>
+    <td><div class="b econ">Economics SL<div class="s">→ Thu · DEED essays</div><div class="m">Key diagrams</div></div></td>
+    <td><div class="b chem">Chemistry HL<div class="s">→ Fri · study guide</div><div class="m">Reactions · flashcards</div></div></td>
+    <td><div class="b math">Math AAHL<div class="s">→ Weekend · review</div><div class="m">Revision Village Qs</div></div></td>
+    <td><div class="b cas">CAS<div class="s">Evidence + reflections</div><div class="m">Due before June</div></div></td>
+    <td><div class="b tok">TOK<div class="s">Exhibition prep</div><div class="m">Commentary · objects</div></div></td>
+  </tr>
+
+  <!-- KOREAN IO (until Apr 27) -->
+  <tr class="sec-row"><td colspan="8"><span class="sec-label">— Korean IO Memorisation (Until April 27 only) —</span></td></tr>
+  <tr>
+    <td>8:00–8:30</td>
+    <td><div class="b korean">Korean IO 🎤<div class="s">Memorise speech</div><div class="m">Timer 10min practice</div></div></td>
+    <td><div class="b korean">Korean IO 🎤<div class="s">Memorise speech</div><div class="m">Record + self-review</div></div></td>
+    <td><div class="b korean">Korean IO 🎤<div class="s">Memorise speech</div><div class="m">Weak sections focus</div></div></td>
+    <td><div class="b korean">Korean IO 🎤<div class="s">Memorise speech</div><div class="m">Pre-lesson warm-up</div></div></td>
+    <td><div class="b korean">Korean IO 🎤<div class="s">Memorise speech</div><div class="m">Full run-through</div></div></td>
+    <td><div class="b korean">Korean IO 🎤<div class="s">Light review only</div><div class="m">Keywords + intro</div></div></td>
+    <td><div class="b korean">Korean IO 🎤<div class="s">Light review only</div><div class="m">Keywords + conclusion</div></div></td>
+  </tr>
+
+  <!-- DEEP WORK / MATH LESSON THU -->
+  <tr class="sec-row"><td colspan="8"><span class="sec-label">— Deep Work (Peak Hours) —</span></td></tr>
+  <tr>
+    <td>8:30–9:30</td>
+    <td><div class="b chem">Chemistry HL<div class="s">→ Tue · past papers</div><div class="m">Structure 1-3</div></div></td>
+    <td><div class="b chem">Chemistry HL<div class="s">→ Wed · study guide</div><div class="m">Organic / equilibrium</div></div></td>
+    <td><div class="b math">Math AAHL<div class="s">Hard past paper Qs</div><div class="m">No hints · timed</div></div></td>
+    <td><div class="b lesson">Math Lesson 🏫<div class="s">8:00–9:30 · attend</div><div class="m">Take detailed notes</div></div></td>
+    <td><div class="b econ">Economics SL<div class="s">→ Mon · timed essay</div><div class="m">DEED structure</div></div></td>
+    <td><div class="b movie">🎬 Movie Night<div class="s">8:30–10:30</div><div class="m">Relax · enjoy</div></div></td>
+    <td><div class="b math">Math AAHL<div class="s">Hard past paper Qs</div><div class="m">Timed · no hints</div></div></td>
+  </tr>
+  <tr>
+    <td>9:30–10:00</td>
+    <td><div class="b brk">Reading / Growth<div class="s">Non-textbook 20 mins</div></div></td>
+    <td><div class="b brk">Reading / Growth<div class="s">Non-textbook 20 mins</div></div></td>
+    <td><div class="b brk">Reading / Growth<div class="s">Non-textbook 20 mins</div></div></td>
+    <td><div class="b brk">Reading / Growth<div class="s">Non-textbook 20 mins</div></div></td>
+    <td><div class="b brk">Reading / Growth<div class="s">Non-textbook 20 mins</div></div></td>
+    <td><div class="b movie">🎬 Movie Night<div class="s">continuing...</div></div></td>
+    <td><div class="b brk">Reading / Growth<div class="s">Non-textbook 20 mins</div></div></td>
+  </tr>
+
+  <!-- WIND DOWN -->
+  <tr class="sec-row"><td colspan="8"><span class="sec-label">— Wind Down —</span></td></tr>
+  <tr>
+    <td>10:00–10:30</td>
+    <td><div class="b plan">Plan tomorrow<div class="s">3-tier list · brain dump</div></div></td>
+    <td><div class="b plan">Plan tomorrow<div class="s">3-tier list · brain dump</div></div></td>
+    <td><div class="b plan">Plan tomorrow<div class="s">3-tier list · brain dump</div></div></td>
+    <td><div class="b plan">Plan tomorrow<div class="s">3-tier list · brain dump</div></div></td>
+    <td><div class="b plan">Plan tomorrow<div class="s">3-tier list · brain dump</div></div></td>
+    <td><div class="b movie">🎬 Movie Night ends<div class="s">Snack · wind down</div></div></td>
+    <td><div class="b plan">Plan next week<div class="s">Full weekly review</div></div></td>
+  </tr>
+
+  <!-- LATE NIGHT -->
+  <tr class="sec-row"><td colspan="8"><span class="sec-label">— Late Night (Light Tasks Only) —</span></td></tr>
+  <tr>
+    <td>10:30–11:30</td>
+    <td><div class="b sat">SAT Easy Math<div class="s">Low difficulty Qs</div></div></td>
+    <td><div class="b sat">SAT Easy R&W<div class="s">Simple grammar Qs</div></div></td>
+    <td><div class="b sat">SAT Easy Math<div class="s">Low difficulty Qs</div></div></td>
+    <td><div class="b sat">SAT Easy R&W<div class="s">Simple grammar Qs</div></div></td>
+    <td><div class="b sat">SAT Easy Math<div class="s">Light practice</div></div></td>
+    <td><div class="b math">Math AAHL<div class="s">Easy Qs · Revision Village</div></div></td>
+    <td><div class="b sat">SAT Easy R&W<div class="s">Light practice</div></div></td>
+  </tr>
+  <tr>
+    <td>11:30–12:30</td>
+    <td><div class="b bio">Bio Flashcards<div class="s">Anki · definitions</div></div></td>
+    <td><div class="b chem">Chem Flashcards<div class="s">Reactions · structures</div></div></td>
+    <td><div class="b bio">Bio Flashcards<div class="s">Anki · diagrams</div></div></td>
+    <td><div class="b econ">Econ Diagrams<div class="s">Redraw from memory</div></div></td>
+    <td><div class="b brk">Free review<div class="s">Look over notes lightly</div></div></td>
+    <td><div class="b bio">Bio Flashcards<div class="s">Anki · light review</div></div></td>
+    <td><div class="b plan">Plan next week<div class="s">Full weekly review</div></div></td>
+  </tr>
+  <tr>
+    <td>12:30–2:00</td>
+    <td colspan="7"><div class="b brk" style="width:100%;display:flex;justify-content:center;">Wind down → lights out 2:00am 🌙</div></td>
+  </tr>
+
+  </tbody>
+</table>
+</div>
+
+<!-- Notes -->
+<div class="notes">
+  <div class="note">
+    <h3>⚠ High Alert: April</h3>
+    <ul>
+      <li><strong>Apr 27</strong> — Korean IO 🎤 (10-min speech)</li>
+      <li><strong>Apr 30</strong> — Biology HL test</li>
+      <li>Likely class tests throughout April — stay on top of school content daily</li>
+      <li>Korean IO drops from plan after Apr 27 — use that slot for Bio/CAS/TOK</li>
+    </ul>
+  </div>
+  <div class="note">
+    <h3>🔥 Semester Test (End of May)</h3>
+    <ul>
+      <li>Most important test — treat it like final exams</li>
+      <li><strong>Math AA HL</strong>: Functions, Trig, Calc, Diff, Integration</li>
+      <li><strong>Bio HL</strong>: Study guide + full past papers (P1/P2/P3)</li>
+      <li><strong>Chem HL</strong>: Structure 1–3 · past papers · data booklet</li>
+      <li><strong>Econ SL</strong>: Micro + Macro + Intro · DEED essays · diagrams</li>
+      <li>Spaced repetition past papers accelerate from Week 5</li>
+    </ul>
+  </div>
+  <div class="note">
+    <h3>📁 CAS + TOK (Before June)</h3>
+    <ul>
+      <li><strong>CAS</strong>: Evidence + reflections — work on weekends 7:30–8:00pm</li>
+      <li><strong>TOK</strong>: Exhibition + commentary — start after Korean IO (Apr 27)</li>
+      <li>Saturday: CAS session · Sunday: TOK session</li>
+      <li>Don't leave these for last minute — build them weekly</li>
+    </ul>
+  </div>
+  <div class="note">
+    <h3>📖 SAT Schedule</h3>
+    <ul>
+      <li><strong>Daily (weekdays)</strong>: 1 article + annotate · 10 vocab words</li>
+      <li><strong>Friday</strong>: Poem / Old English reading practice</li>
+      <li><strong>Saturday</strong>: Full Bluebook mock test · review after</li>
+      <li><strong>Sunday</strong>: Poem / Old English · late night easy Qs</li>
+      <li>Question bank practice: 10 Qs during late night blocks</li>
+    </ul>
+  </div>
+  <div class="note">
+    <h3>🔢 Math AA HL (Daily)</h3>
+    <ul>
+      <li>Past papers every single day — non-negotiable</li>
+      <li>Rotate topic focus: Functions → Trig → Diff → Integration</li>
+      <li><strong>Thu 8–9:30pm</strong>: Math Lesson (attend + take notes)</li>
+      <li><strong>Sat 10–11:30am</strong>: Math Lesson (attend + take notes)</li>
+      <li>Pre-lesson warm-up Thu 6:30pm · Post-lesson consolidation Sat 1pm</li>
+      <li>Use Revision Village for spaced repetition Qs</li>
+    </ul>
+  </div>
+  <div class="note">
+    <h3>🎤 Korean IO (Until Apr 27)</h3>
+    <ul>
+      <li>8:00–8:30pm every day — memorise + timer practice</li>
+      <li>Record yourself, listen back, fix weak sections</li>
+      <li>After Apr 27 — this slot becomes Bio/CAS/TOK time</li>
+      <li>D-1 (Apr 26): intro + conclusion only, sleep early</li>
+      <li>D-Day (Apr 27): breakfast, keywords check, breathe 💪</li>
+    </ul>
+  </div>
+</div>
+
+</div><!-- end tab-planner -->
+
+<!-- TAB 2: PAST PAPER TRACKER -->
+<div class="tab-panel" id="tab-papers">
+
+<!-- ═══════════════════════════════════════ PAST PAPER CHECKLIST -->
+<div id="pp-section" style="max-width:1100px;margin:0 auto;">
+
+  <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+    <div style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--text);">Past Paper <span style="color:var(--math);">Checklist</span></div>
+    <div style="flex:1;height:2px;background:var(--border);"></div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;">Spaced Repetition · 3 Attempts</div>
+  </div>
+
+  <!-- Attempt legend -->
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
+    <div style="display:flex;align-items:center;gap:6px;font-size:11px;font-family:'JetBrains Mono',monospace;color:#0891b2;background:rgba(8,145,178,0.08);border:1px solid rgba(8,145,178,0.2);border-radius:100px;padding:4px 12px;">● 1st attempt — assigned week</div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:11px;font-family:'JetBrains Mono',monospace;color:#d97706;background:rgba(217,119,6,0.08);border:1px solid rgba(217,119,6,0.2);border-radius:100px;padding:4px 12px;">● 2nd attempt — +2 weeks</div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:11px;font-family:'JetBrains Mono',monospace;color:#16a34a;background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.2);border-radius:100px;padding:4px 12px;">● 3rd attempt — +4 weeks</div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:11px;font-family:'JetBrains Mono',monospace;color:#7c3aed;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);border-radius:100px;padding:4px 12px;">🎯 Mock — 2023–2025</div>
+  </div>
+
+  <!-- Overall progress -->
+  <div id="pp-overall" style="background:white;border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:16px;display:flex;align-items:center;gap:14px;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);white-space:nowrap;">Total Progress</div>
+    <div style="flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden;"><div id="pp-bar" style="height:100%;background:linear-gradient(90deg,#16a34a,#4ade80);border-radius:4px;transition:width 0.3s;width:0%"></div></div>
+    <div id="pp-count" style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;color:var(--text);white-space:nowrap;min-width:120px;text-align:right;">0 / 0 attempts</div>
+  </div>
+
+  <!-- Subject progress bars -->
+  <div id="pp-subj-bars" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:20px;"></div>
+
+  <!-- Subject tabs -->
+  <div id="pp-tabs" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;"></div>
+
+  <!-- Content -->
+  <div id="pp-content"></div>
+</div>
+
+<style>
+.pp-card{background:white;border:1px solid var(--border);border-radius:8px;padding:11px 13px;display:flex;flex-direction:column;gap:7px;transition:border-color 0.12s;}
+.pp-card.all-done{border-color:rgba(22,163,74,0.4);background:rgba(22,163,74,0.03);}
+.pp-card.is-mock{border-color:rgba(124,58,237,0.22);background:rgba(124,58,237,0.03);}
+.pp-top{display:flex;align-items:center;gap:8px;}
+.pp-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.pp-title{font-size:11.5px;font-weight:600;color:var(--text);flex:1;font-family:'Epilogue',sans-serif;}
+.pp-sub{font-size:9.5px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:1px;}
+.mock-tag{font-size:9px;font-family:'JetBrains Mono',monospace;color:#7c3aed;background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.2);padding:1px 6px;border-radius:3px;white-space:nowrap;}
+.att-row{display:flex;align-items:center;gap:7px;padding:5px 8px;border-radius:6px;border:1px solid var(--border);background:#faf9f7;cursor:pointer;transition:all 0.12s;user-select:none;}
+.att-row:hover{border-color:var(--muted);}
+.att-row.done.a1{background:rgba(8,145,178,0.08);border-color:rgba(8,145,178,0.35);}
+.att-row.done.a2{background:rgba(217,119,6,0.08);border-color:rgba(217,119,6,0.35);}
+.att-row.done.a3{background:rgba(22,163,74,0.08);border-color:rgba(22,163,74,0.35);}
+.att-chk{width:14px;height:14px;border-radius:3px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;transition:all 0.12s;}
+.att-row.done.a1 .att-chk{background:#0891b2;border-color:#0891b2;color:white;}
+.att-row.done.a2 .att-chk{background:#d97706;border-color:#d97706;color:white;}
+.att-row.done.a3 .att-chk{background:#16a34a;border-color:#16a34a;color:white;}
+.att-lbl{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--muted);flex:1;}
+.att-row.done.a1 .att-lbl{color:#0891b2;}
+.att-row.done.a2 .att-lbl{color:#d97706;}
+.att-row.done.a3 .att-lbl{color:#16a34a;}
+.att-wk{font-family:'JetBrains Mono',monospace;font-size:8.5px;color:var(--border);background:#f5f2ec;border:1px solid var(--border);padding:1px 5px;border-radius:3px;white-space:nowrap;}
+.att-sc{font-family:'JetBrains Mono',monospace;font-size:9.5px;background:transparent;border:none;outline:none;width:36px;color:var(--muted);text-align:right;padding:0;}
+.att-sc::placeholder{color:var(--border);font-size:8.5px;}
+.att-row.done.a1 .att-sc{color:#0891b2;}
+.att-row.done.a2 .att-sc{color:#d97706;}
+.att-row.done.a3 .att-sc{color:#16a34a;}
+.pp-week-label{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;letter-spacing:2px;color:var(--muted);margin:20px 0 8px 2px;}
+.pp-phase{display:flex;align-items:center;gap:10px;margin:24px 0 10px;}
+.pp-phase-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;padding:3px 10px;border-radius:4px;white-space:nowrap;text-transform:uppercase;}
+.pp-phase-tag.ph1{background:rgba(8,145,178,0.1);color:#0891b2;border:1px solid rgba(8,145,178,0.25);}
+.pp-phase-tag.ph2{background:rgba(220,38,38,0.08);color:var(--math);border:1px solid rgba(220,38,38,0.2);}
+.pp-phase-tag.ph3{background:rgba(217,119,6,0.08);color:var(--econ);border:1px solid rgba(217,119,6,0.2);}
+.pp-phase-line{flex:1;height:1px;background:var(--border);}
+.pp-phase-desc{font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace;white-space:nowrap;}
+.pp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;}
+.pp-subj-section{display:none;} .pp-subj-section.vis{display:block;}
+.pp-tab{padding:6px 16px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:0.5px;cursor:pointer;border:1px solid var(--border);background:white;color:var(--muted);transition:all 0.12s;font-family:'JetBrains Mono',monospace;}
+.pp-tab:hover{border-color:var(--muted);}
+.pp-subj-bar{background:white;border:1px solid var(--border);border-radius:8px;padding:10px 14px;}
+</style>
 
 <script>
+(function(){
+// ── Config ──────────────────────────────────────────────────────────────
+const SUBJS = ['math','bio','chem','econ'];
+const SUBJ_LABELS = {math:'Math AA HL',bio:'Biology HL',chem:'Chemistry HL',econ:'Economics SL'};
+const SUBJ_COLORS = {math:'#dc2626',bio:'#16a34a',chem:'#7c3aed',econ:'#d97706'};
 
-// TASKS
-function addTask(){
-  let text = taskInput.value;
-  let li = document.createElement("li");
-  li.textContent = text;
+// Papers per subject (HL = P1,P2,P3 / SL = P1,P2)
+const PAPERS_HL = ['P1','P2','P3'];
+const PAPERS_SL = ['P1','P2'];
+const SUBJ_PAPERS = {math:PAPERS_HL, bio:PAPERS_HL, chem:PAPERS_HL, econ:PAPERS_SL};
 
-  li.onclick = () => li.style.textDecoration = "line-through";
+// May sessions have TZ1, TZ2, (sometimes TZ3 from 2014+)
+// Nov has only TZ1
+// Specimen = special
+const YEARS = [];
+for(let y=2011;y<=2025;y++) YEARS.push(y);
 
-  taskList.appendChild(li);
-  save();
+// Build timezone zones per year for May
+function mayTZ(y){
+  if(y<=2013) return ['TZ1','TZ2'];
+  return ['TZ1','TZ2','TZ3'];
 }
 
-// PAST PAPERS
-function addPaper(){
-  let sub = ppSubject.value;
-  let time = ppTime.value;
+// Mock = 2023+
+function isMock(y){ return y>=2023; }
 
-  let li = document.createElement("li");
-  li.textContent = sub + " - " + time + " min";
+function buildPapers(subj){
+  const out=[];
+  const papers=SUBJ_PAPERS[subj];
 
-  paperList.appendChild(li);
-  save();
-}
-
-// FLASHCARDS
-let flashcards = JSON.parse(localStorage.getItem("flashcards") || "[]");
-
-function addFlashcard(){
-  flashcards.push({
-    question: fcQ.value,
-    answer: fcA.value,
-    interval: 1,
-    ease: 2.5,
-    due: Date.now()
+  // Specimen
+  papers.forEach(p=>{
+    out.push({id:`${subj}-spec-${p}`,label:`Specimen · ${p}`,subLabel:'Specimen paper',mock:false,specimen:true});
   });
 
-  saveFlash();
-  renderFlash();
-}
-
-function renderFlash(){
-  flashList.innerHTML = "";
-
-  let now = Date.now();
-
-  flashcards.forEach((c,i)=>{
-    if(c.due <= now){
-      let li = document.createElement("li");
-      li.textContent = c.question;
-
-      li.onclick = () => li.textContent = c.answer;
-
-      ["Again","Hard","Easy"].forEach((t,idx)=>{
-        let b = document.createElement("button");
-        b.textContent = t;
-        b.onclick = () => review(i, idx);
-        li.appendChild(b);
+  YEARS.forEach(y=>{
+    // May TZ1/TZ2/(TZ3)
+    mayTZ(y).forEach(tz=>{
+      // 2025 May only exists as TZ1/TZ2 so far; TZ3 uncertain — include all
+      papers.forEach(p=>{
+        out.push({id:`${subj}-${y}-May-${tz}-${p}`,label:`${y} May ${tz} · ${p}`,subLabel:`May session · ${tz}`,mock:isMock(y),specimen:false});
       });
-
-      flashList.appendChild(li);
+    });
+    // Nov TZ1 only (2025 Nov not yet available)
+    if(y<2025){
+      papers.forEach(p=>{
+        out.push({id:`${subj}-${y}-Nov-TZ1-${p}`,label:`${y} Nov TZ1 · ${p}`,subLabel:'November session',mock:isMock(y),specimen:false});
+      });
     }
   });
+  return out;
 }
 
-function review(i,r){
-  let c = flashcards[i];
+// Assign papers to 8 weeks with spaced rep
+function assign(papers){
+  const practice=papers.filter(p=>!p.mock);
+  const mocks=papers.filter(p=>p.mock);
+  const slots={1:7,2:7,3:7,4:7,5:14,6:14,7:21,8:21};
+  const buckets={};
+  for(let w=1;w<=8;w++) buckets[w]=[];
 
-  if(r === 0) c.interval = 1;
-  if(r === 1) c.interval *= 1.5;
-  if(r === 2){
-    c.interval *= c.ease;
-    c.ease += 0.15;
+  let idx=0;
+  for(let w=1;w<=8&&idx<practice.length;w++){
+    for(let i=0;i<slots[w]&&idx<practice.length;i++) buckets[w].push(practice[idx++]);
   }
+  // Mocks → weeks 7-8
+  const mpw=Math.ceil(mocks.length/2);
+  mocks.slice(0,mpw).forEach(p=>buckets[7].push(p));
+  mocks.slice(mpw).forEach(p=>buckets[8].push(p));
 
-  c.due = Date.now() + c.interval * 86400000;
-
-  saveFlash();
-  renderFlash();
+  // Build schedule with spaced rep
+  const sched={};
+  for(let w=1;w<=8;w++) sched[w]=[];
+  for(let w=1;w<=8;w++){
+    buckets[w].forEach(paper=>{
+      sched[w].push({paper,attNum:1,origWeek:w});
+      sched[Math.min(w+2,8)].push({paper,attNum:2,origWeek:w});
+      sched[Math.min(w+4,8)].push({paper,attNum:3,origWeek:w});
+    });
+  }
+  return {sched,allPapers:papers};
 }
 
-function saveFlash(){
-  localStorage.setItem("flashcards", JSON.stringify(flashcards));
+// Build data
+const DATA={};
+SUBJS.forEach(s=>{ DATA[s]=assign(buildPapers(s)); });
+
+// ── State ────────────────────────────────────────────────────────────────
+const ST={};
+function getST(id){
+  if(!ST[id]) ST[id]={a1:false,a2:false,a3:false,s1:'',s2:'',s3:''};
+  return ST[id];
 }
 
-// HARD QUESTIONS
-function addHQ(){
-  let li = document.createElement("li");
-  li.textContent = hqText.value;
-
-  hqList.appendChild(li);
-  save();
+function toggle(pid,an,rowEl){
+  const st=getST(pid);
+  const k='a'+an;
+  st[k]=!st[k];
+  rowEl.classList.toggle('done',st[k]);
+  rowEl.querySelector('.att-chk').textContent=st[k]?'✓':'';
+  const card=rowEl.closest('.pp-card');
+  const s=getST(pid);
+  card.classList.toggle('all-done',s.a1&&s.a2&&s.a3);
+  updateProgress();
 }
 
-// SAVE
-function save(){
-  localStorage.setItem("tasks", taskList.innerHTML);
-  localStorage.setItem("papers", paperList.innerHTML);
-  localStorage.setItem("hq", hqList.innerHTML);
+function saveScore(pid,an,val){getST(pid)['s'+an]=val;}
+
+// ── Progress ──────────────────────────────────────────────────────────────
+function updateProgress(){
+  let tot=0,don=0;
+  SUBJS.forEach(s=>{
+    let st=0,sd=0;
+    DATA[s].allPapers.forEach(p=>{
+      const x=getST(p.id);
+      st+=3;tot+=3;
+      if(x.a1){sd++;don++;}
+      if(x.a2){sd++;don++;}
+      if(x.a3){sd++;don++;}
+    });
+    const pct=st?Math.round(sd/st*100):0;
+    const el=document.getElementById('pp-sb-'+s);
+    if(el){
+      el.querySelector('.pp-sb-count').textContent=sd+'/'+st;
+      el.querySelector('.pp-sb-fill').style.width=pct+'%';
+    }
+  });
+  const pct=tot?Math.round(don/tot*100):0;
+  document.getElementById('pp-bar').style.width=pct+'%';
+  document.getElementById('pp-count').textContent=don+' / '+tot+' attempts done';
 }
 
-function load(){
-  taskList.innerHTML = localStorage.getItem("tasks") || "";
-  paperList.innerHTML = localStorage.getItem("papers") || "";
-  hqList.innerHTML = localStorage.getItem("hq") || "";
+// ── Render ────────────────────────────────────────────────────────────────
+const PHASE_INFO={
+  1:{cls:'ph1',label:'Phase 1 — Content',desc:'1 paper/day'},
+  2:{cls:'ph1',label:'Phase 1 — Content',desc:'1 paper/day'},
+  3:{cls:'ph1',label:'Phase 1 — Content',desc:'1 paper/day'},
+  4:{cls:'ph1',label:'Phase 1 — Content',desc:'1 paper/day'},
+  5:{cls:'ph2',label:'Phase 2 — Past Papers',desc:'2 papers/day · timed'},
+  6:{cls:'ph2',label:'Phase 2 — Past Papers',desc:'2 papers/day · timed'},
+  7:{cls:'ph3',label:'Phase 3 — Final Crunch',desc:'3 papers/day · mocks'},
+  8:{cls:'ph3',label:'Phase 3 — Final Crunch',desc:'3 papers/day · mocks'},
+};
+const ATT_LABELS={1:'1st attempt',2:'2nd attempt (+2 wks)',3:'3rd attempt (+4 wks)'};
+const ATT_CLS={1:'a1',2:'a2',3:'a3'};
+
+function renderSubject(subj){
+  const {sched}=DATA[subj];
+  const color=SUBJ_COLORS[subj];
+  let html='',lastPhase=null;
+
+  for(let w=1;w<=8;w++){
+    const entries=sched[w];
+    if(!entries||!entries.length) continue;
+    const ph=PHASE_INFO[w];
+    if(ph.label!==lastPhase){
+      html+=`<div class="pp-phase">
+        <div class="pp-phase-tag ${ph.cls}">${ph.label}</div>
+        <div class="pp-phase-line"></div>
+        <div class="pp-phase-desc">${ph.desc}</div>
+      </div>`;
+      lastPhase=ph.label;
+    }
+    html+=`<div class="pp-week-label">WEEK ${w}</div><div class="pp-grid">`;
+    entries.forEach(({paper:p,attNum,origWeek})=>{
+      const st=getST(p.id);
+      const k='a'+attNum;
+      const isDone=st[k];
+      const score=st['s'+attNum]||'';
+      const allDone=st.a1&&st.a2&&st.a3;
+      const mockCls=p.mock?' is-mock':'';
+      const allCls=allDone?' all-done':'';
+
+      html+=`<div class="pp-card${mockCls}${allCls}">
+        <div class="pp-top">
+          <div class="pp-dot" style="background:${color}"></div>
+          <div style="flex:1">
+            <div class="pp-title">${p.label}${p.mock?' 🎯':p.specimen?' 📄':''}</div>
+            <div class="pp-sub">${p.subLabel}</div>
+          </div>
+          ${p.mock?'<div class="mock-tag">MOCK</div>':p.specimen?'<div class="mock-tag" style="color:#0891b2;background:rgba(8,145,178,0.1);border-color:rgba(8,145,178,0.2);">SPEC</div>':''}
+        </div>
+        <div class="att-row ${ATT_CLS[attNum]}${isDone?' done':''}"
+             onclick="ppToggle('${p.id}',${attNum},this)">
+          <div class="att-chk">${isDone?'✓':''}</div>
+          <div class="att-lbl">${ATT_LABELS[attNum]}</div>
+          <input class="att-sc" type="text" placeholder="score%"
+            value="${score}"
+            onclick="event.stopPropagation()"
+            onchange="ppScore('${p.id}',${attNum},this.value)">
+          <div class="att-wk">W${origWeek}</div>
+        </div>
+      </div>`;
+    });
+    html+=`</div>`;
+  }
+  return html;
 }
 
-load();
-renderFlash();
+// Expose functions globally
+window.ppToggle=toggle;
+window.ppScore=saveScore;
 
+// ── Init ─────────────────────────────────────────────────────────────────
+function init(){
+  // Subject progress bars
+  const barsEl=document.getElementById('pp-subj-bars');
+  SUBJS.forEach(s=>{
+    const total=DATA[s].allPapers.length*3;
+    barsEl.innerHTML+=`<div class="pp-subj-bar" id="pp-sb-${s}">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:${SUBJ_COLORS[s]}">${SUBJ_LABELS[s]}</div>
+        <div class="pp-sb-count" style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted)">0/${total}</div>
+      </div>
+      <div style="height:5px;background:var(--border);border-radius:3px;overflow:hidden;">
+        <div class="pp-sb-fill" style="height:100%;background:${SUBJ_COLORS[s]};border-radius:3px;transition:width 0.3s;width:0%"></div>
+      </div>
+    </div>`;
+  });
+
+  // Tabs
+  const tabsEl=document.getElementById('pp-tabs');
+  const allTab=document.createElement('div');
+  allTab.className='pp-tab';
+  allTab.textContent='All';
+  allTab.style.cssText='background:rgba(217,119,6,0.1);border-color:rgba(217,119,6,0.3);color:var(--econ);';
+  allTab.onclick=()=>showPP('all',allTab);
+  tabsEl.appendChild(allTab);
+
+  SUBJS.forEach(s=>{
+    const t=document.createElement('div');
+    t.className='pp-tab';
+    t.textContent=SUBJ_LABELS[s];
+    t.onclick=()=>showPP(s,t);
+    tabsEl.appendChild(t);
+  });
+
+  // Content
+  const contentEl=document.getElementById('pp-content');
+  SUBJS.forEach(s=>{
+    const sec=document.createElement('div');
+    sec.className='pp-subj-section vis';
+    sec.id='pp-sec-'+s;
+    sec.dataset.subj=s;
+    sec.innerHTML=`<div style="display:flex;align-items:center;gap:12px;margin:28px 0 14px;">
+      <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:${SUBJ_COLORS[s]};letter-spacing:1px;">${SUBJ_LABELS[s].toUpperCase()}</div>
+      <div style="flex:1;height:1px;background:var(--border);"></div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);">${DATA[s].allPapers.length} papers · ${DATA[s].allPapers.length*3} total attempts</div>
+    </div>${renderSubject(s)}`;
+    contentEl.appendChild(sec);
+  });
+
+  updateProgress();
+}
+
+function showPP(subj,tabEl){
+  document.querySelectorAll('.pp-tab').forEach(t=>{
+    t.style.cssText='';
+  });
+  if(subj==='all'){
+    tabEl.style.cssText='background:rgba(217,119,6,0.1);border-color:rgba(217,119,6,0.3);color:var(--econ);';
+  } else {
+    tabEl.style.cssText=`background:${SUBJ_COLORS[subj]}1a;border-color:${SUBJ_COLORS[subj]}55;color:${SUBJ_COLORS[subj]};`;
+  }
+  document.querySelectorAll('.pp-subj-section').forEach(s=>{
+    s.classList.toggle('vis',subj==='all'||s.dataset.subj===subj);
+  });
+}
+
+init();
+})();
+
+function switchTab(name, el) {
+  // Update tab buttons
+  document.querySelectorAll('.main-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  // Show/hide panels
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  // Scroll to top
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
 </script>
+
+</div><!-- end tab-papers -->
 
 </body>
 </html>
