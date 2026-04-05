@@ -1,92 +1,54 @@
-
 <!DOCTYPE html>
 <html>
 <head>
   <title>Study Dashboard</title>
- <style>
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #0f172a;
-    color: #e2e8f0;
-    margin: 0;
-    padding: 20px;
-  }
 
-  h1 {
-    text-align: center;
-    margin-bottom: 30px;
-  }
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      margin: 0;
+      padding: 20px;
+    }
 
-  section {
-    background: #1e293b;
-    padding: 20px;
-    margin: 20px auto;
-    border-radius: 16px;
-    max-width: 600px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  }
-
-  h2 {
-    margin-top: 0;
-  }
-
-  input, select {
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    margin: 5px 0;
-    width: calc(100% - 20px);
-    background: #0f172a;
-    color: white;
-  }
-
-  button {
-    padding: 10px 15px;
-    border-radius: 8px;
-    border: none;
-    background: #38bdf8;
-    color: black;
-    cursor: pointer;
-    margin-top: 5px;
-  }
-
-  button:hover {
-    background: #0ea5e9;
-  }
-
-  ul {
-    padding: 0;
-  }
-
-  li {
-    list-style: none;
-    background: #0f172a;
-    padding: 10px;
-    border-radius: 8px;
-    margin-top: 10px;
-  }
-
-  .done {
-    opacity: 0.5;
-    text-decoration: line-through;
-  }
-</style>
+    h1 {
+      text-align: center;
+    }
 
     section {
-      background: white;
-      padding: 15px;
-      margin-top: 20px;
-      border-radius: 10px;
+      background: #1e293b;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 16px;
+      max-width: 700px;
+    }
+
+    input {
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 8px;
+      border: none;
+      width: 100%;
+      background: #0f172a;
+      color: white;
+    }
+
+    button {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background: #38bdf8;
+      cursor: pointer;
+      margin-top: 5px;
     }
 
     li {
-      margin: 8px 0;
-      cursor: pointer;
-    }
-
-    .done {
-      text-decoration: line-through;
-      color: gray;
+      list-style: none;
+      background: #0f172a;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
     }
   </style>
 </head>
@@ -96,152 +58,145 @@
 <h1>📊 Study Dashboard</h1>
 
 <section>
-<h2>Planner</h2>
-
-<select id="subject">
-  <option>Bio HL</option>
-  <option>Chem HL</option>
-  <option>Math AA HL</option>
-  <option>Korean A SL</option>
-  <option>Econ SL</option>
-  <option>Eng B HL</option>
-  <option>TOK</option>
-  <option>CAS</option>
-  <option>EE</option>
-  <option>SAT</option>
-  <option>TOEFL</option>
-</select>
-
-<input id="taskInput" placeholder="Task">
-<button onclick="addTask()">Add</button>
-
-<ul id="taskList"></ul>
+  <h2>📌 Planner</h2>
+  <input id="taskInput" placeholder="Task">
+  <button onclick="addTask()">Add Task</button>
+  <ul id="taskList"></ul>
 </section>
 
 <section>
-<h2>Flashcards (Spaced Repetition)</h2>
+  <h2>📝 Past Papers</h2>
+  <input id="ppSubject" placeholder="Subject">
+  <input id="ppTime" placeholder="Minutes">
+  <button onclick="addPaper()">Add</button>
+  <ul id="paperList"></ul>
+</section>
 
-<input id="fcQ" placeholder="Question">
-<input id="fcA" placeholder="Answer">
-<button onclick="addFlashcard()">Add</button>
+<section>
+  <h2>🧠 Flashcards</h2>
+  <input id="fcQ" placeholder="Question">
+  <input id="fcA" placeholder="Answer">
+  <button onclick="addFlashcard()">Add</button>
+  <ul id="flashList"></ul>
+</section>
 
-<ul id="flashList"></ul>
+<section>
+  <h2>🔥 Hard Questions</h2>
+  <input id="hqText" placeholder="Question">
+  <button onclick="addHQ()">Add</button>
+  <ul id="hqList"></ul>
 </section>
 
 <script>
 
-// -------- PLANNER --------
-function addTask() {
-  let subject = document.getElementById("subject").value;
-  let text = document.getElementById("taskInput").value;
+// TASKS
+function addTask(){
+  let text = taskInput.value;
+  let li = document.createElement("li");
+  li.textContent = text;
 
-  if (!text) return;
+  li.onclick = () => li.style.textDecoration = "line-through";
+
+  taskList.appendChild(li);
+  save();
+}
+
+// PAST PAPERS
+function addPaper(){
+  let sub = ppSubject.value;
+  let time = ppTime.value;
 
   let li = document.createElement("li");
-  li.textContent = subject + " - " + text;
+  li.textContent = sub + " - " + time + " min";
 
-  li.onclick = function() {
-    li.classList.toggle("done");
-    saveTasks();
-  };
-
-  document.getElementById("taskList").appendChild(li);
-  saveTasks();
+  paperList.appendChild(li);
+  save();
 }
 
-// -------- SAVE TASKS --------
-function saveTasks() {
-  localStorage.setItem("tasks", document.getElementById("taskList").innerHTML);
-}
-
-function loadTasks() {
-  document.getElementById("taskList").innerHTML = localStorage.getItem("tasks") || "";
-}
-
-loadTasks();
-
-
-// -------- FLASHCARDS (SPACED REPETITION) --------
+// FLASHCARDS
 let flashcards = JSON.parse(localStorage.getItem("flashcards") || "[]");
 
-function addFlashcard() {
-  let q = document.getElementById("fcQ").value;
-  let a = document.getElementById("fcA").value;
-
-  if (!q || !a) return;
-
-  let card = {
-    question: q,
-    answer: a,
+function addFlashcard(){
+  flashcards.push({
+    question: fcQ.value,
+    answer: fcA.value,
     interval: 1,
     ease: 2.5,
     due: Date.now()
-  };
+  });
 
-  flashcards.push(card);
-  saveFlashcards();
-  renderFlashcards();
+  saveFlash();
+  renderFlash();
 }
 
-function renderFlashcards() {
-  let list = document.getElementById("flashList");
-  list.innerHTML = "";
+function renderFlash(){
+  flashList.innerHTML = "";
 
   let now = Date.now();
 
-  flashcards.forEach((card, index) => {
-    if (card.due <= now) {
-
+  flashcards.forEach((c,i)=>{
+    if(c.due <= now){
       let li = document.createElement("li");
-      li.textContent = card.question;
+      li.textContent = c.question;
 
-      li.onclick = () => {
-        li.textContent = card.answer;
-      };
+      li.onclick = () => li.textContent = c.answer;
 
-      let again = document.createElement("button");
-      again.textContent = "Again";
+      ["Again","Hard","Easy"].forEach((t,idx)=>{
+        let b = document.createElement("button");
+        b.textContent = t;
+        b.onclick = () => review(i, idx);
+        li.appendChild(b);
+      });
 
-      let hard = document.createElement("button");
-      hard.textContent = "Hard";
-
-      let easy = document.createElement("button");
-      easy.textContent = "Easy";
-
-      again.onclick = () => reviewCard(index, 0);
-      hard.onclick = () => reviewCard(index, 1);
-      easy.onclick = () => reviewCard(index, 2);
-
-      li.appendChild(again);
-      li.appendChild(hard);
-      li.appendChild(easy);
-
-      list.appendChild(li);
+      flashList.appendChild(li);
     }
   });
 }
 
-function reviewCard(index, rating) {
-  let card = flashcards[index];
+function review(i,r){
+  let c = flashcards[i];
 
-  if (rating === 0) card.interval = 1;
-  if (rating === 1) card.interval *= 1.5;
-  if (rating === 2) {
-    card.interval *= card.ease;
-    card.ease += 0.15;
+  if(r === 0) c.interval = 1;
+  if(r === 1) c.interval *= 1.5;
+  if(r === 2){
+    c.interval *= c.ease;
+    c.ease += 0.15;
   }
 
-  card.due = Date.now() + card.interval * 86400000;
+  c.due = Date.now() + c.interval * 86400000;
 
-  saveFlashcards();
-  renderFlashcards();
+  saveFlash();
+  renderFlash();
 }
 
-function saveFlashcards() {
+function saveFlash(){
   localStorage.setItem("flashcards", JSON.stringify(flashcards));
 }
 
-renderFlashcards();
+// HARD QUESTIONS
+function addHQ(){
+  let li = document.createElement("li");
+  li.textContent = hqText.value;
+
+  hqList.appendChild(li);
+  save();
+}
+
+// SAVE
+function save(){
+  localStorage.setItem("tasks", taskList.innerHTML);
+  localStorage.setItem("papers", paperList.innerHTML);
+  localStorage.setItem("hq", hqList.innerHTML);
+}
+
+function load(){
+  taskList.innerHTML = localStorage.getItem("tasks") || "";
+  paperList.innerHTML = localStorage.getItem("papers") || "";
+  hqList.innerHTML = localStorage.getItem("hq") || "";
+}
+
+load();
+renderFlash();
 
 </script>
 
