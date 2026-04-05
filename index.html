@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Study Dashboard</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    input, button, select {
+      padding: 8px;
+      margin: 5px;
+    }
+
+    section {
+      background: white;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+
+    li {
+      margin: 8px 0;
+      cursor: pointer;
+    }
+
+    .done {
+      text-decoration: line-through;
+      color: gray;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>📊 Study Dashboard</h1>
+
+<section>
+<h2>Planner</h2>
+
+<select id="subject">
+  <option>Bio HL</option>
+  <option>Chem HL</option>
+  <option>Math AA HL</option>
+  <option>Korean A SL</option>
+  <option>Econ SL</option>
+  <option>Eng B HL</option>
+  <option>TOK</option>
+  <option>CAS</option>
+  <option>EE</option>
+  <option>SAT</option>
+  <option>TOEFL</option>
+</select>
+
+<input id="taskInput" placeholder="Task">
+<button onclick="addTask()">Add</button>
+
+<ul id="taskList"></ul>
+</section>
+
+<section>
+<h2>Flashcards (Spaced Repetition)</h2>
+
+<input id="fcQ" placeholder="Question">
+<input id="fcA" placeholder="Answer">
+<button onclick="addFlashcard()">Add</button>
+
+<ul id="flashList"></ul>
+</section>
+
+<script>
+
+// -------- PLANNER --------
+function addTask() {
+  let subject = document.getElementById("subject").value;
+  let text = document.getElementById("taskInput").value;
+
+  if (!text) return;
+
+  let li = document.createElement("li");
+  li.textContent = subject + " - " + text;
+
+  li.onclick = function() {
+    li.classList.toggle("done");
+    saveTasks();
+  };
+
+  document.getElementById("taskList").appendChild(li);
+  saveTasks();
+}
+
+// -------- SAVE TASKS --------
+function saveTasks() {
+  localStorage.setItem("tasks", document.getElementById("taskList").innerHTML);
+}
+
+function loadTasks() {
+  document.getElementById("taskList").innerHTML = localStorage.getItem("tasks") || "";
+}
+
+loadTasks();
+
+
+// -------- FLASHCARDS (SPACED REPETITION) --------
+let flashcards = JSON.parse(localStorage.getItem("flashcards") || "[]");
+
+function addFlashcard() {
+  let q = document.getElementById("fcQ").value;
+  let a = document.getElementById("fcA").value;
+
+  if (!q || !a) return;
+
+  let card = {
+    question: q,
+    answer: a,
+    interval: 1,
+    ease: 2.5,
+    due: Date.now()
+  };
+
+  flashcards.push(card);
+  saveFlashcards();
+  renderFlashcards();
+}
+
+function renderFlashcards() {
+  let list = document.getElementById("flashList");
+  list.innerHTML = "";
+
+  let now = Date.now();
+
+  flashcards.forEach((card, index) => {
+    if (card.due <= now) {
+
+      let li = document.createElement("li");
+      li.textContent = card.question;
+
+      li.onclick = () => {
+        li.textContent = card.answer;
+      };
+
+      let again = document.createElement("button");
+      again.textContent = "Again";
+
+      let hard = document.createElement("button");
+      hard.textContent = "Hard";
+
+      let easy = document.createElement("button");
+      easy.textContent = "Easy";
+
+      again.onclick = () => reviewCard(index, 0);
+      hard.onclick = () => reviewCard(index, 1);
+      easy.onclick = () => reviewCard(index, 2);
+
+      li.appendChild(again);
+      li.appendChild(hard);
+      li.appendChild(easy);
+
+      list.appendChild(li);
+    }
+  });
+}
+
+function reviewCard(index, rating) {
+  let card = flashcards[index];
+
+  if (rating === 0) card.interval = 1;
+  if (rating === 1) card.interval *= 1.5;
+  if (rating === 2) {
+    card.interval *= card.ease;
+    card.ease += 0.15;
+  }
+
+  card.due = Date.now() + card.interval * 86400000;
+
+  saveFlashcards();
+  renderFlashcards();
+}
+
+function saveFlashcards() {
+  localStorage.setItem("flashcards", JSON.stringify(flashcards));
+}
+
+renderFlashcards();
+
+</script>
+
+</body>
+</html>
