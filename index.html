@@ -3,21 +3,74 @@
 <html>
 <head>
   <title>Study Dashboard</title>
-  <style>
-    body {
-      font-family: Arial;
-      padding: 20px;
-      background: #f5f5f5;
-    }
+ <style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    margin: 0;
+    padding: 20px;
+  }
 
-    h1 {
-      text-align: center;
-    }
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
 
-    input, button, select {
-      padding: 8px;
-      margin: 5px;
-    }
+  section {
+    background: #1e293b;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 16px;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  h2 {
+    margin-top: 0;
+  }
+
+  input, select {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin: 5px 0;
+    width: calc(100% - 20px);
+    background: #0f172a;
+    color: white;
+  }
+
+  button {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    background: #38bdf8;
+    color: black;
+    cursor: pointer;
+    margin-top: 5px;
+  }
+
+  button:hover {
+    background: #0ea5e9;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+    background: #0f172a;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+
+  .done {
+    opacity: 0.5;
+    text-decoration: line-through;
+  }
+</style>
 
     section {
       background: white;
