@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -29,88 +30,88 @@ body{background:var(--bg);color:var(--text);font-family:'Epilogue',sans-serif;mi
 /* Tab navigation */
 .main-tabs{display:flex;gap:0;margin-bottom:32px;justify-content:center;}
 .main-tab{
-  font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;
-  letter-spacing:2px;text-transform:uppercase;
-  padding:12px 32px;cursor:pointer;
-  border:1px solid var(--border);background:white;color:var(--muted);
-  transition:all 0.15s;
+font-family:‘JetBrains Mono’,monospace;font-size:12px;font-weight:500;
+letter-spacing:2px;text-transform:uppercase;
+padding:12px 32px;cursor:pointer;
+border:1px solid var(–border);background:white;color:var(–muted);
+transition:all 0.15s;
 }
 .main-tab:first-child{border-radius:8px 0 0 8px;}
 .main-tab:last-child{border-radius:0 8px 8px 0;border-left:none;}
-.main-tab.active{background:var(--text);color:white;border-color:var(--text);}
-.main-tab:hover:not(.active){background:var(--bg);}
+.main-tab.active{background:var(–text);color:white;border-color:var(–text);}
+.main-tab:hover:not(.active){background:var(–bg);}
 .tab-panel{display:none;}
 .tab-panel.active{display:block;}
 
 /* Header */
 header{text-align:center;margin-bottom:36px;}
-header h1{font-family:'Syne',sans-serif;font-size:clamp(32px,5vw,64px);font-weight:800;letter-spacing:-1px;line-height:1;margin-bottom:8px;}
-header h1 span{color:var(--math);}
-.subtitle{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;}
+header h1{font-family:‘Syne’,sans-serif;font-size:clamp(32px,5vw,64px);font-weight:800;letter-spacing:-1px;line-height:1;margin-bottom:8px;}
+header h1 span{color:var(–math);}
+.subtitle{font-family:‘JetBrains Mono’,monospace;font-size:10px;color:var(–muted);letter-spacing:3px;text-transform:uppercase;}
 
 /* Timeline strip */
 .timeline-strip{
-  max-width:1100px;margin:0 auto 28px;
-  display:grid;grid-template-columns:repeat(5,1fr);
-  gap:8px;
+max-width:1100px;margin:0 auto 28px;
+display:grid;grid-template-columns:repeat(5,1fr);
+gap:8px;
 }
 .tl-block{
-  border-radius:10px;padding:14px 14px 12px;
-  border:1px solid var(--border);background:white;
+border-radius:10px;padding:14px 14px 12px;
+border:1px solid var(–border);background:white;
 }
-.tl-block.alert{background:var(--alert-bg);border-color:rgba(220,38,38,0.25);}
-.tl-block.sem{background:var(--sem-bg);border-color:rgba(124,58,237,0.25);}
-.tl-block.io{background:var(--korean-bg);border-color:rgba(190,24,93,0.25);}
-.tl-month{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;margin-bottom:6px;}
-.tl-block.alert .tl-month{color:var(--alert);}
-.tl-block.sem   .tl-month{color:var(--sem);}
-.tl-block.io    .tl-month{color:var(--korean);}
+.tl-block.alert{background:var(–alert-bg);border-color:rgba(220,38,38,0.25);}
+.tl-block.sem{background:var(–sem-bg);border-color:rgba(124,58,237,0.25);}
+.tl-block.io{background:var(–korean-bg);border-color:rgba(190,24,93,0.25);}
+.tl-month{font-family:‘Syne’,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;margin-bottom:6px;}
+.tl-block.alert .tl-month{color:var(–alert);}
+.tl-block.sem   .tl-month{color:var(–sem);}
+.tl-block.io    .tl-month{color:var(–korean);}
 .tl-items{display:flex;flex-direction:column;gap:4px;}
-.tl-item{font-size:11px;color:var(--muted);padding-left:12px;position:relative;line-height:1.4;}
-.tl-item::before{content:'•';position:absolute;left:0;font-size:10px;}
-.tl-item.hot{color:var(--alert);font-weight:600;}
-.tl-item.hot::before{content:'⚠';}
-.tl-item.done{color:var(--bio);font-weight:600;}
-.tl-item.done::before{content:'🎯';}
+.tl-item{font-size:11px;color:var(–muted);padding-left:12px;position:relative;line-height:1.4;}
+.tl-item::before{content:’•’;position:absolute;left:0;font-size:10px;}
+.tl-item.hot{color:var(–alert);font-weight:600;}
+.tl-item.hot::before{content:‘⚠’;}
+.tl-item.done{color:var(–bio);font-weight:600;}
+.tl-item.done::before{content:‘🎯’;}
 
 /* Legend */
 .legend{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:28px;}
-.leg{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:500;color:var(--muted);background:white;border:1px solid var(--border);border-radius:100px;padding:4px 11px;font-family:'JetBrains Mono',monospace;}
+.leg{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:500;color:var(–muted);background:white;border:1px solid var(–border);border-radius:100px;padding:4px 11px;font-family:‘JetBrains Mono’,monospace;}
 .leg-dot{width:6px;height:6px;border-radius:50%;}
 
 /* Table */
-.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--border);background:white;box-shadow:0 2px 16px rgba(0,0,0,0.05);margin-bottom:24px;}
+.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(–border);background:white;box-shadow:0 2px 16px rgba(0,0,0,0.05);margin-bottom:24px;}
 table{width:100%;border-collapse:collapse;min-width:1000px;}
-thead th{padding:13px 8px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--muted);border-bottom:2px solid var(--border);text-align:center;background:white;position:sticky;top:0;z-index:2;letter-spacing:1px;}
-thead th:first-child{text-align:left;padding-left:14px;color:var(--math);width:96px;font-size:11px;}
-thead th.wknd{color:var(--movie);}
+thead th{padding:13px 8px;font-family:‘Syne’,sans-serif;font-size:13px;font-weight:700;color:var(–muted);border-bottom:2px solid var(–border);text-align:center;background:white;position:sticky;top:0;z-index:2;letter-spacing:1px;}
+thead th:first-child{text-align:left;padding-left:14px;color:var(–math);width:96px;font-size:11px;}
+thead th.wknd{color:var(–movie);}
 tbody tr{border-bottom:1px solid rgba(226,221,214,0.5);}
 tbody tr:hover{background:rgba(0,0,0,0.01);}
 tbody tr:last-child{border-bottom:none;}
-.sec-row td{background:var(--bg);padding:4px 14px;border-bottom:1px solid var(--border);border-top:1px solid var(--border);}
-.sec-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;}
+.sec-row td{background:var(–bg);padding:4px 14px;border-bottom:1px solid var(–border);border-top:1px solid var(–border);}
+.sec-label{font-family:‘JetBrains Mono’,monospace;font-size:9px;letter-spacing:3px;color:var(–muted);text-transform:uppercase;}
 td{padding:6px 6px;text-align:center;vertical-align:middle;}
-td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--muted);text-align:left;padding-left:12px;white-space:nowrap;}
+td:first-child{font-family:‘JetBrains Mono’,monospace;font-size:9.5px;color:var(–muted);text-align:left;padding-left:12px;white-space:nowrap;}
 
 /* Blocks */
 .b{display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:7px;padding:6px 7px;min-height:48px;width:100%;font-size:10.5px;font-weight:600;line-height:1.3;border:1px solid transparent;transition:transform 0.12s,box-shadow 0.12s;cursor:default;}
 .b:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(0,0,0,0.1);}
-.b .s{font-size:9px;font-weight:400;opacity:0.7;margin-top:2px;font-family:'JetBrains Mono',monospace;}
+.b .s{font-size:9px;font-weight:400;opacity:0.7;margin-top:2px;font-family:‘JetBrains Mono’,monospace;}
 .b .m{font-size:9px;opacity:0.58;margin-top:1px;font-style:italic;}
 
-.school {background:var(--school-bg);border-color:rgba(29,78,216,0.18);color:var(--school);}
-.math   {background:var(--math-bg);  border-color:rgba(220,38,38,0.18);  color:var(--math);}
-.bio    {background:var(--bio-bg);   border-color:rgba(22,163,74,0.18);  color:var(--bio);}
-.chem   {background:var(--chem-bg);  border-color:rgba(124,58,237,0.18); color:var(--chem);}
-.econ   {background:var(--econ-bg);  border-color:rgba(217,119,6,0.18);  color:var(--econ);}
-.sat    {background:var(--sat-bg);   border-color:rgba(8,145,178,0.18);  color:var(--sat);}
-.korean {background:var(--korean-bg);border-color:rgba(190,24,93,0.18);  color:var(--korean);}
-.cas    {background:var(--cas-bg);   border-color:rgba(5,150,105,0.18);  color:var(--cas);}
-.tok    {background:var(--tok-bg);   border-color:rgba(146,64,14,0.18);  color:var(--tok);}
-.lesson {background:var(--lesson-bg);border-color:rgba(180,83,9,0.25);   color:var(--lesson);}
-.movie  {background:var(--movie-bg); border-color:rgba(109,40,217,0.18); color:var(--movie);}
-.plan   {background:var(--plan-bg);  border-color:rgba(6,95,70,0.18);    color:var(--plan);}
-.brk    {background:#faf9f7;color:var(--muted);font-weight:400;font-style:italic;border:none;min-height:34px;font-size:10.5px;}
+.school {background:var(–school-bg);border-color:rgba(29,78,216,0.18);color:var(–school);}
+.math   {background:var(–math-bg);  border-color:rgba(220,38,38,0.18);  color:var(–math);}
+.bio    {background:var(–bio-bg);   border-color:rgba(22,163,74,0.18);  color:var(–bio);}
+.chem   {background:var(–chem-bg);  border-color:rgba(124,58,237,0.18); color:var(–chem);}
+.econ   {background:var(–econ-bg);  border-color:rgba(217,119,6,0.18);  color:var(–econ);}
+.sat    {background:var(–sat-bg);   border-color:rgba(8,145,178,0.18);  color:var(–sat);}
+.korean {background:var(–korean-bg);border-color:rgba(190,24,93,0.18);  color:var(–korean);}
+.cas    {background:var(–cas-bg);   border-color:rgba(5,150,105,0.18);  color:var(–cas);}
+.tok    {background:var(–tok-bg);   border-color:rgba(146,64,14,0.18);  color:var(–tok);}
+.lesson {background:var(–lesson-bg);border-color:rgba(180,83,9,0.25);   color:var(–lesson);}
+.movie  {background:var(–movie-bg); border-color:rgba(109,40,217,0.18); color:var(–movie);}
+.plan   {background:var(–plan-bg);  border-color:rgba(6,95,70,0.18);    color:var(–plan);}
+.brk    {background:#faf9f7;color:var(–muted);font-weight:400;font-style:italic;border:none;min-height:34px;font-size:10.5px;}
 .off    {background:transparent;color:#d1cdc7;font-weight:400;border:none;min-height:34px;font-size:10.5px;}
 
 /* Alert row highlight */
@@ -118,27 +119,94 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
 
 /* Phase banners */
 .phase-banner{
-  max-width:1100px;margin:0 auto 10px;
-  padding:10px 18px;border-radius:8px;
-  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;
-  display:flex;align-items:center;gap:10px;
+max-width:1100px;margin:0 auto 10px;
+padding:10px 18px;border-radius:8px;
+font-family:‘JetBrains Mono’,monospace;font-size:11px;letter-spacing:1px;
+display:flex;align-items:center;gap:10px;
 }
-.phase-banner.p-alert{background:var(--alert-bg);border:1px solid rgba(220,38,38,0.2);color:var(--alert);}
-.phase-banner.p-sem{background:var(--sem-bg);border:1px solid rgba(124,58,237,0.2);color:var(--sem);}
-.phase-banner.p-cas{background:var(--cas-bg);border:1px solid rgba(5,150,105,0.2);color:var(--cas);}
+.phase-banner.p-alert{background:var(–alert-bg);border:1px solid rgba(220,38,38,0.2);color:var(–alert);}
+.phase-banner.p-sem{background:var(–sem-bg);border:1px solid rgba(124,58,237,0.2);color:var(–sem);}
+.phase-banner.p-cas{background:var(–cas-bg);border:1px solid rgba(5,150,105,0.2);color:var(–cas);}
 .phase-banner span{opacity:0.6;font-size:10px;}
 
 /* Notes */
 .notes{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;max-width:1100px;margin-left:auto;margin-right:auto;}
-.note{background:white;border:1px solid var(--border);border-radius:10px;padding:16px;}
-.note h3{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;color:var(--text);}
+.note{background:white;border:1px solid var(–border);border-radius:10px;padding:16px;}
+.note h3{font-family:‘Syne’,sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;color:var(–text);}
 .note ul{list-style:none;display:flex;flex-direction:column;gap:5px;}
-.note li{font-size:11px;color:var(--muted);padding-left:13px;position:relative;line-height:1.5;}
-.note li::before{content:'→';position:absolute;left:0;color:var(--border);font-size:9px;top:2px;}
-.note li strong{color:var(--text);font-weight:600;}
+.note li{font-size:11px;color:var(–muted);padding-left:13px;position:relative;line-height:1.5;}
+.note li::before{content:‘→’;position:absolute;left:0;color:var(–border);font-size:9px;top:2px;}
+.note li strong{color:var(–text);font-weight:600;}
 
 @media(max-width:640px){body{padding:14px 6px 40px;}.legend{gap:5px;}}
+
+/* ── Semester Plan Styles ── */
+.sp-countdown-badge{display:inline-block;background:#c0392b;color:white;font-family:‘JetBrains Mono’,monospace;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;padding:6px 16px;border-radius:2px;margin-bottom:20px;}
+.sp-header{text-align:center;margin-bottom:48px;}
+.sp-header h2{font-family:‘Syne’,sans-serif;font-size:clamp(32px,5vw,60px);font-weight:800;line-height:1.05;color:var(–text);margin-bottom:12px;}
+.sp-header h2 span{color:#c0392b;}
+.sp-header p{color:var(–muted);font-size:14px;font-weight:300;letter-spacing:1px;}
+.sp-divider{width:60px;height:3px;background:#c0392b;margin:16px auto 0;}
+.sp-phase-header{display:flex;align-items:center;gap:16px;margin:40px 0 18px;}
+.sp-phase-tag{font-family:‘JetBrains Mono’,monospace;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;padding:5px 14px;border-radius:2px;white-space:nowrap;}
+.sp-phase-tag.p1{background:#2c3e50;color:white;}
+.sp-phase-tag.p2{background:#c0392b;color:white;}
+.sp-phase-tag.p3{background:#e67e22;color:white;}
+.sp-phase-line{flex:1;height:1px;background:var(–border);}
+.sp-phase-desc{font-size:13px;color:var(–muted);font-style:italic;}
+.sp-weeks-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;}
+.sp-week-card{background:white;border:1px solid var(–border);border-radius:8px;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;}
+.sp-week-card:hover{box-shadow:0 8px 28px rgba(0,0,0,0.08);transform:translateY(-2px);}
+.sp-week-header{padding:14px 18px;border-bottom:1px solid var(–border);display:flex;justify-content:space-between;align-items:center;}
+.sp-week-number{font-family:‘Syne’,sans-serif;font-size:26px;font-weight:700;line-height:1;}
+.sp-week-lbl{font-family:‘JetBrains Mono’,monospace;font-size:9px;color:var(–muted);letter-spacing:2px;text-transform:uppercase;margin-top:2px;}
+.sp-week-phase{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border-radius:2px;}
+.sp-week-phase.p1{background:rgba(44,62,80,0.1);color:#2c3e50;}
+.sp-week-phase.p2{background:rgba(192,57,43,0.1);color:#c0392b;}
+.sp-week-phase.p3{background:rgba(230,126,34,0.1);color:#e67e22;}
+.sp-week-body{padding:14px 18px;}
+.sp-subject-row{display:flex;gap:10px;margin-bottom:9px;align-items:flex-start;}
+.sp-subject-row:last-child{margin-bottom:0;}
+.sp-subj-tag{font-family:‘JetBrains Mono’,monospace;font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:2px;white-space:nowrap;margin-top:1px;min-width:48px;text-align:center;}
+.sp-subj-tag.math{background:rgba(192,57,43,0.12);color:#c0392b;}
+.sp-subj-tag.chem{background:rgba(123,79,191,0.12);color:#7b4fbf;}
+.sp-subj-tag.econ{background:rgba(26,107,60,0.12);color:#1a6b3c;}
+.sp-subj-tag.bio{background:rgba(26,90,138,0.12);color:#1a5a8a;}
+.sp-subj-content{font-size:12px;color:var(–text);line-height:1.5;}
+.sp-subj-content strong{font-weight:600;display:block;margin-bottom:1px;}
+.sp-subj-content small{font-size:10px;color:var(–muted);font-style:italic;}
+.sp-week-tip{margin-top:12px;padding:9px 12px;background:var(–bg);border-left:3px solid var(–border);font-size:11px;color:var(–muted);font-style:italic;border-radius:0 2px 2px 0;}
+.sp-checklist-section{margin-top:56px;}
+.sp-checklist-title{font-family:‘Syne’,sans-serif;font-size:28px;font-weight:800;margin-bottom:6px;}
+.sp-checklist-subtitle{color:var(–muted);font-size:12px;margin-bottom:24px;}
+.sp-checklist-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;}
+.sp-checklist-group{background:white;border:1px solid var(–border);border-radius:6px;overflow:hidden;}
+.sp-group-header{padding:11px 16px;color:white;font-family:‘JetBrains Mono’,monospace;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center;}
+.sp-progress-text{font-size:9px;opacity:0.8;}
+.sp-checklist-items{padding:6px 0;}
+.sp-checklist-item{display:flex;align-items:flex-start;gap:10px;padding:9px 16px;border-bottom:1px solid var(–border);cursor:pointer;transition:background 0.15s;}
+.sp-checklist-item:last-child{border-bottom:none;}
+.sp-checklist-item:hover{background:var(–bg);}
+.sp-checklist-item.done{opacity:0.5;}
+.sp-checklist-item.done .sp-item-code{text-decoration:line-through;}
+.sp-checkbox{width:16px;height:16px;border:2px solid var(–border);border-radius:3px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all 0.15s;font-size:10px;}
+.sp-checklist-item.done .sp-checkbox{background:#27ae60;border-color:#27ae60;color:white;}
+.sp-item-code{font-family:‘JetBrains Mono’,monospace;font-size:11px;font-weight:600;min-width:44px;}
+.sp-item-desc{font-size:12px;color:var(–text);line-height:1.4;flex:1;}
+.sp-item-week{margin-left:auto;font-size:9px;color:var(–muted);font-family:‘JetBrains Mono’,monospace;white-space:nowrap;}
+.sp-overall-progress{background:white;border:1px solid var(–border);border-radius:6px;padding:16px 20px;margin-bottom:20px;display:flex;align-items:center;gap:16px;}
+.sp-progress-label{font-family:‘JetBrains Mono’,monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(–muted);white-space:nowrap;}
+.sp-bar-wrap{flex:1;height:7px;background:var(–bg);border-radius:4px;overflow:hidden;border:1px solid var(–border);}
+.sp-bar-fill{height:100%;background:#27ae60;border-radius:4px;transition:width 0.3s;width:0%;}
+.sp-progress-count{font-family:‘JetBrains Mono’,monospace;font-size:12px;font-weight:600;color:var(–text);white-space:nowrap;}
+.sp-notes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:48px;}
+.sp-note-card{background:white;border:1px solid var(–border);border-radius:8px;padding:18px;}
+.sp-note-card h3{font-family:‘Syne’,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;}
+.sp-note-card ul{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.sp-note-card li{font-size:12px;color:var(–muted);padding-left:13px;position:relative;line-height:1.5;}
+.sp-note-card li::before{content:‘→’;position:absolute;left:0;color:var(–border);font-size:10px;top:2px;}
 </style>
+
 </head>
 <body>
 
@@ -148,15 +216,19 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
 </header>
 
 <!-- Main tab navigation -->
+
 <div class="main-tabs">
   <div class="main-tab active" onclick="switchTab('planner', this)">📅 Weekly Planner</div>
   <div class="main-tab" onclick="switchTab('papers', this)">📄 Past Paper Tracker</div>
+  <div class="main-tab" onclick="switchTab('semplan', this)">📚 Semester Test Plan</div>
 </div>
 
 <!-- TAB 1: PLANNER -->
+
 <div class="tab-panel active" id="tab-planner">
 
 <!-- Timeline overview -->
+
 <div class="timeline-strip" style="grid-template-columns:repeat(6,1fr);">
   <div class="tl-block io">
     <div class="tl-month">April 1–26</div>
@@ -217,6 +289,7 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
 </div>
 
 <!-- Phase banners -->
+
 <div class="phase-banner p-alert">
   ⚠ HIGH ALERT — April 30 & May 5 <span>· Bio test Apr 30 · ⚗ Chem exam May 5 (Structure 1·2·3 + Reactivity 1) · Korean IO Apr 27 · Two big tests in 5 days!</span>
 </div>
@@ -231,6 +304,7 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
 </div>
 
 <!-- Legend -->
+
 <div class="legend">
   <div class="leg"><div class="leg-dot" style="background:var(--school)"></div>School</div>
   <div class="leg"><div class="leg-dot" style="background:var(--math)"></div>Math AA HL</div>
@@ -245,6 +319,7 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
 </div>
 
 <!-- ═══════════════════════════════════════════════════════ TABLE -->
+
 <div class="table-wrap">
 <table>
   <thead>
@@ -262,6 +337,7 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
   <tbody>
 
   <!-- MORNING -->
+
   <tr class="sec-row"><td colspan="8"><span class="sec-label">— Morning Commute —</span></td></tr>
   <tr>
     <td>6:00–6:30</td>
@@ -285,6 +361,7 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
   </tr>
 
   <!-- SCHOOL -->
+
   <tr class="sec-row"><td colspan="8"><span class="sec-label">— School —</span></td></tr>
   <tr>
     <td>7:00–3:30</td>
@@ -298,6 +375,7 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
   </tr>
 
   <!-- WEEKEND MORNING FREE -->
+
   <tr class="sec-row"><td colspan="8"><span class="sec-label">— Weekend Morning (Free) —</span></td></tr>
   <tr>
     <td>8:00–10:00</td>
@@ -331,6 +409,7 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
   </tr>
 
   <!-- AFTERNOON -->
+
   <tr class="sec-row"><td colspan="8"><span class="sec-label">— Afternoon —</span></td></tr>
   <tr>
     <td>3:30–4:00</td>
@@ -354,6 +433,7 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
   </tr>
 
   <!-- SAT + ARTICLE (WEEKDAYS) | STUDY START (WEEKENDS) -->
+
   <tr class="sec-row"><td colspan="8"><span class="sec-label">— SAT Daily + Weekend Study Start (1pm) —</span></td></tr>
   <tr>
     <td>1:00–2:00</td>
@@ -387,6 +467,7 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
   </tr>
 
   <!-- MATH DAILY -->
+
   <tr class="sec-row"><td colspan="8"><span class="sec-label">— Math AA HL (Daily — Most Important) —</span></td></tr>
   <tr>
     <td>5:10–6:00</td>
@@ -400,6 +481,7 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
   </tr>
 
   <!-- DINNER -->
+
   <tr class="sec-row"><td colspan="8"><span class="sec-label">— Dinner —</span></td></tr>
   <tr>
     <td>6:00–6:30</td>
@@ -407,6 +489,7 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
   </tr>
 
   <!-- EVENING: NIGHT-BEFORE PREP -->
+
   <tr class="sec-row"><td colspan="8"><span class="sec-label">— Evening: Prep for Next Day (Night-Before Logic) —</span></td></tr>
   <tr>
     <td>6:30–7:30</td>
@@ -435,7 +518,9 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
     <td><div class="b cas">CAS<div class="s">Evidence + reflections</div><div class="m">Due before June</div></div></td>
     <td><div class="b tok">TOK<div class="s">Exhibition prep</div><div class="m">Commentary · objects</div></div></td>
   </tr>
- <!-- KOREAN IO (until Apr 27) -->
+
+  <!-- KOREAN IO (until Apr 27) -->
+
   <tr class="sec-row"><td colspan="8"><span class="sec-label">— Korean IO Memorisation (Until April 27 only) —</span></td></tr>
   <tr>
     <td>8:00–8:30</td>
@@ -449,6 +534,7 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
   </tr>
 
   <!-- DEEP WORK / MATH LESSON THU -->
+
   <tr class="sec-row"><td colspan="8"><span class="sec-label">— Deep Work (Peak Hours) —</span></td></tr>
   <tr>
     <td>8:30–9:30</td>
@@ -472,6 +558,7 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
   </tr>
 
   <!-- WIND DOWN -->
+
   <tr class="sec-row"><td colspan="8"><span class="sec-label">— Wind Down —</span></td></tr>
   <tr>
     <td>10:00–10:30</td>
@@ -485,6 +572,7 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
   </tr>
 
   <!-- LATE NIGHT -->
+
   <tr class="sec-row"><td colspan="8"><span class="sec-label">— Late Night (Light Tasks Only) —</span></td></tr>
   <tr>
     <td>10:30–11:30</td>
@@ -516,6 +604,7 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
 </div>
 
 <!-- Notes -->
+
 <div class="notes">
   <div class="note" style="border-color:rgba(220,38,38,0.3);background:rgba(220,38,38,0.02);">
     <h3 style="color:var(--alert);">⚠ High Alert: Apr 27 – May 5</h3>
@@ -594,9 +683,11 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
 </div><!-- end tab-planner -->
 
 <!-- TAB 2: PAST PAPER TRACKER -->
+
 <div class="tab-panel" id="tab-papers">
 
 <!-- ═══════════════════════════════════════ PAST PAPER CHECKLIST -->
+
 <div id="pp-section" style="max-width:1100px;margin:0 auto;">
 
   <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
@@ -606,6 +697,7 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
   </div>
 
   <!-- Attempt legend -->
+
   <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
     <div style="display:flex;align-items:center;gap:6px;font-size:11px;font-family:'JetBrains Mono',monospace;color:#0891b2;background:rgba(8,145,178,0.08);border:1px solid rgba(8,145,178,0.2);border-radius:100px;padding:4px 12px;">● 1st attempt — assigned week</div>
     <div style="display:flex;align-items:center;gap:6px;font-size:11px;font-family:'JetBrains Mono',monospace;color:#d97706;background:rgba(217,119,6,0.08);border:1px solid rgba(217,119,6,0.2);border-radius:100px;padding:4px 12px;">● 2nd attempt — +2 weeks</div>
@@ -614,6 +706,7 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
   </div>
 
   <!-- Overall progress -->
+
   <div id="pp-overall" style="background:white;border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:16px;display:flex;align-items:center;gap:14px;">
     <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);white-space:nowrap;">Total Progress</div>
     <div style="flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden;"><div id="pp-bar" style="height:100%;background:linear-gradient(90deg,#16a34a,#4ade80);border-radius:4px;transition:width 0.3s;width:0%"></div></div>
@@ -621,12 +714,15 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
   </div>
 
   <!-- Subject progress bars -->
+
   <div id="pp-subj-bars" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:20px;"></div>
 
   <!-- Subject tabs -->
+
   <div id="pp-tabs" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;"></div>
 
   <!-- Content -->
+
   <div id="pp-content"></div>
 </div>
 
@@ -680,7 +776,7 @@ const SUBJS = ['math','bio','chem','econ'];
 const SUBJ_LABELS = {math:'Math AA HL',bio:'Biology HL',chem:'Chemistry HL',econ:'Economics SL'};
 const SUBJ_COLORS = {math:'#dc2626',bio:'#16a34a',chem:'#7c3aed',econ:'#d97706'};
 
- // Papers per subject (HL = P1,P2,P3 / SL = P1,P2)
+// Papers per subject (HL = P1,P2,P3 / SL = P1,P2)
 const PAPERS_HL = ['P1','P2','P3'];
 const PAPERS_SL = ['P1','P2'];
 const SUBJ_PAPERS = {math:PAPERS_HL, bio:PAPERS_HL, chem:PAPERS_HL, econ:PAPERS_SL};
@@ -959,6 +1055,112 @@ function switchTab(name, el) {
 </script>
 
 </div><!-- end tab-papers -->
+
+<!-- TAB 3: SEMESTER TEST PLAN -->
+
+<div class="tab-panel" id="tab-semplan" style="max-width:1100px;margin:0 auto;padding:8px 0 60px;">
+
+  <div class="sp-header">
+    <div class="sp-countdown-badge">⚠ 8 Weeks to Go — Last Week of May</div>
+    <h2>Semester Test <span>Study Plan</span></h2>
+    <p>Math AA HL · Chemistry HL · Economics SL · Biology HL</p>
+    <div class="sp-divider"></div>
+  </div>
+
+  <div class="sp-phase-header"><div class="sp-phase-tag p1">Phase 1</div><div class="sp-phase-line"></div><div class="sp-phase-desc">Weeks 1–4 · Content Mastery</div></div>
+  <div class="sp-weeks-grid">
+    <div class="sp-week-card"><div class="sp-week-header"><div><div class="sp-week-number">W1</div><div class="sp-week-lbl">Content Mastery</div></div><div class="sp-week-phase p1">Phase 1</div></div><div class="sp-week-body"><div class="sp-subject-row"><div class="sp-subj-tag math">Math</div><div class="sp-subj-content"><strong>Functions</strong><small>Domain/range, transformations, inverse, composite</small></div></div><div class="sp-subject-row"><div class="sp-subj-tag chem">Chem</div><div class="sp-subj-content"><strong>Structure 1 + R1.1–1.2</strong><small>Atomic structure, periodicity, equilibrium, thermochem, enthalpy, Born-Haber</small></div></div><div class="sp-subject-row"><div class="sp-subj-tag econ">Econ</div><div class="sp-subj-content"><strong>Microeconomics I</strong><small>Supply & demand, price mechanism, elasticity</small></div></div><div class="sp-subject-row"><div class="sp-subj-tag bio">Bio</div><div class="sp-subj-content"><strong>A1.1, A1.2</strong><small>Cell structure, origins of cells, carbohydrates, lipids, proteins</small></div></div><div class="sp-week-tip">💡 Focus on understanding — can you explain each topic out loud?</div></div></div>
+    <div class="sp-week-card"><div class="sp-week-header"><div><div class="sp-week-number">W2</div><div class="sp-week-lbl">Content Mastery</div></div><div class="sp-week-phase p1">Phase 1</div></div><div class="sp-week-body"><div class="sp-subject-row"><div class="sp-subj-tag math">Math</div><div class="sp-subj-content"><strong>Trigonometry</strong><small>Unit circle, identities, equations, radians, graphs</small></div></div><div class="sp-subject-row"><div class="sp-subj-tag chem">Chem</div><div class="sp-subj-content"><strong>Structure 2 + R1.3</strong><small>Bonding, VSEPR, IMF, acids/bases, Gibbs energy, entropy/spontaneity</small></div></div><div class="sp-subject-row"><div class="sp-subj-tag econ">Econ</div><div class="sp-subj-content"><strong>Microeconomics II</strong><small>Market failure, externalities, public goods, intervention</small></div></div><div class="sp-subject-row"><div class="sp-subj-tag bio">Bio</div><div class="sp-subj-content"><strong>A2.2, B1.1, B1.2</strong><small>Membranes, chromosomes, mitosis</small></div></div><div class="sp-week-tip">💡 Make one A4 summary sheet per subject per week — handwritten.</div></div></div>
+    <div class="sp-week-card"><div class="sp-week-header"><div><div class="sp-week-number">W3</div><div class="sp-week-lbl">Content Mastery</div></div><div class="sp-week-phase p1">Phase 1</div></div><div class="sp-week-body"><div class="sp-subject-row"><div class="sp-subj-tag math">Math</div><div class="sp-subj-content"><strong>Differentiation</strong><small>Chain, product, quotient rules · implicit · applications</small></div></div><div class="sp-subject-row"><div class="sp-subj-tag chem">Chem</div><div class="sp-subj-content"><strong>Structure 3 + R1.4–1.5</strong><small>Organic, mechanisms, isomerism, electrochemistry, rate laws, Arrhenius</small></div></div><div class="sp-subject-row"><div class="sp-subj-tag econ">Econ</div><div class="sp-subj-content"><strong>Macroeconomics</strong><small>GDP, inflation, unemployment, fiscal & monetary policy, AD/AS</small></div></div><div class="sp-subject-row"><div class="sp-subj-tag bio">Bio</div><div class="sp-subj-content"><strong>B2.1, B2.2, B2.3</strong><small>Photosynthesis, cell respiration, electron transport chain</small></div></div><div class="sp-week-tip">⚠ Chem exam May 5 — Structure 1·2·3 + Reactivity 1 must be solid by end of this week!</div></div></div>
+    <div class="sp-week-card"><div class="sp-week-header"><div><div class="sp-week-number">W4</div><div class="sp-week-lbl">Content Mastery</div></div><div class="sp-week-phase p1">Phase 1</div></div><div class="sp-week-body"><div class="sp-subject-row"><div class="sp-subj-tag math">Math</div><div class="sp-subj-content"><strong>Integration</strong><small>Substitution, by parts · definite/indefinite · area/volume</small></div></div><div class="sp-subject-row"><div class="sp-subj-tag chem">Chem</div><div class="sp-subj-content"><strong>Structure 1–3 + R1 Review</strong><small>Data booklet practice · past paper style Qs</small></div></div><div class="sp-subject-row"><div class="sp-subj-tag econ">Econ</div><div class="sp-subj-content"><strong>Intro to Economics + Integration</strong><small>Connect all three units · diagram mastery</small></div></div><div class="sp-subject-row"><div class="sp-subj-tag bio">Bio</div><div class="sp-subj-content"><strong>C1.1, C1.2, C1.3, C2.2</strong><small>Ecosystems, ecological niches, conservation</small></div></div><div class="sp-week-tip">💡 End of Week 4: mini self-test every subject. Find gaps before Phase 2.</div></div></div>
+  </div>
+
+  <div class="sp-phase-header"><div class="sp-phase-tag p2">Phase 2</div><div class="sp-phase-line"></div><div class="sp-phase-desc">Weeks 5–6 · Past Papers + Weak Spots — timed, mark schemes, error logs</div></div>
+  <div class="sp-weeks-grid">
+    <div class="sp-week-card"><div class="sp-week-header"><div><div class="sp-week-number">W5</div><div class="sp-week-lbl">Past Papers</div></div><div class="sp-week-phase p2">Phase 2</div></div><div class="sp-week-body"><div class="sp-subject-row"><div class="sp-subj-tag math">Math</div><div class="sp-subj-content"><strong>Calculus Consolidation</strong><small>Mixed diff + integration past paper Qs · identify weak areas</small></div></div><div class="sp-subject-row"><div class="sp-subj-tag chem">Chem</div><div class="sp-subj-content"><strong>Full Past Paper (Timed)</strong><small>Structure 1–3 + R1 · mark scheme · build error log</small></div></div><div class="sp-subject-row"><div class="sp-subj-tag econ">Econ</div><div class="sp-subj-content"><strong>Timed DEED Essays</strong><small>Micro + macro · all key diagrams from memory</small></div></div><div class="sp-subject-row"><div class="sp-subj-tag bio">Bio</div><div class="sp-subj-content"><strong>D1.1, D1.2, D1.3, D2.1, D2.2, D2.3</strong><small>DNA, protein synthesis, inheritance, cell signalling</small></div></div><div class="sp-week-tip">💡 Every wrong answer goes in the error log — review it more than your notes.</div></div></div>
+    <div class="sp-week-card"><div class="sp-week-header"><div><div class="sp-week-number">W6</div><div class="sp-week-lbl">Past Papers</div></div><div class="sp-week-phase p2">Phase 2</div></div><div class="sp-week-body"><div class="sp-subject-row"><div class="sp-subj-tag math">Math</div><div class="sp-subj-content"><strong>Full Past Paper (Timed)</strong><small>Functions + Trig + Calculus mixed · P1 & P2 format</small></div></div><div class="sp-subject-row"><div class="sp-subj-tag chem">Chem</div><div class="sp-subj-content"><strong>Weak Spot Drilling</strong><small>Focus on topics you got wrong in W5 · data booklet mastery</small></div></div><div class="sp-subject-row"><div class="sp-subj-tag econ">Econ</div><div class="sp-subj-content"><strong>Past Paper Responses</strong><small>Full timed responses · self-mark against markscheme</small></div></div><div class="sp-subject-row"><div class="sp-subj-tag bio">Bio</div><div class="sp-subj-content"><strong>D3.2, B3.2, C3.2 + Full Past Paper</strong><small>Remaining topics + full Biology past paper</small></div></div><div class="sp-week-tip">💡 If you struggle with a topic twice — give it a dedicated 1-hour session.</div></div></div>
+  </div>
+
+  <div class="sp-phase-header"><div class="sp-phase-tag p3">Phase 3</div><div class="sp-phase-line"></div><div class="sp-phase-desc">Weeks 7–8 · Final Crunch — NO new content. Rapid revision only.</div></div>
+  <div class="sp-weeks-grid">
+    <div class="sp-week-card"><div class="sp-week-header"><div><div class="sp-week-number">W7</div><div class="sp-week-lbl">Rapid Revision</div></div><div class="sp-week-phase p3">Phase 3</div></div><div class="sp-week-body"><div class="sp-subject-row"><div class="sp-subj-tag math">Math</div><div class="sp-subj-content"><strong>Formula sheet mastery</strong><small>Know every formula. Redo hardest past paper Qs. No new topics.</small></div></div><div class="sp-subject-row"><div class="sp-subj-tag chem">Chem</div><div class="sp-subj-content"><strong>Key reactions + structures</strong><small>Rapid recall flashcards · data booklet navigation · 1 timed paper</small></div></div><div class="sp-subject-row"><div class="sp-subj-tag econ">Econ</div><div class="sp-subj-content"><strong>All diagrams from memory</strong><small>AD/AS, supply/demand, market failure · essay plans</small></div></div><div class="sp-subject-row"><div class="sp-subj-tag bio">Bio</div><div class="sp-subj-content"><strong>Diagram recall sprint</strong><small>Draw every major diagram from memory · Anki all remaining definitions</small></div></div><div class="sp-week-tip">💡 Teach someone else — if you can't explain it, you don't know it.</div></div></div>
+    <div class="sp-week-card"><div class="sp-week-header"><div><div class="sp-week-number">W8</div><div class="sp-week-lbl">Final Week 🔥</div></div><div class="sp-week-phase p3">Phase 3</div></div><div class="sp-week-body"><div class="sp-subject-row"><div class="sp-subj-tag math">Math</div><div class="sp-subj-content"><strong>Error log review only</strong><small>Redo every question you ever got wrong. No new papers.</small></div></div><div class="sp-subject-row"><div class="sp-subj-tag chem">Chem</div><div class="sp-subj-content"><strong>Summary cards</strong><small>One card per Structure topic + Reactivity 1 · key reactions, definitions</small></div></div><div class="sp-subject-row"><div class="sp-subj-tag econ">Econ</div><div class="sp-subj-content"><strong>Final essay plans</strong><small>One-page plans for every possible essay question.</small></div></div><div class="sp-subject-row"><div class="sp-subj-tag bio">Bio</div><div class="sp-subj-content"><strong>Syllabus checklist sweep</strong><small>Tick every topic below. Unticked = your priority.</small></div></div><div class="sp-week-tip">💡 Night before: light review only. Sleep early. Eat well. Trust your prep. 💪</div></div></div>
+  </div>
+
+  <!-- Bio Checklist -->
+
+  <div class="sp-checklist-section">
+    <div class="sp-checklist-title" style="color:#1a5a8a;">Biology HL <span style="font-size:18px;font-weight:400;color:var(--muted);">Topic Checklist</span></div>
+    <div class="sp-checklist-subtitle">Click each topic to mark done.</div>
+    <div class="sp-overall-progress"><div class="sp-progress-label">Bio Progress</div><div class="sp-bar-wrap"><div class="sp-bar-fill" id="spBioFill"></div></div><div class="sp-progress-count" id="spBioCount">0 / 23 done</div></div>
+    <div class="sp-checklist-grid">
+      <div class="sp-checklist-group"><div class="sp-group-header" style="background:#1a5a8a;">Strand A — Unity & Diversity<span class="sp-progress-text" id="sp-a-cnt">0/3</span></div><div class="sp-checklist-items"><div class="sp-checklist-item" onclick="spToggleBio(this,'a')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#1a5a8a;">A1.1</div><div class="sp-item-desc">Carbohydrates and lipids</div><div class="sp-item-week">W1</div></div><div class="sp-checklist-item" onclick="spToggleBio(this,'a')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#1a5a8a;">A1.2</div><div class="sp-item-desc">Proteins</div><div class="sp-item-week">W1</div></div><div class="sp-checklist-item" onclick="spToggleBio(this,'a')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#1a5a8a;">A2.2</div><div class="sp-item-desc">Cell membranes</div><div class="sp-item-week">W2</div></div></div></div>
+      <div class="sp-checklist-group"><div class="sp-group-header" style="background:#1a6b3c;">Strand B — Form & Function<span class="sp-progress-text" id="sp-b-cnt">0/6</span></div><div class="sp-checklist-items"><div class="sp-checklist-item" onclick="spToggleBio(this,'b')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#1a6b3c;">B1.1</div><div class="sp-item-desc">Chromosomes</div><div class="sp-item-week">W2</div></div><div class="sp-checklist-item" onclick="spToggleBio(this,'b')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#1a6b3c;">B1.2</div><div class="sp-item-desc">Mitosis</div><div class="sp-item-week">W2</div></div><div class="sp-checklist-item" onclick="spToggleBio(this,'b')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#1a6b3c;">B2.1</div><div class="sp-item-desc">Photosynthesis</div><div class="sp-item-week">W3</div></div><div class="sp-checklist-item" onclick="spToggleBio(this,'b')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#1a6b3c;">B2.2</div><div class="sp-item-desc">Cell respiration</div><div class="sp-item-week">W3</div></div><div class="sp-checklist-item" onclick="spToggleBio(this,'b')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#1a6b3c;">B2.3</div><div class="sp-item-desc">Electron transport chain</div><div class="sp-item-week">W3</div></div><div class="sp-checklist-item" onclick="spToggleBio(this,'b')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#1a6b3c;">B3.2</div><div class="sp-item-desc">Gas exchange</div><div class="sp-item-week">W6</div></div></div></div>
+      <div class="sp-checklist-group"><div class="sp-group-header" style="background:#7b4fbf;">Strand C — Interaction & Interdependence<span class="sp-progress-text" id="sp-c-cnt">0/5</span></div><div class="sp-checklist-items"><div class="sp-checklist-item" onclick="spToggleBio(this,'c')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#7b4fbf;">C1.1</div><div class="sp-item-desc">Ecosystem ecology</div><div class="sp-item-week">W4</div></div><div class="sp-checklist-item" onclick="spToggleBio(this,'c')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#7b4fbf;">C1.2</div><div class="sp-item-desc">Terrestrial ecosystems</div><div class="sp-item-week">W4</div></div><div class="sp-checklist-item" onclick="spToggleBio(this,'c')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#7b4fbf;">C1.3</div><div class="sp-item-desc">Aquatic ecosystems</div><div class="sp-item-week">W4</div></div><div class="sp-checklist-item" onclick="spToggleBio(this,'c')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#7b4fbf;">C2.2</div><div class="sp-item-desc">Ecological niches</div><div class="sp-item-week">W4</div></div><div class="sp-checklist-item" onclick="spToggleBio(this,'c')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#7b4fbf;">C3.2</div><div class="sp-item-desc">Conservation of biodiversity</div><div class="sp-item-week">W6</div></div></div></div>
+      <div class="sp-checklist-group"><div class="sp-group-header" style="background:#c0392b;">Strand D — Continuity & Change<span class="sp-progress-text" id="sp-d-cnt">0/7</span></div><div class="sp-checklist-items"><div class="sp-checklist-item" onclick="spToggleBio(this,'d')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#c0392b;">D1.1</div><div class="sp-item-desc">DNA structure</div><div class="sp-item-week">W5</div></div><div class="sp-checklist-item" onclick="spToggleBio(this,'d')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#c0392b;">D1.2</div><div class="sp-item-desc">Protein synthesis</div><div class="sp-item-week">W5</div></div><div class="sp-checklist-item" onclick="spToggleBio(this,'d')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#c0392b;">D1.3</div><div class="sp-item-desc">Mutations & gene expression</div><div class="sp-item-week">W5</div></div><div class="sp-checklist-item" onclick="spToggleBio(this,'d')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#c0392b;">D2.1</div><div class="sp-item-desc">Inheritance</div><div class="sp-item-week">W5</div></div><div class="sp-checklist-item" onclick="spToggleBio(this,'d')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#c0392b;">D2.2</div><div class="sp-item-desc">Cell signalling</div><div class="sp-item-week">W5</div></div><div class="sp-checklist-item" onclick="spToggleBio(this,'d')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#c0392b;">D2.3</div><div class="sp-item-desc">Water potential</div><div class="sp-item-week">W5</div></div><div class="sp-checklist-item" onclick="spToggleBio(this,'d')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#c0392b;">D3.2</div><div class="sp-item-desc">Homeostasis</div><div class="sp-item-week">W6</div></div></div></div>
+    </div>
+  </div>
+
+  <!-- Chem Checklist -->
+
+  <div class="sp-checklist-section">
+    <div class="sp-checklist-title" style="color:#7b4fbf;">Chemistry HL <span style="font-size:18px;font-weight:400;color:var(--muted);">Topic Checklist</span></div>
+    <div class="sp-checklist-subtitle">Structure 1–3 + Reactivity 1. ⚠ Chem exam May 5!</div>
+    <div class="sp-overall-progress"><div class="sp-progress-label">Chem Progress</div><div class="sp-bar-wrap"><div class="sp-bar-fill" id="spChemFill" style="background:#7b4fbf;"></div></div><div class="sp-progress-count" id="spChemCount">0 / 29 done</div></div>
+    <div class="sp-checklist-grid">
+      <div class="sp-checklist-group"><div class="sp-group-header" style="background:#7b4fbf;">Structure 1 — Particulate Nature of Matter<span class="sp-progress-text" id="sp-s1-cnt">0/9</span></div><div class="sp-checklist-items"><div class="sp-checklist-item" onclick="spToggleChem(this,'s1')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#7b4fbf;">1.1</div><div class="sp-item-desc">Introduction to particulate nature of matter</div><div class="sp-item-week">W1</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'s1')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#7b4fbf;">1.2</div><div class="sp-item-desc">The nuclear atom</div><div class="sp-item-week">W1</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'s1')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#7b4fbf;">1.3</div><div class="sp-item-desc">Electron configurations</div><div class="sp-item-week">W1</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'s1')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#7b4fbf;">1.4</div><div class="sp-item-desc">Counting particles — moles & Avogadro</div><div class="sp-item-week">W1</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'s1')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#7b4fbf;">1.5</div><div class="sp-item-desc">Ideal gases</div><div class="sp-item-week">W1</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'s1')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#7b4fbf;">1.6</div><div class="sp-item-desc">Periodicity — trends in the periodic table</div><div class="sp-item-week">W1</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'s1')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#7b4fbf;">1.7</div><div class="sp-item-desc">Radioactive decay — nuclear equations</div><div class="sp-item-week">W1</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'s1')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#7b4fbf;">1.8</div><div class="sp-item-desc">Equilibrium — Le Chatelier's principle</div><div class="sp-item-week">W1</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'s1')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#7b4fbf;">1.9</div><div class="sp-item-desc">Thermochemistry — enthalpy changes</div><div class="sp-item-week">W1</div></div></div></div>
+      <div class="sp-checklist-group"><div class="sp-group-header" style="background:#5b3a9e;">Structure 2 — Models of Bonding<span class="sp-progress-text" id="sp-s2-cnt">0/8</span></div><div class="sp-checklist-items"><div class="sp-checklist-item" onclick="spToggleChem(this,'s2')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#5b3a9e;">2.1</div><div class="sp-item-desc">Ionic model — lattice structure, properties</div><div class="sp-item-week">W2</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'s2')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#5b3a9e;">2.2</div><div class="sp-item-desc">Covalent model — Lewis structures, VSEPR</div><div class="sp-item-week">W2</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'s2')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#5b3a9e;">2.3</div><div class="sp-item-desc">Metallic model — bonding, properties</div><div class="sp-item-week">W2</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'s2')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#5b3a9e;">2.4</div><div class="sp-item-desc">Intermolecular forces — London, dipole, H-bonding</div><div class="sp-item-week">W2</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'s2')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#5b3a9e;">2.5</div><div class="sp-item-desc">Electrons in covalent bonds — hybridisation</div><div class="sp-item-week">W2</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'s2')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#5b3a9e;">2.6</div><div class="sp-item-desc">Solids — crystal lattice types</div><div class="sp-item-week">W2</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'s2')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#5b3a9e;">2.7</div><div class="sp-item-desc">Entropy & spontaneity — Gibbs free energy</div><div class="sp-item-week">W2</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'s2')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#5b3a9e;">2.8</div><div class="sp-item-desc">Acids & bases — pH, Ka, Kb, buffer solutions</div><div class="sp-item-week">W2</div></div></div></div>
+      <div class="sp-checklist-group"><div class="sp-group-header" style="background:#4a2d7a;">Structure 3 — Classification of Matter<span class="sp-progress-text" id="sp-s3-cnt">0/7</span></div><div class="sp-checklist-items"><div class="sp-checklist-item" onclick="spToggleChem(this,'s3')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#4a2d7a;">3.1</div><div class="sp-item-desc">Periodic table — classification of elements</div><div class="sp-item-week">W3</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'s3')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#4a2d7a;">3.2</div><div class="sp-item-desc">Functional groups — alcohols, aldehydes, ketones</div><div class="sp-item-week">W3</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'s3')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#4a2d7a;">3.3</div><div class="sp-item-desc">Organic reactions — substitution, addition, elimination</div><div class="sp-item-week">W3</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'s3')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#4a2d7a;">3.4</div><div class="sp-item-desc">Reaction mechanisms — SN1, SN2, electrophilic</div><div class="sp-item-week">W3</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'s3')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#4a2d7a;">3.5</div><div class="sp-item-desc">Isomerism — structural & stereoisomerism</div><div class="sp-item-week">W3</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'s3')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#4a2d7a;">3.6</div><div class="sp-item-desc">Electrochemistry — redox, galvanic cells, electrolysis</div><div class="sp-item-week">W3</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'s3')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#4a2d7a;">3.7</div><div class="sp-item-desc">Reaction kinetics — rates, activation energy, catalysts</div><div class="sp-item-week">W4</div></div></div></div>
+      <div class="sp-checklist-group"><div class="sp-group-header" style="background:#b45309;">Reactivity 1 — What Drives Reactions? ⚠ May 5<span class="sp-progress-text" id="sp-r1-cnt">0/5</span></div><div class="sp-checklist-items"><div class="sp-checklist-item" onclick="spToggleChem(this,'r1')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#b45309;">R1.1</div><div class="sp-item-desc">Measuring enthalpy — calorimetry, Hess's law</div><div class="sp-item-week">W1</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'r1')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#b45309;">R1.2</div><div class="sp-item-desc">Energy cycles — Born-Haber, lattice enthalpy</div><div class="sp-item-week">W1</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'r1')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#b45309;">R1.3</div><div class="sp-item-desc">Entropy and spontaneity — ΔS, ΔG</div><div class="sp-item-week">W2</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'r1')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#b45309;">R1.4</div><div class="sp-item-desc">Rates of reaction — collision theory, rate laws</div><div class="sp-item-week">W3</div></div><div class="sp-checklist-item" onclick="spToggleChem(this,'r1')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#b45309;">R1.5</div><div class="sp-item-desc">Activation energy — Arrhenius, catalysts</div><div class="sp-item-week">W3</div></div></div></div>
+    </div>
+  </div>
+
+  <!-- Econ Checklist -->
+
+  <div class="sp-checklist-section">
+    <div class="sp-checklist-title" style="color:#1a6b3c;">Economics SL <span style="font-size:18px;font-weight:400;color:var(--muted);">Topic Checklist</span></div>
+    <div class="sp-checklist-subtitle">3 units. Master diagrams and DEED essay structure for every topic.</div>
+    <div class="sp-overall-progress"><div class="sp-progress-label">Econ Progress</div><div class="sp-bar-wrap"><div class="sp-bar-fill" id="spEconFill" style="background:#1a6b3c;"></div></div><div class="sp-progress-count" id="spEconCount">0 / 21 done</div></div>
+    <div class="sp-checklist-grid">
+      <div class="sp-checklist-group"><div class="sp-group-header" style="background:#1a6b3c;">Unit 1 — Introduction to Economics<span class="sp-progress-text" id="sp-u1-cnt">0/3</span></div><div class="sp-checklist-items"><div class="sp-checklist-item" onclick="spToggleEcon(this,'u1')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#1a6b3c;">1.1</div><div class="sp-item-desc">Scarcity, choice, opportunity cost</div><div class="sp-item-week">W4</div></div><div class="sp-checklist-item" onclick="spToggleEcon(this,'u1')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#1a6b3c;">1.2</div><div class="sp-item-desc">Economic systems — free market, planned, mixed</div><div class="sp-item-week">W4</div></div><div class="sp-checklist-item" onclick="spToggleEcon(this,'u1')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#1a6b3c;">1.3</div><div class="sp-item-desc">Production possibilities curve</div><div class="sp-item-week">W4</div></div></div></div>
+      <div class="sp-checklist-group"><div class="sp-group-header" style="background:#15573a;">Unit 2 — Microeconomics<span class="sp-progress-text" id="sp-u2-cnt">0/10</span></div><div class="sp-checklist-items"><div class="sp-checklist-item" onclick="spToggleEcon(this,'u2')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#15573a;">2.1</div><div class="sp-item-desc">Demand — law, determinants, shifts</div><div class="sp-item-week">W1</div></div><div class="sp-checklist-item" onclick="spToggleEcon(this,'u2')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#15573a;">2.2</div><div class="sp-item-desc">Supply — law, determinants, shifts</div><div class="sp-item-week">W1</div></div><div class="sp-checklist-item" onclick="spToggleEcon(this,'u2')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#15573a;">2.3</div><div class="sp-item-desc">Competitive market equilibrium</div><div class="sp-item-week">W1</div></div><div class="sp-checklist-item" onclick="spToggleEcon(this,'u2')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#15573a;">2.4</div><div class="sp-item-desc">Elasticity — PED, PES, YED, XED</div><div class="sp-item-week">W1</div></div><div class="sp-checklist-item" onclick="spToggleEcon(this,'u2')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#15573a;">2.5</div><div class="sp-item-desc">Government intervention — price ceilings & floors</div><div class="sp-item-week">W2</div></div><div class="sp-checklist-item" onclick="spToggleEcon(this,'u2')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#15573a;">2.6</div><div class="sp-item-desc">Market failure — externalities, welfare loss</div><div class="sp-item-week">W2</div></div><div class="sp-checklist-item" onclick="spToggleEcon(this,'u2')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#15573a;">2.7</div><div class="sp-item-desc">Public goods & common pool resources</div><div class="sp-item-week">W2</div></div><div class="sp-checklist-item" onclick="spToggleEcon(this,'u2')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#15573a;">2.8</div><div class="sp-item-desc">Asymmetric information</div><div class="sp-item-week">W2</div></div><div class="sp-checklist-item" onclick="spToggleEcon(this,'u2')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#15573a;">2.9</div><div class="sp-item-desc">Taxes & subsidies — welfare effects, diagrams</div><div class="sp-item-week">W2</div></div><div class="sp-checklist-item" onclick="spToggleEcon(this,'u2')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#15573a;">2.10</div><div class="sp-item-desc">Theory of the firm — costs, revenues, profit</div><div class="sp-item-week">W2</div></div></div></div>
+      <div class="sp-checklist-group"><div class="sp-group-header" style="background:#0f4a2a;">Unit 3 — Macroeconomics<span class="sp-progress-text" id="sp-u3-cnt">0/8</span></div><div class="sp-checklist-items"><div class="sp-checklist-item" onclick="spToggleEcon(this,'u3')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#0f4a2a;">3.1</div><div class="sp-item-desc">Measuring economic activity — GDP, GNI</div><div class="sp-item-week">W3</div></div><div class="sp-checklist-item" onclick="spToggleEcon(this,'u3')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#0f4a2a;">3.2</div><div class="sp-item-desc">Aggregate demand & supply — AD/AS model</div><div class="sp-item-week">W3</div></div><div class="sp-checklist-item" onclick="spToggleEcon(this,'u3')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#0f4a2a;">3.3</div><div class="sp-item-desc">Macroeconomic objectives — growth, employment, inflation</div><div class="sp-item-week">W3</div></div><div class="sp-checklist-item" onclick="spToggleEcon(this,'u3')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#0f4a2a;">3.4</div><div class="sp-item-desc">Unemployment — types, causes, consequences</div><div class="sp-item-week">W3</div></div><div class="sp-checklist-item" onclick="spToggleEcon(this,'u3')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#0f4a2a;">3.5</div><div class="sp-item-desc">Inflation & deflation — CPI, causes, consequences</div><div class="sp-item-week">W3</div></div><div class="sp-checklist-item" onclick="spToggleEcon(this,'u3')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#0f4a2a;">3.6</div><div class="sp-item-desc">Fiscal policy — government spending, taxation, multiplier</div><div class="sp-item-week">W3</div></div><div class="sp-checklist-item" onclick="spToggleEcon(this,'u3')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#0f4a2a;">3.7</div><div class="sp-item-desc">Monetary policy — interest rates, money supply</div><div class="sp-item-week">W3</div></div><div class="sp-checklist-item" onclick="spToggleEcon(this,'u3')"><div class="sp-checkbox"></div><div class="sp-item-code" style="color:#0f4a2a;">3.8</div><div class="sp-item-desc">Supply-side policies — labour market, deregulation</div><div class="sp-item-week">W3</div></div></div></div>
+    </div>
+  </div>
+
+</div><!-- end tab-semplan -->
+
+<script>
+const SP_BIO_TOTAL=23,SP_CHEM_TOTAL=29,SP_ECON_TOTAL=21;
+const spBioStrands={a:3,b:6,c:5,d:7};
+const spChemGroups={s1:9,s2:8,s3:7,r1:5};
+const spEconUnits={u1:3,u2:10,u3:8};
+
+function spToggleBio(el,strand){
+  el.classList.toggle('done');
+  el.querySelector('.sp-checkbox').textContent=el.classList.contains('done')?'✓':'';
+  const done=document.querySelectorAll('#tab-semplan .sp-checklist-item.done[onclick*="spToggleBio"]').length;
+  document.getElementById('spBioFill').style.width=Math.round(done/SP_BIO_TOTAL*100)+'%';
+  document.getElementById('spBioCount').textContent=done+' / '+SP_BIO_TOTAL+' done';
+  ['a','b','c','d'].forEach(s=>{const n=document.querySelectorAll(`#tab-semplan .sp-checklist-item[onclick*="spToggleBio"][onclick*="'${s}'"].done`).length;document.getElementById('sp-'+s+'-cnt').textContent=n+'/'+spBioStrands[s];});
+}
+function spToggleChem(el,grp){
+  el.classList.toggle('done');
+  el.querySelector('.sp-checkbox').textContent=el.classList.contains('done')?'✓':'';
+  const done=document.querySelectorAll('#tab-semplan .sp-checklist-item.done[onclick*="spToggleChem"]').length;
+  document.getElementById('spChemFill').style.width=Math.round(done/SP_CHEM_TOTAL*100)+'%';
+  document.getElementById('spChemCount').textContent=done+' / '+SP_CHEM_TOTAL+' done';
+  ['s1','s2','s3','r1'].forEach(s=>{const n=document.querySelectorAll(`#tab-semplan .sp-checklist-item[onclick*="spToggleChem"][onclick*="'${s}'"].done`).length;document.getElementById('sp-'+s+'-cnt').textContent=n+'/'+spChemGroups[s];});
+}
+function spToggleEcon(el,unit){
+  el.classList.toggle('done');
+  el.querySelector('.sp-checkbox').textContent=el.classList.contains('done')?'✓':'';
+  const done=document.querySelectorAll('#tab-semplan .sp-checklist-item.done[onclick*="spToggleEcon"]').length;
+  document.getElementById('spEconFill').style.width=Math.round(done/SP_ECON_TOTAL*100)+'%';
+  document.getElementById('spEconCount').textContent=done+' / '+SP_ECON_TOTAL+' done';
+  ['u1','u2','u3'].forEach(u=>{const n=document.querySelectorAll(`#tab-semplan .sp-checklist-item[onclick*="spToggleEcon"][onclick*="'${u}'"].done`).length;document.getElementById('sp-'+u+'-cnt').textContent=n+'/'+spEconUnits[u];});
+}
+</script>
 
 </body>
 </html>
