@@ -157,7 +157,7 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
 <div class="tab-panel active" id="tab-planner">
 
 <!-- Timeline overview -->
-<div class="timeline-strip">
+<div class="timeline-strip" style="grid-template-columns:repeat(6,1fr);">
   <div class="tl-block io">
     <div class="tl-month">April 1–26</div>
     <div class="tl-items">
@@ -178,10 +178,19 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
     </div>
   </div>
   <div class="tl-block alert">
-    <div class="tl-month">Late Apr – May</div>
+    <div class="tl-month">Apr 30 – May 5</div>
     <div class="tl-items">
       <div class="tl-item hot">⚠ Bio test Apr 30</div>
-      <div class="tl-item hot">⚠ Likely early May tests</div>
+      <div class="tl-item hot">⚗ Chem exam May 5</div>
+      <div class="tl-item" style="color:var(--chem);font-weight:600;">Structure 1, 2, 3</div>
+      <div class="tl-item" style="color:var(--chem);font-weight:600;">+ Reactivity 1</div>
+      <div class="tl-item">⚠ High intensity week!</div>
+    </div>
+  </div>
+  <div class="tl-block alert">
+    <div class="tl-month">Early–Mid May</div>
+    <div class="tl-items">
+      <div class="tl-item hot">⚠ Likely more tests</div>
       <div class="tl-item">Past papers accelerate</div>
       <div class="tl-item">CAS evidence + reflections</div>
       <div class="tl-item">TOK exhibition prep</div>
@@ -209,7 +218,10 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
 
 <!-- Phase banners -->
 <div class="phase-banner p-alert">
-  ⚠ HIGH ALERT — April & Early May <span>· Bio test Apr 30 · Likely class tests · Korean IO Apr 27 · Keep content fresh, don't skip past papers</span>
+  ⚠ HIGH ALERT — April 30 & May 5 <span>· Bio test Apr 30 · ⚗ Chem exam May 5 (Structure 1·2·3 + Reactivity 1) · Korean IO Apr 27 · Two big tests in 5 days!</span>
+</div>
+<div class="phase-banner" style="background:rgba(124,58,237,0.06);border:1px solid rgba(124,58,237,0.2);color:var(--chem);margin-bottom:10px;padding:10px 18px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;display:flex;align-items:center;gap:10px;max-width:1100px;margin-left:auto;margin-right:auto;">
+  ⚗ CHEM EXAM — May 5 <span style="opacity:0.6;font-size:10px;">· Structure 1 (Particulate matter, atomic structure, periodicity, equilibrium, thermochem) · Structure 2 (Bonding, VSEPR, IMF, acids/bases, Gibbs) · Structure 3 (Organic, functional groups, mechanisms, electrochemistry, kinetics) · Reactivity 1 (Collision theory, rate laws, Ea, catalysts)</span>
 </div>
 <div class="phase-banner p-sem">
   🔥 SEMESTER TEST — End of May / Early June <span>· Most important test · Math AA HL · Bio HL · Chem HL · Econ SL · Phase 3 crunch from Week 7</span>
@@ -423,8 +435,7 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
     <td><div class="b cas">CAS<div class="s">Evidence + reflections</div><div class="m">Due before June</div></div></td>
     <td><div class="b tok">TOK<div class="s">Exhibition prep</div><div class="m">Commentary · objects</div></div></td>
   </tr>
-
-  <!-- KOREAN IO (until Apr 27) -->
+ <!-- KOREAN IO (until Apr 27) -->
   <tr class="sec-row"><td colspan="8"><span class="sec-label">— Korean IO Memorisation (Until April 27 only) —</span></td></tr>
   <tr>
     <td>8:00–8:30</td>
@@ -506,13 +517,25 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
 
 <!-- Notes -->
 <div class="notes">
-  <div class="note">
-    <h3>⚠ High Alert: April</h3>
+  <div class="note" style="border-color:rgba(220,38,38,0.3);background:rgba(220,38,38,0.02);">
+    <h3 style="color:var(--alert);">⚠ High Alert: Apr 27 – May 5</h3>
     <ul>
       <li><strong>Apr 27</strong> — Korean IO 🎤 (10-min speech)</li>
       <li><strong>Apr 30</strong> — Biology HL test</li>
-      <li>Likely class tests throughout April — stay on top of school content daily</li>
-      <li>Korean IO drops from plan after Apr 27 — use that slot for Bio/CAS/TOK</li>
+      <li><strong>May 5</strong> — Chemistry HL exam ⚗</li>
+      <li>Three major events in 8 days — plan each day carefully</li>
+      <li>Korean IO drops after Apr 27 → use that slot for Bio + Chem crunch</li>
+    </ul>
+  </div>
+  <div class="note" style="border-color:rgba(124,58,237,0.3);background:rgba(124,58,237,0.02);">
+    <h3 style="color:var(--chem);">⚗ Chem Exam — May 5</h3>
+    <ul>
+      <li><strong>Structure 1</strong> — Atomic structure, periodicity, ideal gases, equilibrium, thermochem, radioactivity</li>
+      <li><strong>Structure 2</strong> — Ionic/covalent/metallic bonding, VSEPR, IMF, acids & bases, Gibbs energy</li>
+      <li><strong>Structure 3</strong> — Functional groups, organic reactions, mechanisms, isomerism, electrochemistry, kinetics</li>
+      <li><strong>Reactivity 1</strong> — Collision theory, rate laws, activation energy, catalysts, reaction mechanisms</li>
+      <li>Prioritise data booklet navigation — know where everything is</li>
+      <li>Past papers: Structure Qs appear every year — do them timed</li>
     </ul>
   </div>
   <div class="note">
@@ -521,7 +544,7 @@ td:first-child{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(
       <li>Most important test — treat it like final exams</li>
       <li><strong>Math AA HL</strong>: Functions, Trig, Calc, Diff, Integration</li>
       <li><strong>Bio HL</strong>: Study guide + full past papers (P1/P2/P3)</li>
-      <li><strong>Chem HL</strong>: Structure 1–3 · past papers · data booklet</li>
+      <li><strong>Chem HL</strong>: Structure 1–3 + Reactivity 1 · past papers · data booklet</li>
       <li><strong>Econ SL</strong>: Micro + Macro + Intro · DEED essays · diagrams</li>
       <li>Spaced repetition past papers accelerate from Week 5</li>
     </ul>
@@ -657,7 +680,7 @@ const SUBJS = ['math','bio','chem','econ'];
 const SUBJ_LABELS = {math:'Math AA HL',bio:'Biology HL',chem:'Chemistry HL',econ:'Economics SL'};
 const SUBJ_COLORS = {math:'#dc2626',bio:'#16a34a',chem:'#7c3aed',econ:'#d97706'};
 
-// Papers per subject (HL = P1,P2,P3 / SL = P1,P2)
+ // Papers per subject (HL = P1,P2,P3 / SL = P1,P2)
 const PAPERS_HL = ['P1','P2','P3'];
 const PAPERS_SL = ['P1','P2'];
 const SUBJ_PAPERS = {math:PAPERS_HL, bio:PAPERS_HL, chem:PAPERS_HL, econ:PAPERS_SL};
