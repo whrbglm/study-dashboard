@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -32,81 +31,80 @@
   main{position:relative;z-index:1;padding:2rem 2.5rem;max-width:1400px;}
   .panel{display:none;}.panel.active{display:block;}
 
-/* WEEKLY */
-.week-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;}
-.day-card{background:var(–surface);border:1px solid var(–border);border-radius:var(–r);overflow:hidden;transition:transform .15s;}
-.day-card:hover{transform:translateY(-2px);}
-.day-header{padding:.7rem 1rem;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(–border);display:flex;justify-content:space-between;align-items:center;}
-.day-body{padding:.75rem;display:flex;flex-direction:column;gap:.4rem;}
-.subject-tag{padding:.3rem .6rem;border-radius:4px;font-size:.65rem;display:flex;align-items:center;gap:.4rem;}
-.math-tag{background:#c8f04a18;color:var(–math);border-left:3px solid var(–math);}
-.bio-tag{background:#4af0a018;color:var(–bio);border-left:3px solid var(–bio);}
-.chem-tag{background:#f0a04a18;color:var(–chem);border-left:3px solid var(–chem);}
-.eco-tag{background:#4ac8f018;color:var(–eco);border-left:3px solid var(–eco);}
-.eng-tag{background:#f04a8a18;color:var(–eng);border-left:3px solid var(–eng);}
-.kor-tag{background:#c04af018;color:var(–kor);border-left:3px solid var(–kor);}
-.sat-tag{background:#f0f04a18;color:var(–sat);border-left:3px solid var(–sat);}
-.other-tag{background:#ffffff08;color:var(–muted);border-left:3px solid var(–border);}
-.study-block{margin-top:.5rem;padding:.5rem .6rem;background:var(–surface2);border-radius:4px;font-size:.62rem;color:var(–muted);border-left:2px solid var(–accent);}
-.study-block strong{color:var(–accent);display:block;margin-bottom:.2rem;}
+  /* WEEKLY */
+  .week-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;}
+  .day-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:transform .15s;}
+  .day-card:hover{transform:translateY(-2px);}
+  .day-header{padding:.7rem 1rem;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+  .day-body{padding:.75rem;display:flex;flex-direction:column;gap:.4rem;}
+  .subject-tag{padding:.3rem .6rem;border-radius:4px;font-size:.65rem;display:flex;align-items:center;gap:.4rem;}
+  .math-tag{background:#c8f04a18;color:var(--math);border-left:3px solid var(--math);}
+  .bio-tag{background:#4af0a018;color:var(--bio);border-left:3px solid var(--bio);}
+  .chem-tag{background:#f0a04a18;color:var(--chem);border-left:3px solid var(--chem);}
+  .eco-tag{background:#4ac8f018;color:var(--eco);border-left:3px solid var(--eco);}
+  .eng-tag{background:#f04a8a18;color:var(--eng);border-left:3px solid var(--eng);}
+  .kor-tag{background:#c04af018;color:var(--kor);border-left:3px solid var(--kor);}
+  .sat-tag{background:#f0f04a18;color:var(--sat);border-left:3px solid var(--sat);}
+  .other-tag{background:#ffffff08;color:var(--muted);border-left:3px solid var(--border);}
+  .study-block{margin-top:.5rem;padding:.5rem .6rem;background:var(--surface2);border-radius:4px;font-size:.62rem;color:var(--muted);border-left:2px solid var(--accent);}
+  .study-block strong{color:var(--accent);display:block;margin-bottom:.2rem;}
 
-/* DAILY */
-.daily-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;}
-.day-nav{display:flex;gap:.5rem;flex-wrap:wrap;}
-.day-nav button{background:var(–surface2);border:1px solid var(–border);color:var(–text);padding:.5rem 1rem;border-radius:var(–r);font-family:‘Space Mono’,monospace;font-size:.7rem;cursor:pointer;transition:all .15s;}
-.day-nav button:hover,.day-nav button.active{background:var(–accent);color:var(–bg);border-color:var(–accent);}
-.timeline{display:grid;grid-template-columns:90px 1fr;border:1px solid var(–border);border-radius:var(–r);overflow:hidden;}
-.tl-time{padding:.65rem .75rem;background:var(–surface);border-bottom:1px solid var(–border);font-size:.6rem;color:var(–muted);display:flex;align-items:center;}
-.tl-block{padding:.65rem 1rem;border-bottom:1px solid var(–border);font-size:.68rem;display:flex;align-items:center;gap:.75rem;}
-.tl-block .tn{flex:1;}.tl-block .td{font-size:.6rem;color:var(–muted);}
-.br{background:var(–surface);}
-.sl{background:#08080f;color:var(–muted);font-style:italic;}
-.mt{background:#c8f04a06;}.bt{background:#4af0a006;}.ct{background:#f0a04a06;}
-.et{background:#4ac8f006;}.kt{background:#c04af006;}.st{background:#f0f04a06;}
-.ml{background:#c8f04a15;border-left:3px solid var(–math);}
-.bk{background:#ffffff04;border-left:3px solid #3a3a4a;}
+  /* DAILY */
+  .daily-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;}
+  .day-nav{display:flex;gap:.5rem;flex-wrap:wrap;}
+  .day-nav button{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:.5rem 1rem;border-radius:var(--r);font-family:'Space Mono',monospace;font-size:.7rem;cursor:pointer;transition:all .15s;}
+  .day-nav button:hover,.day-nav button.active{background:var(--accent);color:var(--bg);border-color:var(--accent);}
+  .timeline{display:grid;grid-template-columns:90px 1fr;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+  .tl-time{padding:.65rem .75rem;background:var(--surface);border-bottom:1px solid var(--border);font-size:.6rem;color:var(--muted);display:flex;align-items:center;}
+  .tl-block{padding:.65rem 1rem;border-bottom:1px solid var(--border);font-size:.68rem;display:flex;align-items:center;gap:.75rem;}
+  .tl-block .tn{flex:1;}.tl-block .td{font-size:.6rem;color:var(--muted);}
+  .br{background:var(--surface);}
+  .sl{background:#08080f;color:var(--muted);font-style:italic;}
+  .mt{background:#c8f04a06;}.bt{background:#4af0a006;}.ct{background:#f0a04a06;}
+  .et{background:#4ac8f006;}.kt{background:#c04af006;}.st{background:#f0f04a06;}
+  .ml{background:#c8f04a15;border-left:3px solid var(--math);}
+  .bk{background:#ffffff04;border-left:3px solid #3a3a4a;}
 
-/* TRACKER */
-.tracker-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;}
-.tracker-card{background:var(–surface);border:1px solid var(–border);border-radius:var(–r);overflow:hidden;}
-.tracker-title{padding:.8rem 1.2rem;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(–border);display:flex;align-items:center;gap:.5rem;}
-.pp-table{width:100%;border-collapse:collapse;font-size:.62rem;}
-.pp-table th{padding:.5rem .8rem;text-align:left;color:var(–muted);border-bottom:1px solid var(–border);font-weight:400;white-space:nowrap;}
-.pp-table td{padding:.45rem .8rem;border-bottom:1px solid #1a1a22;vertical-align:middle;}
-.pp-table tr:hover td{background:var(–surface2);}
-.attempt-dots{display:flex;gap:3px;}
-.attempt-dot{width:10px;height:10px;border-radius:50%;border:1.5px solid var(–border);cursor:pointer;transition:all .15s;}
-.attempt-dot.d1{background:var(–chem);border-color:var(–chem);}
-.attempt-dot.d2{background:var(–bio);border-color:var(–bio);}
-.attempt-dot.d3{background:var(–math);border-color:var(–math);}
-.score-input{background:var(–surface2);border:1px solid var(–border);border-radius:3px;color:var(–text);font-family:‘Space Mono’,monospace;font-size:.62rem;padding:.2rem .4rem;width:50px;text-align:center;}
-.score-input:focus{outline:none;border-color:var(–accent);}
-.stag{font-size:.55rem;padding:.15rem .4rem;border-radius:3px;font-weight:700;}
-.tm{background:#c8f04a22;color:var(–math);}.tn2{background:#4ac8f022;color:var(–eco);}
-.prog-wrap{padding:.75rem 1.2rem;border-top:1px solid var(–border);display:flex;align-items:center;gap:.75rem;}
-.prog-bar{flex:1;height:4px;background:var(–border);border-radius:99px;overflow:hidden;}
-.prog-fill{height:100%;border-radius:99px;transition:width .4s;}
-.prog-label{font-size:.6rem;color:var(–muted);white-space:nowrap;}
+  /* TRACKER */
+  .tracker-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;}
+  .tracker-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+  .tracker-title{padding:.8rem 1.2rem;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.5rem;}
+  .pp-table{width:100%;border-collapse:collapse;font-size:.62rem;}
+  .pp-table th{padding:.5rem .8rem;text-align:left;color:var(--muted);border-bottom:1px solid var(--border);font-weight:400;white-space:nowrap;}
+  .pp-table td{padding:.45rem .8rem;border-bottom:1px solid #1a1a22;vertical-align:middle;}
+  .pp-table tr:hover td{background:var(--surface2);}
+  .attempt-dots{display:flex;gap:3px;}
+  .attempt-dot{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--border);cursor:pointer;transition:all .15s;}
+  .attempt-dot.d1{background:var(--chem);border-color:var(--chem);}
+  .attempt-dot.d2{background:var(--bio);border-color:var(--bio);}
+  .attempt-dot.d3{background:var(--math);border-color:var(--math);}
+  .score-input{background:var(--surface2);border:1px solid var(--border);border-radius:3px;color:var(--text);font-family:'Space Mono',monospace;font-size:.62rem;padding:.2rem .4rem;width:50px;text-align:center;}
+  .score-input:focus{outline:none;border-color:var(--accent);}
+  .stag{font-size:.55rem;padding:.15rem .4rem;border-radius:3px;font-weight:700;}
+  .tm{background:#c8f04a22;color:var(--math);}.tn2{background:#4ac8f022;color:var(--eco);}
+  .prog-wrap{padding:.75rem 1.2rem;border-top:1px solid var(--border);display:flex;align-items:center;gap:.75rem;}
+  .prog-bar{flex:1;height:4px;background:var(--border);border-radius:99px;overflow:hidden;}
+  .prog-fill{height:100%;border-radius:99px;transition:width .4s;}
+  .prog-label{font-size:.6rem;color:var(--muted);white-space:nowrap;}
 
-/* STRATEGY */
-.strategy-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem;}
-.strategy-card{background:var(–surface);border:1px solid var(–border);border-radius:var(–r);padding:1.3rem;display:flex;flex-direction:column;gap:.8rem;}
-.strategy-card h3{font-family:‘Fraunces’,serif;font-size:1.15rem;font-weight:600;display:flex;align-items:center;gap:.5rem;}
-.s7-badge{font-size:.55rem;background:#c8f04a;color:#0d0d0f;border-radius:3px;padding:.15rem .4rem;font-family:‘Space Mono’,monospace;font-weight:700;margin-left:auto;}
-.method-list{display:flex;flex-direction:column;gap:.3rem;}
-.method-item{font-size:.65rem;color:var(–muted);padding:.4rem .6rem .4rem 1.8rem;position:relative;line-height:1.55;background:var(–surface2);border-radius:4px;}
-.method-item::before{content:attr(data-icon);position:absolute;left:.5rem;}
-.method-item.gold{border-left:2px solid var(–accent);color:var(–text);}
-.method-item.gold::before{color:var(–accent);}
-.friend-tip{background:linear-gradient(135deg,#c8f04a10,#4af0a010);border:1px solid #c8f04a30;border-radius:var(–r);padding:1rem 1.2rem;margin-bottom:1.5rem;display:flex;gap:1rem;align-items:flex-start;}
-.avatar{width:36px;height:36px;background:linear-gradient(135deg,var(–accent),var(–bio));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;}
-.tip-text{font-size:.67rem;color:var(–text);line-height:1.7;}
-.tip-label{font-size:.6rem;color:var(–accent);font-weight:700;margin-bottom:.3rem;}
-::-webkit-scrollbar{width:6px;height:6px;}
-::-webkit-scrollbar-track{background:var(–bg);}
-::-webkit-scrollbar-thumb{background:var(–border);border-radius:3px;}
+  /* STRATEGY */
+  .strategy-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem;}
+  .strategy-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.3rem;display:flex;flex-direction:column;gap:.8rem;}
+  .strategy-card h3{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600;display:flex;align-items:center;gap:.5rem;}
+  .s7-badge{font-size:.55rem;background:#c8f04a;color:#0d0d0f;border-radius:3px;padding:.15rem .4rem;font-family:'Space Mono',monospace;font-weight:700;margin-left:auto;}
+  .method-list{display:flex;flex-direction:column;gap:.3rem;}
+  .method-item{font-size:.65rem;color:var(--muted);padding:.4rem .6rem .4rem 1.8rem;position:relative;line-height:1.55;background:var(--surface2);border-radius:4px;}
+  .method-item::before{content:attr(data-icon);position:absolute;left:.5rem;}
+  .method-item.gold{border-left:2px solid var(--accent);color:var(--text);}
+  .method-item.gold::before{color:var(--accent);}
+  .friend-tip{background:linear-gradient(135deg,#c8f04a10,#4af0a010);border:1px solid #c8f04a30;border-radius:var(--r);padding:1rem 1.2rem;margin-bottom:1.5rem;display:flex;gap:1rem;align-items:flex-start;}
+  .avatar{width:36px;height:36px;background:linear-gradient(135deg,var(--accent),var(--bio));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;}
+  .tip-text{font-size:.67rem;color:var(--text);line-height:1.7;}
+  .tip-label{font-size:.6rem;color:var(--accent);font-weight:700;margin-bottom:.3rem;}
+  ::-webkit-scrollbar{width:6px;height:6px;}
+  ::-webkit-scrollbar-track{background:var(--bg);}
+  ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
 </style>
-
 </head>
 <body>
 <header>
@@ -163,292 +161,291 @@ const SC={'Math':'math-tag','Biology':'bio-tag','Chemistry':'chem-tag','Economic
 function sc(s){for(const k in SC)if(s.startsWith(k))return SC[k];return'other-tag';}
 
 function buildWeekly(){
-const g=document.getElementById(‘week-grid’);
-DAYS.forEach(day=>{
-const subs=SCHED[day]||[],t=TONIGHT[day];
-const c=document.createElement(‘div’);c.className=‘day-card’;
-c.innerHTML=`<div class="day-header"><span>${day}</span><span style="color:var(--muted);font-size:.6rem;">${subs.length} classes</span></div><div class="day-body">${subs.length?subs.map(s=>`<div class="subject-tag ${sc(s)}">${s}</div>`).join(''):'<div style="font-size:.62rem;color:var(--muted);padding:.2rem 0;">Free day</div>'}<div class="study-block"><strong>📚 TONIGHT</strong>${t.f}<br><span style="opacity:.7">+ ${t.a}</span></div></div>`;
-g.appendChild(c);
-});
+  const g=document.getElementById('week-grid');
+  DAYS.forEach(day=>{
+    const subs=SCHED[day]||[],t=TONIGHT[day];
+    const c=document.createElement('div');c.className='day-card';
+    c.innerHTML=`<div class="day-header"><span>${day}</span><span style="color:var(--muted);font-size:.6rem;">${subs.length} classes</span></div><div class="day-body">${subs.length?subs.map(s=>`<div class="subject-tag ${sc(s)}">${s}</div>`).join(''):'<div style="font-size:.62rem;color:var(--muted);padding:.2rem 0;">Free day</div>'}<div class="study-block"><strong>📚 TONIGHT</strong>${t.f}<br><span style="opacity:.7">+ ${t.a}</span></div></div>`;
+    g.appendChild(c);
+  });
 }
 
 // DAILY PLANS — breaks added throughout, math shifted to evening, math lessons Thu 8pm / Sat 10am
 const PLANS={
-Monday:[
-{t:‘7:00am’,n:‘Wake up’,d:‘Eat, get ready’,c:‘br’},
-{t:‘7:30am’,n:‘School’,d:‘Chemistry · EE · Math · English · TOK · Korean’,c:’’},
-{t:‘3:45pm’,n:‘🍜 Arrive home — chill’,d:‘Phone, snack, decompress. You earned it.’,c:‘bk’},
-{t:‘4:45pm’,n:‘☕ Light start’,d:‘Review Chemistry slides from today — passive, low effort’,c:‘ct’},
-{t:‘5:30pm’,n:‘🛋 Break’,d:‘20 min total off — stretch, walk, whatever’,c:‘bk’},
-{t:‘5:50pm’,n:‘Korean IO prep’,d:‘⚡ Apr 27 — oral commentary practice out loud’,c:‘kt’},
-{t:‘7:00pm’,n:‘🍽 Dinner’,d:’’,c:‘br’},
-{t:‘7:45pm’,n:‘Chem IA Draft’,d:‘⚡ Apr 27 — focused writing block’,c:‘ct’},
-{t:‘9:15pm’,n:‘☕ Break’,d:‘15 min — snack, breathe’,c:‘bk’},
-{t:‘9:30pm’,n:‘Math exercises’,d:‘45 min — exercises to reinforce concepts’,c:‘mt’},
-{t:‘10:30pm’,n:‘Chemistry past paper’,d:‘Full timed paper; self-mark after’,c:‘ct’},
-{t:‘12:00am’,n:‘🎮 Break’,d:‘20 min — free time, games, socials’,c:‘bk’},
-{t:‘12:20am’,n:‘SAT (15 min)’,d:‘One module — Math or Reading’,c:‘st’},
-{t:‘12:40am’,n:‘Wind down’,d:“Scan tomorrow’s plan”,c:‘br’},
-{t:‘1:30am’,n:‘Sleep 🌙’,d:’’,c:‘sl’},
-],
-Tuesday:[
-{t:‘7:00am’,n:‘Wake up’,d:‘Quick Economics vocab scan while eating’,c:‘br’},
-{t:‘7:30am’,n:‘School’,d:‘Economics · English · Chemistry · CAS · Biology’,c:’’},
-{t:‘3:45pm’,n:‘🍜 Arrive home — full break’,d:‘1 hour off. Seriously. Eat + decompress.’,c:‘bk’},
-{t:‘4:45pm’,n:‘Biology — slides + textbook’,d:‘New topic section; annotate diagrams from memory’,c:‘bt’},
-{t:‘6:00pm’,n:‘☕ Break’,d:‘15 min’,c:‘bk’},
-{t:‘6:15pm’,n:‘Chem IA Draft’,d:‘⚡ Apr 27 — major writing session’,c:‘ct’},
-{t:‘7:30pm’,n:‘🍽 Dinner’,d:’’,c:‘br’},
-{t:‘8:15pm’,n:‘Biology past paper’,d:‘Timed; check every mark scheme point’,c:‘bt’},
-{t:‘9:30pm’,n:‘☕ Break’,d:‘15 min’,c:‘bk’},
-{t:‘9:45pm’,n:‘Math exercises’,d:‘45 min — daily practice (later in the day, more chill)’,c:‘mt’},
-{t:‘10:45pm’,n:‘Korean IO prep’,d:‘⚡ Apr 27 — record yourself, listen back’,c:‘kt’},
-{t:‘11:45pm’,n:‘🎮 Break’,d:‘20 min free time’,c:‘bk’},
-{t:‘12:05am’,n:‘SAT (15 min)’,d:‘Grammar or reading’,c:‘st’},
-{t:‘12:25am’,n:‘Wind down’,d:’’,c:‘br’},
-{t:‘1:30am’,n:‘Sleep 🌙’,d:’’,c:‘sl’},
-],
-Wednesday:[
-{t:‘7:00am’,n:‘Wake up’,d:‘Scan Eco key terms over breakfast’,c:‘br’},
-{t:‘7:30am’,n:‘School’,d:‘TOK · Indonesian Studies · Math · Economics · Biology’,c:’’},
-{t:‘3:45pm’,n:‘🍜 Arrive home — break’,d:‘1 hour off. Recharge properly.’,c:‘bk’},
-{t:‘4:45pm’,n:‘Economics past paper’,d:‘Full timed paper — essay + data response’,c:‘et’},
-{t:‘6:15pm’,n:‘☕ Break’,d:‘20 min’,c:‘bk’},
-{t:‘6:35pm’,n:‘Biology test prep’,d:‘⚡ Test Apr 30 — slides + create study guide’,c:‘bt’},
-{t:‘7:45pm’,n:‘🍽 Dinner’,d:’’,c:‘br’},
-{t:‘8:30pm’,n:‘Chem IA Draft’,d:‘⚡ Apr 27 — keep writing’,c:‘ct’},
-{t:‘9:45pm’,n:‘☕ Break’,d:‘15 min’,c:‘bk’},
-{t:‘10:00pm’,n:‘Math exercises’,d:‘45 min — weaker topics from past papers’,c:‘mt’},
-{t:‘10:50pm’,n:‘Biology — mark scheme deep dive’,d:‘Go through mark scheme language topic by topic’,c:‘bt’},
-{t:‘12:00am’,n:‘🎮 Break’,d:‘20 min’,c:‘bk’},
-{t:‘12:20am’,n:‘SAT (20 min)’,d:‘Math focus’,c:‘st’},
-{t:‘12:45am’,n:‘Wind down’,d:’’,c:‘br’},
-{t:‘2:00am’,n:‘Sleep 🌙’,d:’’,c:‘sl’},
-],
-Thursday:[
-{t:‘7:00am’,n:‘Wake up’,d:‘Quick Bio scan — test in 2 days!’,c:‘br’},
-{t:‘7:30am’,n:‘School’,d:‘Korean · Economics · Biology · Religion · English’,c:’’},
-{t:‘3:45pm’,n:‘🍜 Arrive home — break’,d:‘1 hour off. Eat, relax.’,c:‘bk’},
-{t:‘4:45pm’,n:‘Biology TEST PREP’,d:‘⚡ Test Apr 30 — full past paper timed conditions’,c:‘bt’},
-{t:‘6:15pm’,n:‘☕ Break’,d:‘20 min’,c:‘bk’},
-{t:‘6:35pm’,n:‘Chemistry slides’,d:‘Memorize for Friday + IA draft’,c:‘ct’},
-{t:‘7:30pm’,n:‘🍽 Dinner’,d:’’,c:‘br’},
-{t:‘8:00pm’,n:‘📐 MATH LESSON’,d:‘Tutor / lesson session — show up focused’,c:‘ml’},
-{t:‘9:30pm’,n:‘☕ Break’,d:‘20 min — process what you just learned’,c:‘bk’},
-{t:‘9:50pm’,n:‘Math — reinforce lesson’,d:‘30 min doing exercises from tonight's lesson’,c:‘mt’},
-{t:‘10:30pm’,n:‘Korean IO final polish’,d:‘⚡ Apr 27 — nearly there, full oral run’,c:‘kt’},
-{t:‘11:30pm’,n:‘Biology — error review’,d:‘Go through every mistake from today's paper’,c:‘bt’},
-{t:‘12:15am’,n:‘🎮 Break’,d:‘15 min free time’,c:‘bk’},
-{t:‘12:30am’,n:‘SAT (15 min)’,d:‘Reading’,c:‘st’},
-{t:‘1:00am’,n:‘Wind down’,d:’’,c:‘br’},
-{t:‘1:30am’,n:‘Sleep 🌙’,d:’’,c:‘sl’},
-],
-Friday:[
-{t:‘7:00am’,n:‘Wake up’,d:‘Last scan of Chem notes before school’,c:‘br’},
-{t:‘7:30am’,n:‘School’,d:‘Korean · Math · Chemistry’,c:’’},
-{t:‘3:30pm’,n:‘🎉 Arrive home — proper break’,d:‘1.5 hrs off. Week is done. Eat, game, rest.’,c:‘bk’},
-{t:‘5:00pm’,n:‘Biology intensive’,d:‘⚡ Test Apr 30 (Sunday!) — full topic sweep’,c:‘bt’},
-{t:‘6:30pm’,n:‘☕ Break’,d:‘20 min’,c:‘bk’},
-{t:‘6:50pm’,n:‘Chem IA Draft’,d:‘⚡ Apr 27 — big writing block tonight’,c:‘ct’},
-{t:‘8:15pm’,n:‘🍽 Dinner’,d:’’,c:‘br’},
-{t:‘9:00pm’,n:‘Math past paper’,d:‘Full timed — Friday evening is deep math time’,c:‘mt’},
-{t:‘10:15pm’,n:‘☕ Break’,d:‘20 min’,c:‘bk’},
-{t:‘10:35pm’,n:‘Korean IO practice’,d:‘Run commentary start to finish’,c:‘kt’},
-{t:‘11:35pm’,n:‘Economics — textbook’,d:‘Chill reading, diagram review’,c:‘et’},
-{t:‘12:30am’,n:‘🎮 Free time’,d:‘Earned it’,c:‘bk’},
-{t:‘1:00am’,n:‘SAT (15 min)’,d:’’,c:‘st’},
-{t:‘1:30am’,n:‘Wind down’,d:‘Plan weekend’,c:‘br’},
-{t:‘2:00am’,n:‘Sleep 🌙’,d:’’,c:‘sl’},
-],
-Saturday:[
-{t:‘9:00am’,n:‘Wake up’,d:‘Sleep in — no guilt’,c:‘br’},
-{t:‘9:30am’,n:‘Korean IO — final polish’,d:‘⚡ Due Apr 27 (tomorrow!) — full oral run-through’,c:‘kt’},
-{t:‘10:00am’,n:‘📐 MATH LESSON’,d:‘Tutor / lesson session — full focus’,c:‘ml’},
-{t:‘11:30am’,n:‘☕ Break’,d:‘30 min — snack, walk, air out your brain’,c:‘bk’},
-{t:‘12:00pm’,n:‘Chem IA Draft — FINAL’,d:‘⚡ Apr 27 — proofread, structure, submit prep’,c:‘ct’},
-{t:‘1:30pm’,n:‘🍽 Lunch + break’,d:‘45 min off’,c:‘br’},
-{t:‘2:15pm’,n:‘Biology — 2x past papers’,d:‘Back to back timed + mark scheme both papers’,c:‘bt’},
-{t:‘4:30pm’,n:‘☕ Break’,d:‘20 min’,c:‘bk’},
-{t:‘4:50pm’,n:‘Math — reinforce lesson’,d:‘Exercises from today's lesson content’,c:‘mt’},
-{t:‘6:00pm’,n:‘🛋 Break’,d:‘30 min — chill’,c:‘bk’},
-{t:‘6:30pm’,n:‘SAT — longer session’,d:‘Full Math module or full Reading section’,c:‘st’},
-{t:‘8:00pm’,n:‘🍽 Dinner + chill’,d:‘1 hour off’,c:‘br’},
-{t:‘9:00pm’,n:‘Economics — study guide + textbook’,d:‘Read and condense notes’,c:‘et’},
-{t:‘10:30pm’,n:‘Chemistry past paper’,d:‘Prep for May 5 test’,c:‘ct’},
-{t:‘12:00am’,n:‘🎮 Free time’,d:‘You grinded today’,c:‘bk’},
-{t:‘1:00am’,n:‘Wind down’,d:’’,c:‘br’},
-{t:‘2:00am’,n:‘Sleep 🌙’,d:’’,c:‘sl’},
-],
-Sunday:[
-{t:‘9:00am’,n:‘Wake up’,d:’’,c:‘br’},
-{t:‘9:30am’,n:‘Chemistry — deep dive’,d:‘Slides memorization + textbook section’,c:‘ct’},
-{t:‘11:00am’,n:‘☕ Break’,d:‘20 min’,c:‘bk’},
-{t:‘11:20am’,n:‘Math — full past paper’,d:‘Timed; mark after’,c:‘mt’},
-{t:‘12:45pm’,n:‘🍽 Lunch + break’,d:‘45 min — proper rest’,c:‘br’},
-{t:‘1:30pm’,n:‘Biology — FINAL test prep’,d:‘⚡ Test Apr 30 TOMORROW — study guide + weak areas only’,c:‘bt’},
-{t:‘3:00pm’,n:‘☕ Break’,d:‘20 min’,c:‘bk’},
-{t:‘3:20pm’,n:‘SAT — full session’,d:‘45 min focused’,c:‘st’},
-{t:‘4:30pm’,n:‘🛋 Break + walk’,d:‘Get outside, clear your head — 30 min’,c:‘bk’},
-{t:‘5:00pm’,n:‘Economics past paper’,d:‘Full timed + mark scheme review’,c:‘et’},
-{t:‘6:30pm’,n:‘🍽 Dinner’,d:’’,c:‘br’},
-{t:‘7:15pm’,n:‘Chemistry — study guide’,d:‘Consolidate notes for Monday class’,c:‘ct’},
-{t:‘8:30pm’,n:‘☕ Break’,d:‘20 min’,c:‘bk’},
-{t:‘8:50pm’,n:‘Korean — maintenance’,d:‘Keep IO skills sharp’,c:‘kt’},
-{t:‘9:45pm’,n:‘Math — error review’,d:“Scan mistakes from today’s paper”,c:‘mt’},
-{t:‘10:45pm’,n:‘🎮 Break’,d:‘30 min free’,c:‘bk’},
-{t:‘11:15pm’,n:‘Light review’,d:‘Scan Monday plan’,c:‘br’},
-{t:‘12:00am’,n:‘Pack + prep for Monday’,d:’’,c:‘br’},
-{t:‘1:00am’,n:‘Wind down’,d:’’,c:‘br’},
-{t:‘2:00am’,n:‘Sleep 🌙’,d:’’,c:‘sl’},
-],
+  Monday:[
+    {t:'7:00am',n:'Wake up',d:'Eat, get ready',c:'br'},
+    {t:'7:30am',n:'School',d:'Chemistry · EE · Math · English · TOK · Korean',c:''},
+    {t:'3:45pm',n:'🍜 Arrive home — chill',d:'Phone, snack, decompress. You earned it.',c:'bk'},
+    {t:'4:45pm',n:'☕ Light start',d:'Review Chemistry slides from today — passive, low effort',c:'ct'},
+    {t:'5:30pm',n:'🛋 Break',d:'20 min total off — stretch, walk, whatever',c:'bk'},
+    {t:'5:50pm',n:'Korean IO prep',d:'⚡ Apr 27 — oral commentary practice out loud',c:'kt'},
+    {t:'7:00pm',n:'🍽 Dinner',d:'',c:'br'},
+    {t:'7:45pm',n:'Chem IA Draft',d:'⚡ Apr 27 — focused writing block',c:'ct'},
+    {t:'9:15pm',n:'☕ Break',d:'15 min — snack, breathe',c:'bk'},
+    {t:'9:30pm',n:'Math exercises',d:'45 min — exercises to reinforce concepts',c:'mt'},
+    {t:'10:30pm',n:'Chemistry past paper',d:'Full timed paper; self-mark after',c:'ct'},
+    {t:'12:00am',n:'🎮 Break',d:'20 min — free time, games, socials',c:'bk'},
+    {t:'12:20am',n:'SAT (15 min)',d:'One module — Math or Reading',c:'st'},
+    {t:'12:40am',n:'Wind down',d:"Scan tomorrow's plan",c:'br'},
+    {t:'1:30am',n:'Sleep 🌙',d:'',c:'sl'},
+  ],
+  Tuesday:[
+    {t:'7:00am',n:'Wake up',d:'Quick Economics vocab scan while eating',c:'br'},
+    {t:'7:30am',n:'School',d:'Economics · English · Chemistry · CAS · Biology',c:''},
+    {t:'3:45pm',n:'🍜 Arrive home — full break',d:'1 hour off. Seriously. Eat + decompress.',c:'bk'},
+    {t:'4:45pm',n:'Biology — slides + textbook',d:'New topic section; annotate diagrams from memory',c:'bt'},
+    {t:'6:00pm',n:'☕ Break',d:'15 min',c:'bk'},
+    {t:'6:15pm',n:'Chem IA Draft',d:'⚡ Apr 27 — major writing session',c:'ct'},
+    {t:'7:30pm',n:'🍽 Dinner',d:'',c:'br'},
+    {t:'8:15pm',n:'Biology past paper',d:'Timed; check every mark scheme point',c:'bt'},
+    {t:'9:30pm',n:'☕ Break',d:'15 min',c:'bk'},
+    {t:'9:45pm',n:'Math exercises',d:'45 min — daily practice (later in the day, more chill)',c:'mt'},
+    {t:'10:45pm',n:'Korean IO prep',d:'⚡ Apr 27 — record yourself, listen back',c:'kt'},
+    {t:'11:45pm',n:'🎮 Break',d:'20 min free time',c:'bk'},
+    {t:'12:05am',n:'SAT (15 min)',d:'Grammar or reading',c:'st'},
+    {t:'12:25am',n:'Wind down',d:'',c:'br'},
+    {t:'1:30am',n:'Sleep 🌙',d:'',c:'sl'},
+  ],
+  Wednesday:[
+    {t:'7:00am',n:'Wake up',d:'Scan Eco key terms over breakfast',c:'br'},
+    {t:'7:30am',n:'School',d:'TOK · Indonesian Studies · Math · Economics · Biology',c:''},
+    {t:'3:45pm',n:'🍜 Arrive home — break',d:'1 hour off. Recharge properly.',c:'bk'},
+    {t:'4:45pm',n:'Economics past paper',d:'Full timed paper — essay + data response',c:'et'},
+    {t:'6:15pm',n:'☕ Break',d:'20 min',c:'bk'},
+    {t:'6:35pm',n:'Biology test prep',d:'⚡ Test Apr 30 — slides + create study guide',c:'bt'},
+    {t:'7:45pm',n:'🍽 Dinner',d:'',c:'br'},
+    {t:'8:30pm',n:'Chem IA Draft',d:'⚡ Apr 27 — keep writing',c:'ct'},
+    {t:'9:45pm',n:'☕ Break',d:'15 min',c:'bk'},
+    {t:'10:00pm',n:'Math exercises',d:'45 min — weaker topics from past papers',c:'mt'},
+    {t:'10:50pm',n:'Biology — mark scheme deep dive',d:'Go through mark scheme language topic by topic',c:'bt'},
+    {t:'12:00am',n:'🎮 Break',d:'20 min',c:'bk'},
+    {t:'12:20am',n:'SAT (20 min)',d:'Math focus',c:'st'},
+    {t:'12:45am',n:'Wind down',d:'',c:'br'},
+    {t:'2:00am',n:'Sleep 🌙',d:'',c:'sl'},
+  ],
+  Thursday:[
+    {t:'7:00am',n:'Wake up',d:'Quick Bio scan — test in 2 days!',c:'br'},
+    {t:'7:30am',n:'School',d:'Korean · Economics · Biology · Religion · English',c:''},
+    {t:'3:45pm',n:'🍜 Arrive home — break',d:'1 hour off. Eat, relax.',c:'bk'},
+    {t:'4:45pm',n:'Biology TEST PREP',d:'⚡ Test Apr 30 — full past paper timed conditions',c:'bt'},
+    {t:'6:15pm',n:'☕ Break',d:'20 min',c:'bk'},
+    {t:'6:35pm',n:'Chemistry slides',d:'Memorize for Friday + IA draft',c:'ct'},
+    {t:'7:30pm',n:'🍽 Dinner',d:'',c:'br'},
+    {t:'8:00pm',n:'📐 MATH LESSON',d:'Tutor / lesson session — show up focused',c:'ml'},
+    {t:'9:30pm',n:'☕ Break',d:'20 min — process what you just learned',c:'bk'},
+    {t:'9:50pm',n:'Math — reinforce lesson',d:'30 min doing exercises from tonight\'s lesson',c:'mt'},
+    {t:'10:30pm',n:'Korean IO final polish',d:'⚡ Apr 27 — nearly there, full oral run',c:'kt'},
+    {t:'11:30pm',n:'Biology — error review',d:'Go through every mistake from today\'s paper',c:'bt'},
+    {t:'12:15am',n:'🎮 Break',d:'15 min free time',c:'bk'},
+    {t:'12:30am',n:'SAT (15 min)',d:'Reading',c:'st'},
+    {t:'1:00am',n:'Wind down',d:'',c:'br'},
+    {t:'1:30am',n:'Sleep 🌙',d:'',c:'sl'},
+  ],
+  Friday:[
+    {t:'7:00am',n:'Wake up',d:'Last scan of Chem notes before school',c:'br'},
+    {t:'7:30am',n:'School',d:'Korean · Math · Chemistry',c:''},
+    {t:'3:30pm',n:'🎉 Arrive home — proper break',d:'1.5 hrs off. Week is done. Eat, game, rest.',c:'bk'},
+    {t:'5:00pm',n:'Biology intensive',d:'⚡ Test Apr 30 (Sunday!) — full topic sweep',c:'bt'},
+    {t:'6:30pm',n:'☕ Break',d:'20 min',c:'bk'},
+    {t:'6:50pm',n:'Chem IA Draft',d:'⚡ Apr 27 — big writing block tonight',c:'ct'},
+    {t:'8:15pm',n:'🍽 Dinner',d:'',c:'br'},
+    {t:'9:00pm',n:'Math past paper',d:'Full timed — Friday evening is deep math time',c:'mt'},
+    {t:'10:15pm',n:'☕ Break',d:'20 min',c:'bk'},
+    {t:'10:35pm',n:'Korean IO practice',d:'Run commentary start to finish',c:'kt'},
+    {t:'11:35pm',n:'Economics — textbook',d:'Chill reading, diagram review',c:'et'},
+    {t:'12:30am',n:'🎮 Free time',d:'Earned it',c:'bk'},
+    {t:'1:00am',n:'SAT (15 min)',d:'',c:'st'},
+    {t:'1:30am',n:'Wind down',d:'Plan weekend',c:'br'},
+    {t:'2:00am',n:'Sleep 🌙',d:'',c:'sl'},
+  ],
+  Saturday:[
+    {t:'9:00am',n:'Wake up',d:'Sleep in — no guilt',c:'br'},
+    {t:'9:30am',n:'Korean IO — final polish',d:'⚡ Due Apr 27 (tomorrow!) — full oral run-through',c:'kt'},
+    {t:'10:00am',n:'📐 MATH LESSON',d:'Tutor / lesson session — full focus',c:'ml'},
+    {t:'11:30am',n:'☕ Break',d:'30 min — snack, walk, air out your brain',c:'bk'},
+    {t:'12:00pm',n:'Chem IA Draft — FINAL',d:'⚡ Apr 27 — proofread, structure, submit prep',c:'ct'},
+    {t:'1:30pm',n:'🍽 Lunch + break',d:'45 min off',c:'br'},
+    {t:'2:15pm',n:'Biology — 2x past papers',d:'Back to back timed + mark scheme both papers',c:'bt'},
+    {t:'4:30pm',n:'☕ Break',d:'20 min',c:'bk'},
+    {t:'4:50pm',n:'Math — reinforce lesson',d:'Exercises from today\'s lesson content',c:'mt'},
+    {t:'6:00pm',n:'🛋 Break',d:'30 min — chill',c:'bk'},
+    {t:'6:30pm',n:'SAT — longer session',d:'Full Math module or full Reading section',c:'st'},
+    {t:'8:00pm',n:'🍽 Dinner + chill',d:'1 hour off',c:'br'},
+    {t:'9:00pm',n:'Economics — study guide + textbook',d:'Read and condense notes',c:'et'},
+    {t:'10:30pm',n:'Chemistry past paper',d:'Prep for May 5 test',c:'ct'},
+    {t:'12:00am',n:'🎮 Free time',d:'You grinded today',c:'bk'},
+    {t:'1:00am',n:'Wind down',d:'',c:'br'},
+    {t:'2:00am',n:'Sleep 🌙',d:'',c:'sl'},
+  ],
+  Sunday:[
+    {t:'9:00am',n:'Wake up',d:'',c:'br'},
+    {t:'9:30am',n:'Chemistry — deep dive',d:'Slides memorization + textbook section',c:'ct'},
+    {t:'11:00am',n:'☕ Break',d:'20 min',c:'bk'},
+    {t:'11:20am',n:'Math — full past paper',d:'Timed; mark after',c:'mt'},
+    {t:'12:45pm',n:'🍽 Lunch + break',d:'45 min — proper rest',c:'br'},
+    {t:'1:30pm',n:'Biology — FINAL test prep',d:'⚡ Test Apr 30 TOMORROW — study guide + weak areas only',c:'bt'},
+    {t:'3:00pm',n:'☕ Break',d:'20 min',c:'bk'},
+    {t:'3:20pm',n:'SAT — full session',d:'45 min focused',c:'st'},
+    {t:'4:30pm',n:'🛋 Break + walk',d:'Get outside, clear your head — 30 min',c:'bk'},
+    {t:'5:00pm',n:'Economics past paper',d:'Full timed + mark scheme review',c:'et'},
+    {t:'6:30pm',n:'🍽 Dinner',d:'',c:'br'},
+    {t:'7:15pm',n:'Chemistry — study guide',d:'Consolidate notes for Monday class',c:'ct'},
+    {t:'8:30pm',n:'☕ Break',d:'20 min',c:'bk'},
+    {t:'8:50pm',n:'Korean — maintenance',d:'Keep IO skills sharp',c:'kt'},
+    {t:'9:45pm',n:'Math — error review',d:"Scan mistakes from today's paper",c:'mt'},
+    {t:'10:45pm',n:'🎮 Break',d:'30 min free',c:'bk'},
+    {t:'11:15pm',n:'Light review',d:'Scan Monday plan',c:'br'},
+    {t:'12:00am',n:'Pack + prep for Monday',d:'',c:'br'},
+    {t:'1:00am',n:'Wind down',d:'',c:'br'},
+    {t:'2:00am',n:'Sleep 🌙',d:'',c:'sl'},
+  ],
 };
 
-const CM={br:‘br’,sl:‘sl’,mt:‘mt’,bt:‘bt’,ct:‘ct’,et:‘et’,kt:‘kt’,st:‘st’,ml:‘ml’,bk:‘bk’};
-let curDay=‘Monday’;
+const CM={br:'br',sl:'sl',mt:'mt',bt:'bt',ct:'ct',et:'et',kt:'kt',st:'st',ml:'ml',bk:'bk'};
+let curDay='Monday';
 function buildDailyNav(){
-const nav=document.getElementById(‘day-nav’);
-DAYS.forEach(d=>{
-const btn=document.createElement(‘button’);
-btn.textContent=d.slice(0,3);
-btn.onclick=()=>selDay(d);
-if(d===curDay)btn.classList.add(‘active’);
-nav.appendChild(btn);
-});
+  const nav=document.getElementById('day-nav');
+  DAYS.forEach(d=>{
+    const btn=document.createElement('button');
+    btn.textContent=d.slice(0,3);
+    btn.onclick=()=>selDay(d);
+    if(d===curDay)btn.classList.add('active');
+    nav.appendChild(btn);
+  });
 }
 function selDay(day){
-curDay=day;
-document.querySelectorAll(’#day-nav button’).forEach((b,i)=>b.classList.toggle(‘active’,DAYS[i]===day));
-renderTL();
+  curDay=day;
+  document.querySelectorAll('#day-nav button').forEach((b,i)=>b.classList.toggle('active',DAYS[i]===day));
+  renderTL();
 }
 function renderTL(){
-const wrap=document.getElementById(‘timeline-wrap’);
-const plan=PLANS[curDay]||[];
-wrap.innerHTML=`<div class="timeline">${plan.map(r=>`<div class="tl-time">${r.t}</div><div class="tl-block ${CM[r.c]||''}"><span class="tn">${r.n}</span>${r.d?`<span class="td">${r.d}</span>`:’’}</div>`).join('')}</div>`;
+  const wrap=document.getElementById('timeline-wrap');
+  const plan=PLANS[curDay]||[];
+  wrap.innerHTML=`<div class="timeline">${plan.map(r=>`<div class="tl-time">${r.t}</div><div class="tl-block ${CM[r.c]||''}"><span class="tn">${r.n}</span>${r.d?`<span class="td">${r.d}</span>`:''}</div>`).join('')}</div>`;
 }
 
 // TRACKER
 const TSUBS=[
-{name:‘Biology’,color:‘var(–bio)’,papers:genP(‘Bio’)},
-{name:‘Chemistry’,color:‘var(–chem)’,papers:genP(‘Chem’)},
-{name:‘Math AA’,color:‘var(–math)’,papers:genP(‘Math’)},
-{name:‘Economics’,color:‘var(–eco)’,papers:genP(‘Eco’)},
+  {name:'Biology',color:'var(--bio)',papers:genP('Bio')},
+  {name:'Chemistry',color:'var(--chem)',papers:genP('Chem')},
+  {name:'Math AA',color:'var(--math)',papers:genP('Math')},
+  {name:'Economics',color:'var(--eco)',papers:genP('Eco')},
 ];
-function genP(s){const p=[];for(let y=2011;y<=2025;y++){p.push({year:y,ses:‘May’,tz:‘TZ1’,key:`${s}-${y}-M-1`});p.push({year:y,ses:‘May’,tz:‘TZ2’,key:`${s}-${y}-M-2`});p.push({year:y,ses:‘Nov’,tz:‘TZ1’,key:`${s}-${y}-N-1`});}return p;}
-function gS(){try{return JSON.parse(localStorage.getItem(‘ibt4’)||’{}’)}catch{return{}}}
-function sS(s){try{localStorage.setItem(‘ibt4’,JSON.stringify(s))}catch{}}
+function genP(s){const p=[];for(let y=2011;y<=2025;y++){p.push({year:y,ses:'May',tz:'TZ1',key:`${s}-${y}-M-1`});p.push({year:y,ses:'May',tz:'TZ2',key:`${s}-${y}-M-2`});p.push({year:y,ses:'Nov',tz:'TZ1',key:`${s}-${y}-N-1`});}return p;}
+function gS(){try{return JSON.parse(localStorage.getItem('ibt4')||'{}')}catch{return{}}}
+function sS(s){try{localStorage.setItem('ibt4',JSON.stringify(s))}catch{}}
 function buildTracker(){
-const grid=document.getElementById(‘tracker-grid’);
-const state=gS();
-TSUBS.forEach(subj=>{
-const done=subj.papers.filter(p=>{const s=state[p.key]||{};return s.a1||s.a2||s.a3;}).length;
-const pct=Math.round(done/subj.papers.length*100);
-const card=document.createElement(‘div’);card.className=‘tracker-card’;
-card.innerHTML=`<div class="tracker-title" style="color:${subj.color}"><span style="width:8px;height:8px;border-radius:50%;background:${subj.color};display:inline-block;box-shadow:0 0 6px ${subj.color}"></span>${subj.name}<span style="margin-left:auto;font-size:.6rem;color:var(--muted);font-weight:400">${done}/${subj.papers.length} attempted</span></div><div style="max-height:320px;overflow-y:auto;"><table class="pp-table"><thead><tr><th>Year</th><th>Session</th><th>TZ</th><th>Attempts</th><th>Score /7</th></tr></thead><tbody>${subj.papers.map(p=>{const s=state[p.key]||{};return`<tr><td>${p.year}</td><td><span class="stag ${p.ses==='May'?'tm':'tn2'}">${p.ses}</span></td><td style="color:var(--muted)">${p.tz}</td><td><div class="attempt-dots"><div class="attempt-dot${s.a1?' d1':''}" onclick="tog('${p.key}','a1')" title="Attempt 1"></div><div class="attempt-dot${s.a2?' d2':''}" onclick="tog('${p.key}','a2')" title="Attempt 2"></div><div class="attempt-dot${s.a3?' d3':''}" onclick="tog('${p.key}','a3')" title="Attempt 3"></div></div></td><td><input class="score-input" type="text" placeholder="–" value="${s.score||''}" onchange="sc2('${p.key}',this.value)"/></td></tr>`;}).join('')}</tbody></table></div><div class="prog-wrap"><div class="prog-bar"><div class="prog-fill" style="width:${pct}%;background:${subj.color}"></div></div><div class="prog-label">${pct}% started</div></div>`;
-grid.appendChild(card);
-});
+  const grid=document.getElementById('tracker-grid');
+  const state=gS();
+  TSUBS.forEach(subj=>{
+    const done=subj.papers.filter(p=>{const s=state[p.key]||{};return s.a1||s.a2||s.a3;}).length;
+    const pct=Math.round(done/subj.papers.length*100);
+    const card=document.createElement('div');card.className='tracker-card';
+    card.innerHTML=`<div class="tracker-title" style="color:${subj.color}"><span style="width:8px;height:8px;border-radius:50%;background:${subj.color};display:inline-block;box-shadow:0 0 6px ${subj.color}"></span>${subj.name}<span style="margin-left:auto;font-size:.6rem;color:var(--muted);font-weight:400">${done}/${subj.papers.length} attempted</span></div><div style="max-height:320px;overflow-y:auto;"><table class="pp-table"><thead><tr><th>Year</th><th>Session</th><th>TZ</th><th>Attempts</th><th>Score /7</th></tr></thead><tbody>${subj.papers.map(p=>{const s=state[p.key]||{};return`<tr><td>${p.year}</td><td><span class="stag ${p.ses==='May'?'tm':'tn2'}">${p.ses}</span></td><td style="color:var(--muted)">${p.tz}</td><td><div class="attempt-dots"><div class="attempt-dot${s.a1?' d1':''}" onclick="tog('${p.key}','a1')" title="Attempt 1"></div><div class="attempt-dot${s.a2?' d2':''}" onclick="tog('${p.key}','a2')" title="Attempt 2"></div><div class="attempt-dot${s.a3?' d3':''}" onclick="tog('${p.key}','a3')" title="Attempt 3"></div></div></td><td><input class="score-input" type="text" placeholder="–" value="${s.score||''}" onchange="sc2('${p.key}',this.value)"/></td></tr>`;}).join('')}</tbody></table></div><div class="prog-wrap"><div class="prog-bar"><div class="prog-fill" style="width:${pct}%;background:${subj.color}"></div></div><div class="prog-label">${pct}% started</div></div>`;
+    grid.appendChild(card);
+  });
 }
-window.tog=function(key,a){const s=gS();if(!s[key])s[key]={};s[key][a]=!s[key][a];sS(s);document.getElementById(‘tracker-grid’).innerHTML=’’;buildTracker();};
+window.tog=function(key,a){const s=gS();if(!s[key])s[key]={};s[key][a]=!s[key][a];sS(s);document.getElementById('tracker-grid').innerHTML='';buildTracker();};
 window.sc2=function(key,v){const s=gS();if(!s[key])s[key]={};s[key].score=v;sS(s);};
 
 // STRATEGY — how to get a 7
 const STRATS=[
-{
-name:‘Math AA HL’,color:‘var(–math)’,e:‘∑’,
-methods:[
-{icon:‘🎯’,gold:true, text:‘Past papers are everything — but analyze your mistakes, don't just move on. Keep a dedicated “error log” of every question you got wrong and WHY.’},
-{icon:‘📖’,gold:false,text:‘Textbook exercises first to understand the concept, THEN go to past papers. Never skip the worked examples.’},
-{icon:‘🔁’,gold:true, text:‘Re-do past paper questions you got wrong 2 weeks later without looking at the solution. If you still can't do it, it's not in your head yet.’},
-{icon:‘✍️’,gold:false,text:‘Show all working clearly — in HL Math, method marks are everything. You can lose the final answer and still score high.’},
-{icon:‘⏱’,gold:false,text:‘Timed practice under exam conditions weekly. Math AA HL Paper 1 is no calculator — drill this separately.’},
-{icon:‘🧩’,gold:true, text:‘Master the “command verbs”: find, show that, prove, hence. Each demands a different answer style. Practice all of them.’},
-{icon:‘📐’,gold:false,text:‘Math lesson Thursdays 8pm + Saturdays 10am — come with specific questions from your error log.’},
-]
-},
-{
-name:‘Biology HL’,color:‘var(–bio)’,e:‘🔬’,
-methods:[
-{icon:‘🗣’,gold:true, text:‘The #1 Biology skill: writing with exact mark scheme language. Highlight keywords in mark schemes and practice using them in your own sentences.’},
-{icon:‘✏️’,gold:false,text:‘Draw and label all key diagrams from memory — mitosis, meiosis, photosynthesis, respiration, nephron, heart. Examiners love diagrams.’},
-{icon:‘📋’,gold:true, text:‘Make a condensed “definition bank” — one page per topic with every bolded term defined in mark scheme language.’},
-{icon:‘🔁’,gold:false,text:‘For each past paper question you got wrong, write out the correct answer 3 times by hand. Muscle memory for phrasing matters.’},
-{icon:‘🧠’,gold:true, text:‘Use spaced repetition (Anki or flashcards) for definitions and processes. Biology is heavily memory-based — passive re-reading doesn't cut it.’},
-{icon:‘📊’,gold:false,text:‘Data analysis questions appear every year. Practice describing trends, calculating percentage change, and suggesting explanations.’},
-{icon:‘⚡’,gold:false,text:‘Test Apr 30 — this week is maximum Biology intensity.’},
-]
-},
-{
-name:‘Chemistry HL’,color:‘var(–chem)’,e:‘⚗️’,
-methods:[
-{icon:‘🧪’,gold:true, text:‘Create a master equation sheet — every formula, every unit, every constant. You need to recall these instantly under pressure.’},
-{icon:‘📖’,gold:false,text:‘Read the textbook for understanding, then create a 1-page study guide per topic with only the highest-yield content.’},
-{icon:‘🎯’,gold:true, text:‘The IB Chemistry mark scheme is extremely specific about units and sig figs. Lose the unit, lose the mark. Drill this habit NOW.’},
-{icon:‘🔁’,gold:false,text:‘Do the same past paper 3 times spaced 2 weeks apart. By attempt 3, you should be scoring near full marks.’},
-{icon:‘🧠’,gold:true, text:‘Mechanisms (SN1/SN2, electrophilic addition etc.) must be drawn perfectly — arrow pushing, charges, everything. Practice drawing them from memory daily.’},
-{icon:‘📊’,gold:false,text:‘Data-based questions test your application of theory. Practice explaining anomalous results and evaluating experiments.’},
-{icon:‘⚡’,gold:false,text:‘IA Draft Apr 27 · Test May 5 — both this month, stay on top.’},
-]
-},
-{
-name:‘Economics SL’,color:‘var(–eco)’,e:‘📈’,
-methods:[
-{icon:‘📊’,gold:true, text:‘Every evaluation answer needs a diagram. Draw it, label everything, explain the shift with exact economic language. Diagrams = easy marks.’},
-{icon:‘🗣’,gold:false,text:‘Master the command terms: “explain”, “evaluate”, “discuss”, “to what extent”. Each has a specific structure — learn them cold.’},
-{icon:‘✍️’,gold:true, text:’“Evaluate” questions need a structured two-sided argument: advantage → disadvantage → conclusion. Practice this structure until it's automatic.’},
-{icon:‘🌍’,gold:false,text:‘Read real-world economic news (BBC Business, FT headlines) to find examples for your essays. Real examples score higher than textbook ones.’},
-{icon:‘🔁’,gold:true, text:‘Do past paper essays timed, then compare word-for-word with the mark scheme. Note which evaluative points you missed — those are your gaps.’},
-{icon:‘📋’,gold:false,text:‘Keep a “theory cheat sheet” — one diagram and key points per market structure, policy, concept. Review weekly.’},
-]
-},
-{
-name:‘English HL’,color:‘var(–eng)’,e:‘📚’,
-methods:[
-{icon:‘🎯’,gold:true, text:‘For Paper 1 (unseen text): always identify the text type first, then purpose, audience, and tone before writing a single sentence of analysis.’},
-{icon:‘✍️’,gold:false,text:‘Use the PEEL structure for every analytical paragraph: Point → Evidence → Explanation → Link. Examiners scan for this.’},
-{icon:‘🗣’,gold:true, text:‘Paper 2 (literary essay): prepare 2–3 concrete quotations per theme per text. You must quote precisely — memorize them now.’},
-{icon:‘📖’,gold:false,text:‘Re-read your texts with an examiner's lens: what are the key themes, how does the author create meaning, what literary techniques are used?’},
-{icon:‘🔁’,gold:true, text:‘Timed writing practice is essential. Write a Paper 1 commentary in 90 minutes every 2 weeks, get feedback, and iterate.’},
-{icon:‘🧠’,gold:false,text:‘Build a vocabulary of literary terms: diction, syntax, imagery, tone, irony, juxtaposition, motif — use them naturally and precisely.’},
-]
-},
-{
-name:‘Korean A SL’,color:‘var(–kor)’,e:‘🗣’,
-methods:[
-{icon:‘⚡’,gold:true, text:‘IO is Apr 27 — your #1 priority. Prepare your literary commentary structure: opening, literary analysis, global issue link, conclusion.’},
-{icon:‘🎙’,gold:false,text:‘Record yourself every single day. You won't notice filler words and hesitations unless you hear them back. Fix them one by one.’},
-{icon:‘📖’,gold:true, text:‘For Written Assignment: your thesis must make a specific, arguable claim about the global issue + how the author expresses it through literary technique.’},
-{icon:‘🔁’,gold:false,text:‘Practice the interactive oral part specifically — anticipate what questions the examiner might ask and rehearse answers.’},
-{icon:‘✍️’,gold:true, text:‘Quote your texts in Korean with precision. Vague references to “the author implies” without a quote will cost you marks.’},
-]
-},
-{
-name:‘SAT’,color:‘var(–sat)’,e:‘📝’,
-methods:[
-{icon:‘🎯’,gold:true, text:‘Track every wrong answer by category (algebra, geometry, evidence-based reading, grammar). Attack your weakest category first, every session.’},
-{icon:‘⏱’,gold:false,text:‘SAT Math is mostly algebra and data analysis — these overlap directly with Math AA. Doing math AA exercises actively helps your SAT score.’},
-{icon:‘🔁’,gold:true, text:‘For Reading: the answer is always directly supported by the text. If you're inferring too much, you're wrong. Practice going back to find the exact line.’},
-{icon:‘✍️’,gold:false,text:‘Grammar section: learn the 8 core rules (subject-verb agreement, pronoun agreement, modifier placement, punctuation with clauses). Most questions test just these.’},
-{icon:‘📊’,gold:true, text:‘Do full timed sections on weekends. 15-min daily drills build speed; full sections build stamina.’},
-]
-},
+  {
+    name:'Math AA HL',color:'var(--math)',e:'∑',
+    methods:[
+      {icon:'🎯',gold:true, text:'Past papers are everything — but analyze your mistakes, don\'t just move on. Keep a dedicated "error log" of every question you got wrong and WHY.'},
+      {icon:'📖',gold:false,text:'Textbook exercises first to understand the concept, THEN go to past papers. Never skip the worked examples.'},
+      {icon:'🔁',gold:true, text:'Re-do past paper questions you got wrong 2 weeks later without looking at the solution. If you still can\'t do it, it\'s not in your head yet.'},
+      {icon:'✍️',gold:false,text:'Show all working clearly — in HL Math, method marks are everything. You can lose the final answer and still score high.'},
+      {icon:'⏱',gold:false,text:'Timed practice under exam conditions weekly. Math AA HL Paper 1 is no calculator — drill this separately.'},
+      {icon:'🧩',gold:true, text:'Master the "command verbs": find, show that, prove, hence. Each demands a different answer style. Practice all of them.'},
+      {icon:'📐',gold:false,text:'Math lesson Thursdays 8pm + Saturdays 10am — come with specific questions from your error log.'},
+    ]
+  },
+  {
+    name:'Biology HL',color:'var(--bio)',e:'🔬',
+    methods:[
+      {icon:'🗣',gold:true, text:'The #1 Biology skill: writing with exact mark scheme language. Highlight keywords in mark schemes and practice using them in your own sentences.'},
+      {icon:'✏️',gold:false,text:'Draw and label all key diagrams from memory — mitosis, meiosis, photosynthesis, respiration, nephron, heart. Examiners love diagrams.'},
+      {icon:'📋',gold:true, text:'Make a condensed "definition bank" — one page per topic with every bolded term defined in mark scheme language.'},
+      {icon:'🔁',gold:false,text:'For each past paper question you got wrong, write out the correct answer 3 times by hand. Muscle memory for phrasing matters.'},
+      {icon:'🧠',gold:true, text:'Use spaced repetition (Anki or flashcards) for definitions and processes. Biology is heavily memory-based — passive re-reading doesn\'t cut it.'},
+      {icon:'📊',gold:false,text:'Data analysis questions appear every year. Practice describing trends, calculating percentage change, and suggesting explanations.'},
+      {icon:'⚡',gold:false,text:'Test Apr 30 — this week is maximum Biology intensity.'},
+    ]
+  },
+  {
+    name:'Chemistry HL',color:'var(--chem)',e:'⚗️',
+    methods:[
+      {icon:'🧪',gold:true, text:'Create a master equation sheet — every formula, every unit, every constant. You need to recall these instantly under pressure.'},
+      {icon:'📖',gold:false,text:'Read the textbook for understanding, then create a 1-page study guide per topic with only the highest-yield content.'},
+      {icon:'🎯',gold:true, text:'The IB Chemistry mark scheme is extremely specific about units and sig figs. Lose the unit, lose the mark. Drill this habit NOW.'},
+      {icon:'🔁',gold:false,text:'Do the same past paper 3 times spaced 2 weeks apart. By attempt 3, you should be scoring near full marks.'},
+      {icon:'🧠',gold:true, text:'Mechanisms (SN1/SN2, electrophilic addition etc.) must be drawn perfectly — arrow pushing, charges, everything. Practice drawing them from memory daily.'},
+      {icon:'📊',gold:false,text:'Data-based questions test your application of theory. Practice explaining anomalous results and evaluating experiments.'},
+      {icon:'⚡',gold:false,text:'IA Draft Apr 27 · Test May 5 — both this month, stay on top.'},
+    ]
+  },
+  {
+    name:'Economics SL',color:'var(--eco)',e:'📈',
+    methods:[
+      {icon:'📊',gold:true, text:'Every evaluation answer needs a diagram. Draw it, label everything, explain the shift with exact economic language. Diagrams = easy marks.'},
+      {icon:'🗣',gold:false,text:'Master the command terms: "explain", "evaluate", "discuss", "to what extent". Each has a specific structure — learn them cold.'},
+      {icon:'✍️',gold:true, text:'"Evaluate" questions need a structured two-sided argument: advantage → disadvantage → conclusion. Practice this structure until it\'s automatic.'},
+      {icon:'🌍',gold:false,text:'Read real-world economic news (BBC Business, FT headlines) to find examples for your essays. Real examples score higher than textbook ones.'},
+      {icon:'🔁',gold:true, text:'Do past paper essays timed, then compare word-for-word with the mark scheme. Note which evaluative points you missed — those are your gaps.'},
+      {icon:'📋',gold:false,text:'Keep a "theory cheat sheet" — one diagram and key points per market structure, policy, concept. Review weekly.'},
+    ]
+  },
+  {
+    name:'English HL',color:'var(--eng)',e:'📚',
+    methods:[
+      {icon:'🎯',gold:true, text:'For Paper 1 (unseen text): always identify the text type first, then purpose, audience, and tone before writing a single sentence of analysis.'},
+      {icon:'✍️',gold:false,text:'Use the PEEL structure for every analytical paragraph: Point → Evidence → Explanation → Link. Examiners scan for this.'},
+      {icon:'🗣',gold:true, text:'Paper 2 (literary essay): prepare 2–3 concrete quotations per theme per text. You must quote precisely — memorize them now.'},
+      {icon:'📖',gold:false,text:'Re-read your texts with an examiner\'s lens: what are the key themes, how does the author create meaning, what literary techniques are used?'},
+      {icon:'🔁',gold:true, text:'Timed writing practice is essential. Write a Paper 1 commentary in 90 minutes every 2 weeks, get feedback, and iterate.'},
+      {icon:'🧠',gold:false,text:'Build a vocabulary of literary terms: diction, syntax, imagery, tone, irony, juxtaposition, motif — use them naturally and precisely.'},
+    ]
+  },
+  {
+    name:'Korean A SL',color:'var(--kor)',e:'🗣',
+    methods:[
+      {icon:'⚡',gold:true, text:'IO is Apr 27 — your #1 priority. Prepare your literary commentary structure: opening, literary analysis, global issue link, conclusion.'},
+      {icon:'🎙',gold:false,text:'Record yourself every single day. You won\'t notice filler words and hesitations unless you hear them back. Fix them one by one.'},
+      {icon:'📖',gold:true, text:'For Written Assignment: your thesis must make a specific, arguable claim about the global issue + how the author expresses it through literary technique.'},
+      {icon:'🔁',gold:false,text:'Practice the interactive oral part specifically — anticipate what questions the examiner might ask and rehearse answers.'},
+      {icon:'✍️',gold:true, text:'Quote your texts in Korean with precision. Vague references to "the author implies" without a quote will cost you marks.'},
+    ]
+  },
+  {
+    name:'SAT',color:'var(--sat)',e:'📝',
+    methods:[
+      {icon:'🎯',gold:true, text:'Track every wrong answer by category (algebra, geometry, evidence-based reading, grammar). Attack your weakest category first, every session.'},
+      {icon:'⏱',gold:false,text:'SAT Math is mostly algebra and data analysis — these overlap directly with Math AA. Doing math AA exercises actively helps your SAT score.'},
+      {icon:'🔁',gold:true, text:'For Reading: the answer is always directly supported by the text. If you\'re inferring too much, you\'re wrong. Practice going back to find the exact line.'},
+      {icon:'✍️',gold:false,text:'Grammar section: learn the 8 core rules (subject-verb agreement, pronoun agreement, modifier placement, punctuation with clauses). Most questions test just these.'},
+      {icon:'📊',gold:true, text:'Do full timed sections on weekends. 15-min daily drills build speed; full sections build stamina.'},
+    ]
+  },
 ];
 
 function buildStrategy(){
-const g=document.getElementById(‘strategy-grid’);
-STRATS.forEach(s=>{
-const card=document.createElement(‘div’);card.className=‘strategy-card’;
-card.innerHTML=`<h3 style="color:${s.color}">${s.e} ${s.name}<span class="s7-badge">TARGET: 7</span></h3><div class="method-list">${s.methods.map(m=>`<div class="method-item${m.gold?' gold':''}" data-icon="${m.icon}">${m.text}</div>`).join('')}</div>`;
-g.appendChild(card);
-});
+  const g=document.getElementById('strategy-grid');
+  STRATS.forEach(s=>{
+    const card=document.createElement('div');card.className='strategy-card';
+    card.innerHTML=`<h3 style="color:${s.color}">${s.e} ${s.name}<span class="s7-badge">TARGET: 7</span></h3><div class="method-list">${s.methods.map(m=>`<div class="method-item${m.gold?' gold':''}" data-icon="${m.icon}">${m.text}</div>`).join('')}</div>`;
+    g.appendChild(card);
+  });
 }
 
 window.switchTab=function(id){
-document.querySelectorAll(’.tab’).forEach((t,i)=>t.classList.toggle(‘active’,[‘weekly’,‘daily’,‘tracker’,‘strategy’][i]===id));
-document.querySelectorAll(’.panel’).forEach(p=>p.classList.remove(‘active’));
-document.getElementById(‘panel-’+id).classList.add(‘active’);
+  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',['weekly','daily','tracker','strategy'][i]===id));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
 };
 
 buildWeekly();buildDailyNav();renderTL();buildTracker();buildStrategy();
 </script>
-
 </body>
 </html>
