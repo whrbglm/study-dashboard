@@ -52,6 +52,7 @@
   .tag-rest   { background:#F1EFE8; color:#444441; }
   .tag-lesson { background:#FAECE7; color:#712B13; }
   .tag-fam    { background:#E1F5EE; color:#085041; }
+  .tag-toefl  { background:#FBE7F2; color:#7A1F5C; }
   .tag-light  { background:#F5F0FF; color:#4B3580; }
   .daily-panel { background:var(--bg); border:0.5px solid var(--border); border-radius:var(--radius-lg); padding:1.5rem 1.75rem; display:none; margin-bottom:1.25rem; }
   .daily-panel.active { display:block; }
@@ -77,6 +78,7 @@
   .dot-free  { background:#888780; }
   .dot-sleep { background:#AFA9EC; }
   .dot-fam   { background:#1D9E75; }
+  .dot-toefl { background:#C9519B; }
   .todo-list { list-style:none; }
   .todo-list li { font-size:12px; color:var(--text-secondary); padding:2px 0; display:flex; align-items:flex-start; gap:7px; line-height:1.5; }
   .todo-list li::before { content:"→"; color:#bbb; flex-shrink:0; margin-top:1px; font-size:11px; }
@@ -94,9 +96,10 @@
 
 <div class="page-header">
   <h1>Summer break planner</h1>
-  <p>June 15 – July 22, 2026 &nbsp;·&nbsp; SAT: Aug 22 &nbsp;·&nbsp; Predicted Grades: Sep 14</p>
+  <p>June 15 – July 22, 2026 &nbsp;·&nbsp; TOEFL: Jul 18 &nbsp;·&nbsp; SAT: Aug 22 &nbsp;·&nbsp; Predicted Grades: Sep 14</p>
   <div class="goal-chips">
     <span class="chip chip-sat">SAT 1550+ goal</span>
+    <span class="chip" style="background:#FBE7F2;color:#7A1F5C;">TOEFL 110+ goal</span>
     <span class="chip chip-math">HL Math AA</span>
     <span class="chip chip-bio">Biology HL</span>
     <span class="chip chip-chem">Chemistry HL</span>
@@ -111,6 +114,7 @@
   <div class="leg-item"><div class="leg-dot" style="background:#639922"></div>Biology</div>
   <div class="leg-item"><div class="leg-dot" style="background:#BA7517"></div>Chemistry</div>
   <div class="leg-item"><div class="leg-dot" style="background:#D4537E"></div>Economics</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#C9519B"></div>TOEFL</div>
   <div class="leg-item"><div class="leg-dot" style="background:#1D9E75"></div>Family time</div>
   <div class="leg-item"><div class="leg-dot" style="background:#888780"></div>Free / rest</div>
   <div class="leg-item"><div class="leg-dot" style="background:#AFA9EC"></div>Sleep</div>
@@ -179,6 +183,36 @@ const econNew = ['CH3 International economics','CH4 Development economics'];
 
 const start = new Date(2026,5,15);
 const end   = new Date(2026,6,22);
+const TOEFL_DATE = new Date(2026,6,18); // July 18
+
+// 12 mocks spread across weekends, June 20 - July 12 (taper off before test day Jul 18)
+// Format: 'YYYY-MM-DD': [list of mock slots that day]
+const mockSchedule = {
+  '2026-06-20': ['Mock 1 — full TestGlider simulation'],
+  '2026-06-21': ['Mock 2 — full TestGlider simulation'],
+  '2026-06-27': ['Mock 3 — full TestGlider simulation', 'Mock 4 — full TestGlider simulation'],
+  '2026-06-28': ['Mock 5 — full TestGlider simulation'],
+  '2026-07-04': ['Mock 6 — full TestGlider simulation', 'Mock 7 — full TestGlider simulation'],
+  '2026-07-05': ['Mock 8 — full TestGlider simulation'],
+  '2026-07-11': ['Mock 9 — full TestGlider simulation', 'Mock 10 — full TestGlider simulation'],
+  '2026-07-12': ['Mock 11 — full TestGlider simulation', 'Mock 12 — full TestGlider simulation (final, full review after)']
+};
+
+function dKey(d){
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function getMocksForDay(d){
+  return mockSchedule[dKey(d)] || [];
+}
+function isTestDay(d){
+  return d.getFullYear()===TOEFL_DATE.getFullYear() && d.getMonth()===TOEFL_DATE.getMonth() && d.getDate()===TOEFL_DATE.getDate();
+}
+// Daily TOEFL Reading+Speaking drill runs every day from June 16 (day 2) through July 17 (day before test)
+function hasToeflDrill(d){
+  const drillStart = new Date(2026,5,16);
+  const drillEnd = new Date(2026,6,17);
+  return d>=drillStart && d<=drillEnd;
+}
 
 function isSunday(d)   { return d.getDay()===0; }
 function isSaturday(d) { return d.getDay()===6; }
@@ -226,6 +260,54 @@ function getDayPlan(d){
   const heavyDouble = bootcamp && (lessonThu||lessonMon);
 
   let B=[];
+
+  if(isTestDay(d)){
+    B.push({time:'12am – 7am', dur:'7 hrs', dot:'dot-sleep', title:'Sleep', todos:[
+      td('Full 7-hour sleep — do not stay up cramming','7 hrs'),
+      td('No screens 30 min before bed','—')
+    ]});
+    B.push({time:'7:00 – 8:00am', dur:'1 hr', dot:'dot-toefl', title:'TOEFL TEST DAY — morning prep', todos:[
+      td('Wake up, hydrate, light stretch','15 min'),
+      td('Light review: skim Speaking/Writing task structures only — no new content','20 min'),
+      td('Pack ID, confirmation, water, snack for test centre','15 min'),
+      td('Calm breathing / mental warm-up, not cramming','10 min')
+    ]});
+    B.push({time:'8:00 – 9:00am', dur:'1 hr', dot:'dot-free', title:'Breakfast + travel', todos:[
+      td('Solid breakfast — protein + slow carbs, no heavy/greasy food','30 min'),
+      td('Travel to test centre with buffer time','30 min')
+    ]});
+    B.push({time:'9:00 – 11:00am', dur:'~90 min', dot:'dot-toefl', title:'TOEFL iBT — official test', todos:[
+      td('Reading (35 min)','35 min'),
+      td('Listening (29 min)','29 min'),
+      td('Speaking (16 min)','16 min'),
+      td('Writing (20 min)','20 min'),
+      td('Trust your prep — pace yourself, do not rush','—')
+    ]});
+    B.push({time:'11:00am – 1:00pm', dur:'2 hrs', dot:'dot-free', title:'Decompress', todos:[
+      td('Full mental rest — no self-grading or overthinking it','1 hr'),
+      td('Light lunch out or with family to celebrate finishing','1 hr')
+    ]});
+    B.push({time:'1:00 – 6:00pm', dur:'5 hrs', dot:'dot-free', title:'Free afternoon', todos:[
+      td('Fully unstructured — you earned a real break today','5 hrs')
+    ]});
+    B.push({time:'6:00 – 7:00pm', dur:'1 hr', dot:'dot-free', title:'Dinner', todos:[
+      td('Celebratory dinner with family — no screens','1 hr')
+    ]});
+    B.push({time:'7:00 – 8:30pm', dur:'1.5 hrs', dot:'dot-math', title:'Light math catch-up (optional)', todos:[
+      td('Only if you feel like it — light bootcamp HW review','45 min'),
+      td('Otherwise, treat this as more free time','45 min')
+    ]});
+    B.push({time:'8:30 – 10:30pm', dur:'2 hrs', dot:'dot-fam', title:'Family time', todos:[
+      td('Protected family time — no study, no books','2 hrs'),
+      td('Be fully present — celebrate the milestone','—')
+    ]});
+    B.push({time:'10:30pm – 12:00am', dur:'1.5 hrs', dot:'dot-free', title:'Wind down', todos:[
+      td('Relax, reflect, no cramming','1 hr'),
+      td('Screens off by 11:30pm','—')
+    ]});
+    return B;
+  }
+
 
   // ── SLEEP ──────────────────────────────────────────────
   B.push({time:'12am – 7am', dur:'7 hrs', dot:'dot-sleep', title:'Sleep', todos:[
@@ -349,6 +431,7 @@ function getDayPlan(d){
 
   } else if(sun){
     // ── SUNDAY ──────────────────────────────────────────
+    const mocks = getMocksForDay(d);
     B.push({time:'11:00am – 12:00pm', dur:'1 hr', dot:'dot-free', title:'Free time', todos:[
       td('Fully unstructured — rest, hobby, social','1 hr')
     ]});
@@ -362,14 +445,33 @@ function getDayPlan(d){
       td('Vocabulary quiz: yesterday\'s 15 words','10 min'),
       td('Learn 15 new vocabulary words','10 min')
     ]});
-    B.push({time:'2:30 – 4:30pm', dur:'2 hrs', dot:'dot-free', title:'Free time', todos:[
-      td('Fully unstructured — social, hobby, rest','2 hrs')
-    ]});
-    B.push({time:'4:30 – 6:00pm', dur:'1.5 hrs', dot:'dot-math', title:'Math self-study', todos:[
-      td(`Topic: ${mT} — work through textbook examples`,'45 min'),
-      td('Do 8–10 past paper Qs on this topic','35 min'),
-      td('Review any bootcamp notes from this week','10 min')
-    ]});
+    if(mocks.length>0){
+      mocks.forEach((m,mi)=>{
+        const mStart = mi===0 ? '2:30' : '5:00';
+        const mEnd   = mi===0 ? '4:30' : '7:00';
+        B.push({time:`${mStart} – ${mEnd}pm`, dur:'2 hrs', dot:'dot-toefl', title:`TOEFL — ${m}`, todos:[
+          td('Full TestGlider mock — timed, no pausing','90 min'),
+          td('Score yourself immediately after','10 min'),
+          td('Review every wrong/weak answer — log section + reason','20 min')
+        ]});
+      });
+      if(mocks.length===1){
+        B.push({time:'4:30 – 6:00pm', dur:'1.5 hrs', dot:'dot-math', title:'Math self-study', todos:[
+          td(`Topic: ${mT} — work through textbook examples`,'45 min'),
+          td('Do 6–8 past paper Qs on this topic','35 min'),
+          td('Review any bootcamp notes from this week','10 min')
+        ]});
+      }
+    } else {
+      B.push({time:'2:30 – 4:30pm', dur:'2 hrs', dot:'dot-free', title:'Free time', todos:[
+        td('Fully unstructured — social, hobby, rest','2 hrs')
+      ]});
+      B.push({time:'4:30 – 6:00pm', dur:'1.5 hrs', dot:'dot-math', title:'Math self-study', todos:[
+        td(`Topic: ${mT} — work through textbook examples`,'45 min'),
+        td('Do 8–10 past paper Qs on this topic','35 min'),
+        td('Review any bootcamp notes from this week','10 min')
+      ]});
+    }
     B.push({time:'6:00 – 7:00pm', dur:'1 hr', dot:'dot-free', title:'Dinner', todos:[
       td('Sit-down dinner with family — no screens','1 hr')
     ]});
@@ -440,15 +542,35 @@ function getDayPlan(d){
       td('Snack, hydrate, short walk','15 min')
     ]});
 
+    if(hasToeflDrill(d)){
+      const drillN = Math.floor((d - new Date(2026,5,16))/86400000);
+      const drillCycle = drillN % 2;
+      B.push({time:'3:00 – 3:30pm', dur:'30 min', dot:'dot-toefl',
+        title: drillCycle===0 ? 'TOEFL drill — Reading' : 'TOEFL drill — Speaking', todos: drillCycle===0 ? [
+          td('TestGlider: 1 short Reading passage (150–200 words) — new-format style','15 min'),
+          td('Try the "Complete the Words" task type if available','5 min'),
+          td('Review every wrong answer — identify the trap','10 min')
+        ] : [
+          td('TestGlider: Listen-and-Repeat task — record yourself','10 min'),
+          td('Simulated interview question — 1 response, 45 sec, record & playback','10 min'),
+          td('Self-review: fluency, grammar, pronunciation — note 1 fix for tomorrow','10 min')
+        ]
+      });
+    }
+
     // 3–5pm: Economics + SAT (or SAT block if Thu post-lesson)
+    // shift afternoon start by 30 min if TOEFL drill ran today
+    const aStart = hasToeflDrill(d) ? '3:30' : '3:00';
+    const aMid   = hasToeflDrill(d) ? '4:30' : '4:00';
+    const aEnd   = hasToeflDrill(d) ? '6:00' : '5:30';
     if(isThursday(d) && !lessonThu){
       // Thu post-June-18: no lesson, full afternoon
-      B.push({time:'3:00 – 4:00pm', dur:'1 hr', dot:'dot-econ', title:`Economics — ${eM}`, todos:[
+      B.push({time:`${aStart} – ${aMid}pm`, dur:'1 hr', dot:'dot-econ', title:`Economics — ${eM}`, todos:[
         td(`Study: ${eM} — textbook + annotate all key diagrams`,'35 min'),
         td('Write 4–5 bullet summary from memory after reading','10 min'),
         td('Do 2–3 past paper short-answer Qs','15 min')
       ]});
-      B.push({time:'4:00 – 5:30pm', dur:'1.5 hrs', dot:'dot-sat', title:'SAT practice', todos:[
+      B.push({time:`${aMid} – ${aEnd}pm`, dur:'1.5 hrs', dot:'dot-sat', title:'SAT practice', todos:[
         td('SAT Reading: 2 passage sets — annotate every question (OnePrep / Bluebook)','30 min'),
         td('Review all answers, note rule broken for each error','15 min'),
         td('SAT Writing: 15 grammar Qs from question bank','20 min'),
@@ -458,24 +580,24 @@ function getDayPlan(d){
     } else if(lessonSat){
       // Saturday: bootcamp 9–11 + sat lesson 10–11:30 already covered by bootcamp
       // afternoon: econ + SAT
-      B.push({time:'3:00 – 4:00pm', dur:'1 hr', dot:'dot-econ', title:`Economics — ${eM}`, todos:[
+      B.push({time:`${aStart} – ${aMid}pm`, dur:'1 hr', dot:'dot-econ', title:`Economics — ${eM}`, todos:[
         td(`Study: ${eM}`,'30 min'),
         td('Annotate key diagrams + write 3-bullet summary','15 min'),
         td(`New topic: ${eI} — read 1 section`,'15 min')
       ]});
-      B.push({time:'4:00 – 5:30pm', dur:'1.5 hrs', dot:'dot-sat', title:'SAT practice', todos:[
+      B.push({time:`${aMid} – ${aEnd}pm`, dur:'1.5 hrs', dot:'dot-sat', title:'SAT practice', todos:[
         td('SAT Math: 1 module from Bluebook (timed, 35 min)','35 min'),
         td('SAT Reading: 1 passage set — annotate fully','20 min'),
         td('Vocabulary: 15 new words + quiz prior batch','15 min'),
         td('Error log: note every mistake + rule broken','10 min')
       ]});
     } else if(cycle4===0){
-      B.push({time:'3:00 – 4:00pm', dur:'1 hr', dot:'dot-econ', title:`Economics — ${eM}`, todos:[
+      B.push({time:`${aStart} – ${aMid}pm`, dur:'1 hr', dot:'dot-econ', title:`Economics — ${eM}`, todos:[
         td(`Study: ${eM} — textbook reading + annotate diagrams`,'35 min'),
         td('Write 3–5 bullet summary from memory','10 min'),
         td('Do 2 past paper short-answer Qs','15 min')
       ]});
-      B.push({time:'4:00 – 5:30pm', dur:'1.5 hrs', dot:'dot-sat', title:'SAT practice', todos:[
+      B.push({time:`${aMid} – ${aEnd}pm`, dur:'1.5 hrs', dot:'dot-sat', title:'SAT practice', todos:[
         td('SAT Reading: 2 passage sets (OnePrep / Bluebook)','30 min'),
         td('Review answers — note every rule broken','15 min'),
         td('SAT Writing: 10–15 grammar Qs','20 min'),
@@ -483,12 +605,12 @@ function getDayPlan(d){
         td('Update error log','10 min')
       ]});
     } else if(cycle4===3){
-      B.push({time:'3:00 – 4:00pm', dur:'1 hr', dot:'dot-econ', title:`Economics — new: ${eI}`, todos:[
+      B.push({time:`${aStart} – ${aMid}pm`, dur:'1 hr', dot:'dot-econ', title:`Economics — new: ${eI}`, todos:[
         td(`Study: ${eI} — read textbook section carefully`,'35 min'),
         td('Summarise into 5 bullet points + 1 key diagram from memory','15 min'),
         td('Do 2 past paper Qs','10 min')
       ]});
-      B.push({time:'4:00 – 5:30pm', dur:'1.5 hrs', dot:'dot-sat', title:'SAT practice', todos:[
+      B.push({time:`${aMid} – ${aEnd}pm`, dur:'1.5 hrs', dot:'dot-sat', title:'SAT practice', todos:[
         td('SAT Reading: 2 passage sets (annotate actively)','30 min'),
         td('Review all answers thoroughly','15 min'),
         td('SAT Writing: 10 grammar Qs','15 min'),
@@ -497,7 +619,8 @@ function getDayPlan(d){
       ]});
     } else {
       // cycle4 === 1 or 2 — SAT heavier, no econ
-      B.push({time:'3:00 – 5:00pm', dur:'2 hrs', dot:'dot-sat', title:'SAT practice (extended)', todos:[
+      const extEnd = hasToeflDrill(d) ? '5:30' : '5:00';
+      B.push({time:`${aStart} – ${extEnd}pm`, dur: hasToeflDrill(d) ? '2 hrs' : '2 hrs', dot:'dot-sat', title:'SAT practice (extended)', todos:[
         td('SAT Math: 1 full module — timed (Bluebook, 35 min)','35 min'),
         td('SAT Reading: 2 passage sets (OnePrep / Bluebook)','30 min'),
         td('Review all answers — note every rule broken','20 min'),
@@ -507,10 +630,12 @@ function getDayPlan(d){
       ]});
     }
 
-    B.push({time:'5:30 – 6:00pm', dur:'30 min', dot:'dot-free', title:'Break before dinner', todos:[
+    const breakStart = hasToeflDrill(d) ? '5:30' : '5:30';
+    B.push({time:`${breakStart} – 6:00pm`, dur:'30 min', dot:'dot-free', title:'Break before dinner', todos:[
       td('Step away from desk, light stretch','15 min'),
       td('Prep for dinner / help set table','15 min')
     ]});
+
 
     // DINNER 6pm
     if(lessonMon){
@@ -557,6 +682,46 @@ function getDayPlan(d){
 
     // EVENING
     if(fri||sat){
+      const satMocks = sat ? getMocksForDay(d) : [];
+      if(satMocks.length>0){
+        // Saturday with mock(s) scheduled: mock(s) replace the evening math block, family time still protected
+        let cursor = 19; // 7:00pm in 24hr*2 not used, just label manually
+        if(satMocks.length===1){
+          B.push({time:'7:00 – 9:00pm', dur:'2 hrs', dot:'dot-toefl', title:`TOEFL — ${satMocks[0]}`, todos:[
+            td('Full TestGlider mock — timed, no pausing','90 min'),
+            td('Score yourself immediately after','10 min'),
+            td('Review every wrong/weak answer — log section + reason','20 min')
+          ]});
+          B.push({time:'9:00 – 9:30pm', dur:'30 min', dot:'dot-math', title:'Quick math check-in', todos:[
+            td('Complete any urgent bootcamp homework only','20 min'),
+            td('Flag rest for tomorrow if not finished','10 min')
+          ]});
+          B.push({time:'9:30 – 10:30pm', dur:'1 hr', dot:'dot-fam', title:'Family time (shortened)', todos:[
+            td('Protected family time — no study, no books','1 hr'),
+            td('Be fully present with family','—')
+          ]});
+        } else {
+          // 2 mocks on this Saturday — back to back, family time still protected after
+          B.push({time:'7:00 – 9:00pm', dur:'2 hrs', dot:'dot-toefl', title:`TOEFL — ${satMocks[0]}`, todos:[
+            td('Full TestGlider mock — timed, no pausing','90 min'),
+            td('Score yourself, quick review only','30 min')
+          ]});
+          B.push({time:'9:00 – 9:15pm', dur:'15 min', dot:'dot-free', title:'Short break', todos:[
+            td('Stretch, hydrate, reset focus','15 min')
+          ]});
+          B.push({time:'9:15 – 11:15pm', dur:'2 hrs', dot:'dot-toefl', title:`TOEFL — ${satMocks[1]}`, todos:[
+            td('Full TestGlider mock — timed, no pausing','90 min'),
+            td('Score yourself immediately after','10 min'),
+            td('Review every wrong/weak answer — log section + reason','20 min')
+          ]});
+        }
+        B.push({time:'11:15pm – 12:00am', dur:'45 min', dot:'dot-free', title:'Wind down', todos:[
+          td('No new study material','—'),
+          td('Prepare tomorrow\'s to-do list','10 min'),
+          td('Screens off as soon as possible','—')
+        ]});
+        return B;
+      }
       // Family night: math before 8:30, family 8:30–10:30
       B.push({time:'7:00 – 8:30pm', dur:'1.5 hrs', dot:'dot-math',
         title: sat ? 'Math bootcamp HW + review' : 'Math — bootcamp HW + self-study', todos:[
@@ -616,6 +781,9 @@ function getTags(d){
   if(heavyDouble) tags.push({cls:'tag-light',label:'Light day'});
   if(isSunday(d)) tags.push({cls:'tag-rest',label:'Rest'});
   if(isFriday(d)||isSaturday(d)||isSunday(d)) tags.push({cls:'tag-fam',label:'Family'});
+  if(isTestDay(d)) tags.push({cls:'tag-toefl',label:'TOEFL TEST'});
+  else if(getMocksForDay(d).length>0) tags.push({cls:'tag-toefl',label:`TOEFL Mock x${getMocksForDay(d).length}`});
+  else if(hasToeflDrill(d)) tags.push({cls:'tag-toefl',label:'TOEFL drill'});
   return tags;
 }
 
@@ -676,10 +844,12 @@ function buildUI(){
       panel.innerHTML=`
         <div class="panel-header">
           <div class="panel-title">${dayName(day)}, ${dateStr(day)}</div>
-          ${isSunday(day)?'<span class="panel-badge badge-light">Rest day</span>':''}
-          ${heavyDouble?'<span class="panel-badge badge-double">Bootcamp + lesson — lighter day</span>':''}
-          ${lessonDay&&!heavyDouble?'<span class="panel-badge badge-lesson">Lesson day</span>':''}
-          ${famNight?'<span class="panel-badge badge-fam">Family 8:30–10:30pm</span>':''}
+          ${isTestDay(day)?'<span class="panel-badge" style="background:#FBE7F2;color:#7A1F5C;">TOEFL TEST DAY</span>':''}
+          ${!isTestDay(day)&&isSunday(day)?'<span class="panel-badge badge-light">Rest day</span>':''}
+          ${!isTestDay(day)&&heavyDouble?'<span class="panel-badge badge-double">Bootcamp + lesson — lighter day</span>':''}
+          ${!isTestDay(day)&&lessonDay&&!heavyDouble?'<span class="panel-badge badge-lesson">Lesson day</span>':''}
+          ${!isTestDay(day)&&famNight?'<span class="panel-badge badge-fam">Family 8:30–10:30pm</span>':''}
+          ${!isTestDay(day)&&getMocksForDay(day).length>0?`<span class="panel-badge" style="background:#FBE7F2;color:#7A1F5C;">TOEFL Mock x${getMocksForDay(day).length}</span>`:''}
         </div>
         <div class="timeline">
           ${plan.map(b=>`
